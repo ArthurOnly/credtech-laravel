@@ -4660,6 +4660,10 @@ h6 {
     line-height: 2rem;
 }
 
+label{
+    opacity: 0.7;
+}
+
 p, label, option, select {
     font-size: 1rem;
     line-height: 2rem;
@@ -4684,8 +4688,21 @@ a {
     font-weight: bold !important;
 }
 
+.input-block.light select,
+.input-block.light input,
+.input-block.light textarea{
+    background-color: rgb(245, 245, 245);
+}
+
+select,
+input,
+textarea{
+    outline: 0;
+}
+
 select, input{
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     height: 40px;
     padding: 8px;
     font-size: 1rem;
@@ -4693,13 +4710,41 @@ select, input{
     transition: 0.2s;
 }
 
-select:focus, input:focus{
-    outline: 0;
+textarea{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 8px;
+    font-size: 1rem;
+    font-family: 'droid-sans', sans-serif;
+    transition: 0.2s;
 }
 
 input::placeholder{
     color: #fff;
     opacity: 0.5;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-block > * + *{
+    margin-top: 4px;
+}
+
+.input-block.light .focus-decorator{
+    background-color: var(--blue-1);
+    height: 2px;
+    position: absolute;
+    width: 0%;
+    transition: 0.2s;
+    bottom: 0;
+}
+
+.input-block:focus-within .focus-decorator{
+    width: 100%;
 }
 
 .d-none{
@@ -4762,7 +4807,6 @@ button.round{
 
 /*Table default */
 table{
-    margin: 64px;
     box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.05);
     border-radius: 8px;
     border-spacing: 0;
@@ -4778,7 +4822,7 @@ table tbody{
 table thead{
     background-color: var(--blue-1);
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 2rem;
     text-align: center;
 }
@@ -4787,12 +4831,16 @@ table tbody tr:nth-child(2n){
     background-color: rgb(246, 246, 246);
 }
 
-table td{
+table td, table th{
     padding: 8px 16px;
 }
 
 thead{
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+table .card-image{
+    width: 100%;
 }
 @media (min-width: 1120px){
     body footer .up-section .container{
@@ -4892,6 +4940,7 @@ footer .up-section .container > div > * + *{
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 128px 20px 128px 20px;
+        column-gap: 64px;
     }
 
     section{
@@ -4907,6 +4956,19 @@ footer .up-section .container > div > * + *{
     body .desktop-only{
         display: flex;
     }
+
+    body .table-wrapper{
+        overflow-x: hidden;
+        width: auto;
+    }
+}
+
+.form-container > :first-child{
+    margin-bottom: 16px;
+}
+
+.form-container > :last-child{
+    margin-top: 40px;
 }
 
 .desktop-only{
@@ -4943,15 +5005,6 @@ footer .up-section .container > div > * + *{
     padding: 64px 20px 64px 20px;
 }
 
-.input-block {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-block > * + *{
-    margin-top: 4px;
-}
-
 .font-regular{
     font-weight: normal;
 }
@@ -4977,7 +5030,29 @@ footer .up-section .container > div > * + *{
     justify-content: center;
 }
 
+.table-wrapper{
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    position: relative;
+}
 
+/*Transitions*/
+.t-fade-in-up{
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.6s;
+    position: absolute;
+    visibility: hidden;
+    width: fit-content;
+}
+
+.t-fade-in-up.active{
+    opacity: 1;
+    transform: translateY(0);
+    position: initial;
+    visibility: visible;
+}
 @media (min-width: 1120px){
     body nav .container .right-content{
         display: flex;
@@ -4986,6 +5061,10 @@ footer .up-section .container > div > * + *{
     body nav .toggle{
         display: none;
     }
+}
+
+body > nav + *{
+    padding-top: 96px;
 }
 
 nav{

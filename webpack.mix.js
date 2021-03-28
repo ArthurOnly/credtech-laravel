@@ -26,6 +26,10 @@ mix
     'resources/css/home.css'
 ], 'public/css/home-styles.css')
 
+.styles([
+    'resources/css/taxas.css',
+], 'public/css/taxas-styles.css')
+
 .copy(
     'node_modules/@fortawesome/fontawesome-free/webfonts',
     'public/webfonts'
@@ -42,5 +46,9 @@ mix
     //'resources/js/bootstrap.js',
     'resources/js/navbar.js',
 ], 'public/js/global-script.js')
+
+.scripts([
+    'resources/js/taxas.js',
+], 'public/js/taxas-script.js')
     
 .version()

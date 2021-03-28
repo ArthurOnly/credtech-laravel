@@ -1,6 +1,7 @@
 {
-    "/css/global-styles.css": "/css/global-styles.css?id=3c5ffb8dfffa6ab353b5",
-    "/css/home-styles.css": "/css/home-styles.css?id=f76e51126ad493e1a0ed",
+    "/css/global-styles.css": "/css/global-styles.css?id=9a13286eecc530028bde",
+    "/css/home-styles.css": "/css/home-styles.css?id=a5d48f04eeae83a8caca",
+    "/css/taxas-styles.css": "/css/taxas-styles.css?id=fcc6cc6c138af5c77447",
     "/webfonts/fa-brands-400.eot": "/webfonts/fa-brands-400.eot?id=94c52b85b8727f78760e",
     "/webfonts/fa-brands-400.svg": "/webfonts/fa-brands-400.svg?id=ba7ed552362f64d30f6d",
     "/webfonts/fa-brands-400.ttf": "/webfonts/fa-brands-400.ttf?id=623b08743e12b2ff1fc2",
@@ -17,5 +18,6 @@
     "/webfonts/fa-solid-900.woff": "/webfonts/fa-solid-900.woff?id=2cd966756e4b2e254242",
     "/webfonts/fa-solid-900.woff2": "/webfonts/fa-solid-900.woff2?id=fc56faf526ca07331a77",
     "/js/home-script.js": "/js/home-script.js?id=36bcbdf74a5f20bc62f6",
-    "/js/global-script.js": "/js/global-script.js?id=64a53aaaa717a3bbdfcf"
+    "/js/global-script.js": "/js/global-script.js?id=64a53aaaa717a3bbdfcf",
+    "/js/taxas-script.js": "/js/taxas-script.js?id=70e76a587619313b15f7"
 }

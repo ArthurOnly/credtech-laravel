@@ -1,0 +1,19 @@
+@media (min-width: 1120px){
+    .credit-card-loan th{
+        font-size: 1rem;
+    }
+}
+
+.credit-card-loan th{
+    font-size: 0.9rem;
+}
+
+.taxs-credit .left-container > i {
+    font-size: 128px;
+    color: var(--blue-1);
+}
+
+.taxs-credit .left-container h2 i {
+    margin-right: 8px;
+}
+

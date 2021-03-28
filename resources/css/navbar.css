@@ -8,6 +8,10 @@
     }
 }
 
+body > nav + *{
+    padding-top: 96px;
+}
+
 nav{
     background-color: var(--blue-1);
     display: flex;
