@@ -4,11 +4,15 @@
     }
 }
 
+.taxs-credit{
+    background-color: var(--blue-3);
+}
+
 .credit-card-loan th{
     font-size: 0.9rem;
 }
 
-.taxs-credit .left-container > i {
+.taxs-credit .left-container i {
     font-size: 128px;
     color: var(--blue-1);
 }

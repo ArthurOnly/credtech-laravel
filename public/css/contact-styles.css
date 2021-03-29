@@ -1,0 +1,19 @@
+.contact-form-section{
+    background: linear-gradient(90deg, #fff 0%, #fff 50%, #fff 50%, #fff 100%);
+}
+
+
+.contact-block{
+    display: flex;
+}
+
+.contact-block + .contact-block{
+    margin-top: 32px;
+}
+
+.contact-block i{
+    font-size: 2rem;
+    margin-right: 8px;
+}
+
+

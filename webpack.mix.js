@@ -30,6 +30,14 @@ mix
     'resources/css/taxas.css',
 ], 'public/css/taxas-styles.css')
 
+.styles([
+    'resources/css/contact.css',
+], 'public/css/contact-styles.css')
+
+.styles([
+    'resources/css/loan.css',
+], 'public/css/loan-styles.css')
+
 .copy(
     'node_modules/@fortawesome/fontawesome-free/webfonts',
     'public/webfonts'
@@ -50,5 +58,14 @@ mix
 .scripts([
     'resources/js/taxas.js',
 ], 'public/js/taxas-script.js')
+
+.scripts([
+    'resources/js/jquery.js',
+    'resources/js/jquery.mask.js'
+], 'public/js/jquery.js')
+
+.scripts([
+    'resources/js/loan.js',
+], 'public/js/loan-script.js')
     
 .version()

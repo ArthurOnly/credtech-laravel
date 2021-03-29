@@ -24,3 +24,8 @@ Route::get('/taxas', function () {
 Route::get('/contato', function () {
     return view('contato');
 });
+
+Route::get('/emprestimo', function () {
+    return view('emprestimo');
+});
+

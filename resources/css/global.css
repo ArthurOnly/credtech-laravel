@@ -24,13 +24,17 @@
         overflow-x: hidden;
         width: auto;
     }
+
+    body .section-container .right-container{
+        margin-top: 0;
+    }
 }
 
-.form-container > :first-child{
+.form-container > h5{
     margin-bottom: 16px;
 }
 
-.form-container > :last-child{
+.form-container > button:last-child{
     margin-top: 40px;
 }
 

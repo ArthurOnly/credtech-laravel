@@ -21,15 +21,25 @@
         <div class='container section-container'>
             <div class='left-container container'>
                 <h2>Nossas taxas</h2>
-                <div class='input-block'>
+                <div class='input-block light'>
                     <label>Qual o seu segmento de atuação?</label>
-                    <select class='light' name='witch-segment'>
+                    <select name='witch-segment'>
                         <option value='comercio'>Comércio</option>
                         <option value='servicos'>Serviços</option>
                         <option value='industria'>Indústria</option>
                         <option value='servicos'>Outros</option>
                     </select>
+                    <spam class='focus-decorator'/>
                 </div>
+                <h4 class='desktop-only'>Legenda:</h4>
+                <ul class='desktop-only'>
+                    <li><strong>a.s</strong>: A semanal.</li>
+                    <li><strong>a.q</strong>: A quinzena.</li>
+                    <li><strong>Sem garantia</strong>: Cheque-promissória + Contrato.</li>
+                    <li><strong>Semi garantia</strong>: Cheque-Promissória, Cheque-calção (Outra titularidade) + contrato.</li>
+                    <li><strong>Garantia parcial</strong>: Cheque-Promissória + Posse de Bens (Joias, Equipamentos, Veículos, imóveis) + Contrato.</li>
+                    <li><strong>Garantia integral</strong>: Cartão de Crédito ou Cartão CredTech + Contrato.</li>
+                </ul>
             </div>
             <div class='table-wrapper'>
                 <table id='tax-comercio' class='t-fade-in-up active'>
@@ -129,12 +139,22 @@
                     </tbody>
                 </table>
             </div>
+            <h4 class='mobile-only'>Legenda:</h4>
+            <ul class='mobile-only'>
+                <li><strong>a.s</strong>: A semanal.</li>
+                <li><strong>a.q</strong>: A quinzena.</li>
+                <li><strong>Sem garantia</strong>: Cheque-promissória + Contrato.</li>
+                <li><strong>Semi garantia</strong>: Cheque-Promissória, Cheque-calção (Outra titularidade) + contrato.</li>
+                <li><strong>Garantia parcial</strong>: Cheque-Promissória + Posse de Bens (Joias, Equipamentos, Veículos, imóveis) + Contrato.</li>
+                <li><strong>Garantia integral</strong>: Cartão de Crédito ou Cartão CredTech + Contrato.</li>
+            </ul>
         </div>
     </section>
     <section class='taxs-credit'>
         <div class='container section-container'>
             <div class='left-container container'>
-                <h2><i class="fas fa-credit-card"></i>Empréstimo com cartão de crédito</h2>
+                <h2>Empréstimo com cartão de crédito</h2>
+                <p>Todas as taxas são ao mês, ou seja, em um empréstimo em 4 vezes com Visa a taxa final será 4 x 3.69%.</p>
             </div>
             <table class='credit-card-loan'>
                 <thead>

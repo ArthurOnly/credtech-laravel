@@ -25,6 +25,16 @@ nav{
     box-shadow: 0px 1px 20px -1px rgba(0,0,0,0.10);
 }
 
+nav .left-content a{
+    display: flex;
+    flex-direction: row;
+}
+
+nav .left-content a img{
+    height: 30px;
+    margin-right: 8px;
+}
+
 nav .toggle{
     margin-top: 0;
 }

@@ -80,7 +80,7 @@ textarea{
     outline: 0;
 }
 
-select, input{
+select, input, .input-block.input-upload .upload-label{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     height: 40px;
@@ -153,6 +153,7 @@ a.btn{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: auto;
 }
 
 button:focus,
@@ -178,6 +179,7 @@ a.btn:hover{
     -webkit-box-shadow: 0px 0px 21px -5px rgba(242, 255, 64, 0.411);
     -moz-box-shadow: 0px 0px 21px -5px rgba(242, 255, 64, 0.411);
     box-shadow: 0px 0px 21px -5px rgba(242, 255, 64, 0.411);
+    filter: brightness(110%);
 }
 
 button.round{
@@ -221,4 +223,30 @@ thead{
 
 table .card-image{
     width: 100%;
+}
+
+ul{
+    font-family: 'droid-sans', sans-serif;
+    font-size: 1rem;
+    list-style-position: inside;
+}
+
+ul.mobile-only{
+    display: block;
+}
+
+body ul.desktop-only{
+    display: block;
+}
+
+ul li{
+    margin-top: 16px;
+}
+
+input[type=file]{
+    display: none;
+}
+
+.input-block.light.input-upload > .upload-label{
+    background-color: rgb(245, 245, 245);
 }
