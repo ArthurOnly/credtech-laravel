@@ -9,6 +9,7 @@
     --blue-3: #F1F8FF;
     --blue-4: #1D3355;
     --yellow: #F0B800;
+    --red: #c21616;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -99,9 +100,14 @@ textarea{
     transition: 0.2s;
 }
 
-input::placeholder{
+.input-block.light dark::placeholder{
     color: #fff;
     opacity: 0.5;
+}
+
+.input-block.light input::placeholder{
+    color: #000;
+    opacity: 0.3;
 }
 
 .input-block {
@@ -114,13 +120,28 @@ input::placeholder{
     margin-top: 4px;
 }
 
+.input-block .error-label{
+    display: none;
+}
+
+.input-block.error .error-label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--red);
+}
+
+.input-block .error-label > * + *{
+    margin-left: 8px;
+}
+
 .input-block.light .focus-decorator{
     background-color: var(--blue-1);
     height: 2px;
     position: absolute;
     width: 0%;
     transition: 0.2s;
-    bottom: 0;
+    top: 70px; /*Space = label space + input space*/
 }
 
 .input-block:focus-within .focus-decorator{
@@ -136,6 +157,10 @@ input::placeholder{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+a{
+    cursor: pointer;
 }
 
 button,
@@ -245,6 +270,11 @@ ul li{
 
 input[type=file]{
     display: none;
+}
+
+.input-block.error .focus-decorator{
+    background-color: var(--red);
+    width: 100%;
 }
 
 .input-block.light.input-upload > .upload-label{

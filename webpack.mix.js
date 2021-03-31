@@ -65,6 +65,7 @@ mix
 ], 'public/js/jquery.js')
 
 .scripts([
+    'resources/js/verify_fields.js',
     'resources/js/loan.js',
 ], 'public/js/loan-script.js')
     

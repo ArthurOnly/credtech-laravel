@@ -6,10 +6,17 @@
     body nav .toggle{
         display: none;
     }
+    body .section-container.nav-margin{
+        padding-top: 224px;
+    }
 }
 
-body > nav + *{
+body .nav-margin{
     padding-top: 96px;
+}
+
+.section-container.nav-margin{
+    padding-top: 160px;
 }
 
 nav{

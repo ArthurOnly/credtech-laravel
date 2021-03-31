@@ -4629,6 +4629,7 @@ readers do not read off random characters that represent icons */
     --blue-3: #F1F8FF;
     --blue-4: #1D3355;
     --yellow: #F0B800;
+    --red: #c21616;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -4719,9 +4720,14 @@ textarea{
     transition: 0.2s;
 }
 
-input::placeholder{
+.input-block.light dark::placeholder{
     color: #fff;
     opacity: 0.5;
+}
+
+.input-block.light input::placeholder{
+    color: #000;
+    opacity: 0.3;
 }
 
 .input-block {
@@ -4734,13 +4740,28 @@ input::placeholder{
     margin-top: 4px;
 }
 
+.input-block .error-label{
+    display: none;
+}
+
+.input-block.error .error-label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--red);
+}
+
+.input-block .error-label > * + *{
+    margin-left: 8px;
+}
+
 .input-block.light .focus-decorator{
     background-color: var(--blue-1);
     height: 2px;
     position: absolute;
     width: 0%;
     transition: 0.2s;
-    bottom: 0;
+    top: 70px; /*Space = label space + input space*/
 }
 
 .input-block:focus-within .focus-decorator{
@@ -4756,6 +4777,10 @@ input::placeholder{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+a{
+    cursor: pointer;
 }
 
 button,
@@ -4865,6 +4890,11 @@ ul li{
 
 input[type=file]{
     display: none;
+}
+
+.input-block.error .focus-decorator{
+    background-color: var(--red);
+    width: 100%;
 }
 
 .input-block.light.input-upload > .upload-label{
@@ -5071,19 +5101,19 @@ footer .up-section .container > div > * + *{
 
 /*Transitions*/
 .t-fade-in-up{
-    opacity: 0;
     transform: translateY(50px);
     transition: 0.6s;
     position: absolute;
-    visibility: hidden;
-    width: fit-content;
+    opacity: 0;
+    pointer-events: none;
+    top:0;
 }
 
 .t-fade-in-up.active{
-    opacity: 1;
     transform: translateY(0);
     position: initial;
-    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
 }
 @media (min-width: 1120px){
     body nav .container .right-content{
@@ -5093,10 +5123,17 @@ footer .up-section .container > div > * + *{
     body nav .toggle{
         display: none;
     }
+    body .section-container.nav-margin{
+        padding-top: 224px;
+    }
 }
 
-body > nav + *{
+body .nav-margin{
     padding-top: 96px;
+}
+
+.section-container.nav-margin{
+    padding-top: 160px;
 }
 
 nav{
