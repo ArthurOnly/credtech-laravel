@@ -4632,8 +4632,16 @@ readers do not read off random characters that represent icons */
     --red: #c21616;
 }
 
+body{
+    color: var(--blue-4);
+}
+
 h1, h2, h3, h4, h5, h6{
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+.text-dark{
+    color: var(--blue-4);
 }
 
 h1 {
@@ -4657,12 +4665,12 @@ h5 {
     line-height: 2rem;
 }
 h6 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 2rem;
 }
 
 label{
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 p, label, option, select {
@@ -4718,9 +4726,11 @@ textarea{
     font-size: 1rem;
     font-family: 'droid-sans', sans-serif;
     transition: 0.2s;
+    resize: none;
+    height: 160px;
 }
 
-.input-block.light dark::placeholder{
+.input-block.dark input::placeholder{
     color: #fff;
     opacity: 0.5;
 }
@@ -4755,14 +4765,26 @@ textarea{
     margin-left: 8px;
 }
 
-.input-block.light .focus-decorator{
-    background-color: var(--blue-1);
+.input-block .focus-decorator{
     height: 2px;
     position: absolute;
     width: 0%;
-    transition: 0.2s;
-    top: 70px; /*Space = label space + input space*/
+    transition: width 0.2s;
+    bottom: 0;
 }
+
+.input-block.dark .focus-decorator{
+    background-color: #fff;
+}
+
+.input-block.light .focus-decorator{
+    background-color: var(--blue-1);
+}
+
+.input-block.error .focus-decorator{
+    bottom: 36px; /*errorLabel space*/
+}
+
 
 .input-block:focus-within .focus-decorator{
     width: 100%;
@@ -4770,13 +4792,6 @@ textarea{
 
 .d-none{
     display: none !important;
-}
-
-.algn-center{
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
 
 a{
@@ -5023,6 +5038,35 @@ footer .up-section .container > div > * + *{
     body .section-container .right-container{
         margin-top: 0;
     }
+
+    body .row-cards{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    body .row-cards > * + *{
+        margin-top: 0px
+    }
+
+    body .algn-center{
+        align-items: flex-start;
+    }
+
+    body .left-container + .right-container{
+        margin-top: 0px;
+    }
+}
+
+.left-container + .right-container{
+    margin-top: 64px;
+}
+
+.algn-center{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .form-container > h5{
@@ -5114,6 +5158,59 @@ footer .up-section .container > div > * + *{
     position: initial;
     opacity: 1;
     pointer-events: all;
+}
+
+/*Cards*/
+.outline-card{
+    color: var(--blue-4);
+    padding: 8px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.outline-card > * + *{
+    margin-top: 8px;
+}
+
+.outline-card i {
+    font-size: 64px;
+}
+
+.row-cards > * + *{
+    margin-top: 16px
+}
+
+.feat-card{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 250px;
+    padding: 8px;
+    justify-self: center;
+}
+
+.feat-card .round-icon{
+    padding: 8px;
+    background-color: var(--blue-2);
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.feat-card > * + * {
+    margin-top: 8px;
+}
+
+.feat-card i {
+    font-size: 64px;
+    color: #fff;
 }
 @media (min-width: 1120px){
     body nav .container .right-content{

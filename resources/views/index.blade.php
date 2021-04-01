@@ -19,7 +19,7 @@
 
 <body>
     <x-navbar/>
-    <section class='page-header'>
+    <section class='page-header nav-margin'>
         <div class='container section-container'>
             <div class='left-container container'>
                 <img class='cred-logo' src='images/credtechB.png' />
@@ -87,21 +87,41 @@
                         </div>
                     </div>
                     <div class='simulator-step d-none' id='step-3'>
-                        <div class='input-block'>
+                        <div class='input-block dark'>
                             <label>Razão social ou Nome</label>
-                            <input placeholder='Isaac Danilo' type='text'/>
+                            <input name='name' placeholder='Isaac Danilo' type='text'/>
+                            <spam class='error-label'>
+                                <i class="fas fa-times-circle"></i>
+                                <p>Nome/Razão social inválido</p>
+                            </spam>
+                            <spam class='focus-decorator'/>
                         </div>
-                        <div class='input-block'>
+                        <div class='input-block dark'>
                             <label>CPF ou CNPJ</label>
-                            <input placeholder='100.200.300-40' type='text'/>
+                            <input name='cpf/cnpj' placeholder='100.200.300-40' type='text'/>
+                            <spam class='error-label'>
+                                <i class="fas fa-times-circle"></i>
+                                <p>CPF inválido</p>
+                            </spam>
+                            <spam class='focus-decorator'/>
                         </div>
-                        <div class='input-block'>
+                        <div class='input-block dark'>
                             <label>Email</label>
-                            <input placeholder='emailcred@gmail.com' type='text'/>
+                            <input name='email' placeholder='emailcred@gmail.com' type='text'/>
+                            <spam class='error-label'>
+                                <i class="fas fa-times-circle"></i>
+                                <p>Email inválido</p>
+                            </spam>
+                            <spam class='focus-decorator'/>
                         </div>
-                        <div class='input-block'>
+                        <div class='input-block dark'>
                             <label>Telefone</label>
-                            <input placeholder='(84) 9999-8888' type='text'/>
+                            <input name='celphone' placeholder='(84) 9999-8888' type='text'/>
+                            <spam class='error-label'>
+                                <i class="fas fa-times-circle"></i>
+                                <p>Telefone social inválido</p>
+                            </spam>
+                            <spam class='focus-decorator'/>
                         </div>
                     </div>
 
@@ -126,14 +146,14 @@
                 <h1>Como funciona</h1>
                 <div class='row-cards'>
                     <div class='outline-card'>
-                        <i class='far fa-address-card'></i>
+                        <i class="fas fa-id-card"></i>
                         <h3>1. Cadastre-se</h3>
                         <p>Faça um cadastro gratuitamente, nos passando apenas algumas informações para podermos avaliar
                             seu
                             pedido e entrar em contato com você rapidamente.</p>
                     </div>
                     <div class='outline-card'>
-                        <i class='far fa-clock'></i>
+                        <i class="fas fa-clock"></i>
                         <h3>2. Aguarde nossa avaliação</h3>
                         <p>Após enviado os dados, nossa equipe fará uma análise de crédito e entrará em contato com você
                             o mais
@@ -147,7 +167,7 @@
                             dados da operação.</p>
                     </div>
                     <div class='outline-card'>
-                        <i class='far fa-money-bill-alt'></i>
+                        <i class="fas fa-money-bill-wave"></i>
                         <h3>4. Receba seu dinheiro!</h3>
                         <p>Depois de confirmarmos todas as informações enviaremos o valor solicitado para sua conta em
                             até 24

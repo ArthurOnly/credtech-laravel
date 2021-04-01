@@ -8,8 +8,8 @@
         </div>
         <div class='right-content'>
             <a href='/taxas'>Taxas</a>
-            <a href='#'>Quem somos</a>
-            <a href='#'>FAQ</a>
+            <a href='/quem-somos'>Quem somos</a>
+            <a href='/faq'>FAQ</a>
             <a href='/contato'>Contato</a>
             <a class='btn btn-outline f-bold' href='#'>Trocar cheques</a>
             <a class='btn btn-fill f-bold' href='/emprestimo'>Solicitar empréstimo</a>
@@ -19,12 +19,12 @@
         </div>
         <aside class='mobile-nav d-none'>
             <i id='nav-close' class="fas fa-times-circle"></i>
-            <a href='#'>Taxas</a>
-            <a href='#'>Quem somos</a>
-            <a href='#'>FAQ</a>
-            <a href='#'>Contato</a>
+            <a href='/taxas'>Taxas</a>
+            <a href='/quem-somos'>Quem somos</a>
+            <a href='/faq'>FAQ</a>
+            <a href='/contato'>Contato</a>
             <a class='btn btn-outline f-bold' href='#'>Trocar cheques</a>
-            <a class='btn btn-fill f-bold' href='#'>Solicitar empréstimo</a>
+            <a class='btn btn-fill f-bold' href='/emprestimo'>Solicitar empréstimo</a>
         </aside>
     </div>
 </nav>

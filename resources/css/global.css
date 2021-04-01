@@ -28,6 +28,35 @@
     body .section-container .right-container{
         margin-top: 0;
     }
+
+    body .row-cards{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    body .row-cards > * + *{
+        margin-top: 0px
+    }
+
+    body .algn-center{
+        align-items: flex-start;
+    }
+
+    body .left-container + .right-container{
+        margin-top: 0px;
+    }
+}
+
+.left-container + .right-container{
+    margin-top: 64px;
+}
+
+.algn-center{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .form-container > h5{
@@ -119,4 +148,57 @@
     position: initial;
     opacity: 1;
     pointer-events: all;
+}
+
+/*Cards*/
+.outline-card{
+    color: var(--blue-4);
+    padding: 8px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.outline-card > * + *{
+    margin-top: 8px;
+}
+
+.outline-card i {
+    font-size: 64px;
+}
+
+.row-cards > * + *{
+    margin-top: 16px
+}
+
+.feat-card{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 250px;
+    padding: 8px;
+    justify-self: center;
+}
+
+.feat-card .round-icon{
+    padding: 8px;
+    background-color: var(--blue-2);
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.feat-card > * + * {
+    margin-top: 8px;
+}
+
+.feat-card i {
+    font-size: 64px;
+    color: #fff;
 }

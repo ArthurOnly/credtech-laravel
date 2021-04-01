@@ -65,7 +65,7 @@ returnSelection.each(function(){
         selectSection.addClass('active nav-margin')
 
         juridicalSection.removeClass('active')
-        physicalSectionHeader.removeClass('active nav-margin')
+        juridicalSectionHeader.removeClass('active nav-margin')
         physicalSection.removeClass('active')
         physicalSectionHeader.removeClass('active nav-margin')
     })

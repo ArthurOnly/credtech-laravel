@@ -17,7 +17,7 @@
 </head>
 <body>
     <x-navbar/>
-    <section class='taxs'>
+    <section class='taxs nav-margin'>
         <div class='container section-container'>
             <div class='left-container container'>
                 <h2>Nossas taxas</h2>

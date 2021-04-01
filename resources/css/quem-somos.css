@@ -1,0 +1,30 @@
+@media (min-width: 1120px){
+    body .company-header .logo-container img{
+        width: 100%;
+        max-width: 400px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 30%);
+    }
+}
+
+.company-header{
+    background-color: var(--blue-2);
+}
+
+.company-header .logo-container{
+    position: relative;
+}
+
+.company-header .logo-container img{
+    width: 60%;
+    max-width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -20%);
+}
+
+.company-goals,
+.features-section{
+    background-color: var(--blue-3);
+}

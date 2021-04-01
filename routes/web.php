@@ -29,3 +29,10 @@ Route::get('/emprestimo', function () {
     return view('emprestimo');
 });
 
+Route::get('/quem-somos', function () {
+    return view('quem_somos');
+});
+
+Route::get('/faq', function () {
+    return view('faq');
+});

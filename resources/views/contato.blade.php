@@ -17,29 +17,45 @@
 </head>
 <body>
     <x-navbar/>
-    <section class='contact-form-section'>
+    <section class='contact-form-section nav-margin'>
         <div class='container section-container'>
             <div class='left-container'>
                 <form class='container form-container'>
                     <h4>Entre em contato conosco</h4>
                     <div class='input-block light'>
                         <label>Nome</label>
-                        <input type='text'></input>
+                        <input name='name' type='text'></input>
+                        <spam class='error-label'>
+                            <i class="fas fa-times-circle"></i>
+                            <p>Nome inválido</p>
+                        </spam>
                         <spam class='focus-decorator'/>
                     </div>
                     <div class='input-block light'>
                         <label>Email</label>
-                        <input type='text'></input>
+                        <input name='email' type='text'></input>
+                        <spam class='error-label'>
+                            <i class="fas fa-times-circle"></i>
+                            <p>Email inválido</p>
+                        </spam>
                         <spam class='focus-decorator'/>
                     </div>
                     <div class='input-block light'>
-                        <label>Telefone</label>
+                        <label name='celphone'>Telefone</label>
                         <input type='text'></input>
+                        <spam class='error-label'>
+                            <i class="fas fa-times-circle"></i>
+                            <p>Telefone inválido</p>
+                        </spam>
                         <spam class='focus-decorator'/>
                     </div>
                     <div class='input-block light'>
                         <label>Mensagem</label>
-                        <textarea type='text'></textarea>
+                        <textarea name='message' type='text'></textarea>
+                        <spam class='error-label'>
+                            <i class="fas fa-times-circle"></i>
+                            <p>Digite uma mensagem</p>
+                        </spam>
                         <spam class='focus-decorator'/>
                     </div>
                     <button type='submit' class='btn-fill'>
@@ -52,17 +68,23 @@
                 <p>Caso prefira, você pode entrar em contato conosco
                 por telefone, email ou a partir de nossa localização física.</p>
                 <div class='contact-block'>
-                    <i class="fas fa-envelope"></i>
-                    <h5>credtechnatal@gmail.com</h5>
+                    <div class='contact-circle'>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h6>credtechnatal@gmail.com</h6>
                 </div>
                 <div class='contact-block'>
-                    <i class="fas fa-phone-alt"></i>
-                    <h5>(84) 99408-4212 ou (84) 99970-2626</h5>
+                    <div class='contact-circle'>
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h6>(84) 99408-4212 ou (84) 99970-2626</h6>
                 </div>
                 <div class='contact-block'>
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h5>Rua Orlando De Lima, 465,
-Bloco D – Ponta Negra, Natal – RN.</h5>
+                    <div class='contact-circle'>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h6>Rua Orlando De Lima, 465,
+Bloco D – Ponta Negra, Natal – RN.</h6>
                 </div>
             </div>
         </div>

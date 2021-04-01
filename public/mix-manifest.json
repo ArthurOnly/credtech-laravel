@@ -1,9 +1,11 @@
 {
-    "/css/global-styles.css": "/css/global-styles.css?id=7974699357059df7a94f",
-    "/css/home-styles.css": "/css/home-styles.css?id=a5d48f04eeae83a8caca",
+    "/css/global-styles.css": "/css/global-styles.css?id=b5c95636e6b844eb09ba",
+    "/css/home-styles.css": "/css/home-styles.css?id=d9893ff732e7a0c1f4d2",
     "/css/taxas-styles.css": "/css/taxas-styles.css?id=3178b712eadf3d5a8d2d",
-    "/css/contact-styles.css": "/css/contact-styles.css?id=39ae705ae6752d431966",
+    "/css/contact-styles.css": "/css/contact-styles.css?id=44ffd38bbce12ac38f30",
     "/css/loan-styles.css": "/css/loan-styles.css?id=c49eca214ada1dae09ce",
+    "/css/quem-somos-styles.css": "/css/quem-somos-styles.css?id=b7d6f2fdc0d6bef598e0",
+    "/css/faq-styles.css": "/css/faq-styles.css?id=c69ec8a7bc18a00d4a41",
     "/webfonts/fa-brands-400.eot": "/webfonts/fa-brands-400.eot?id=94c52b85b8727f78760e",
     "/webfonts/fa-brands-400.svg": "/webfonts/fa-brands-400.svg?id=ba7ed552362f64d30f6d",
     "/webfonts/fa-brands-400.ttf": "/webfonts/fa-brands-400.ttf?id=623b08743e12b2ff1fc2",
@@ -23,5 +25,6 @@
     "/js/global-script.js": "/js/global-script.js?id=64a53aaaa717a3bbdfcf",
     "/js/taxas-script.js": "/js/taxas-script.js?id=70e76a587619313b15f7",
     "/js/jquery.js": "/js/jquery.js?id=c6a576ca47ae7af099c9",
-    "/js/loan-script.js": "/js/loan-script.js?id=824a45b92f4fb5e27ddb"
+    "/js/loan-script.js": "/js/loan-script.js?id=e2c8986c44d14f85292a",
+    "/js/faq-script.js": "/js/faq-script.js?id=a26d16849e03b602862e"
 }

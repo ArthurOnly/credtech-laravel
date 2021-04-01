@@ -38,6 +38,14 @@ mix
     'resources/css/loan.css',
 ], 'public/css/loan-styles.css')
 
+.styles([
+    'resources/css/quem-somos.css',
+], 'public/css/quem-somos-styles.css')
+
+.styles([
+    'resources/css/faq.css',
+], 'public/css/faq-styles.css')
+
 .copy(
     'node_modules/@fortawesome/fontawesome-free/webfonts',
     'public/webfonts'
@@ -68,5 +76,9 @@ mix
     'resources/js/verify_fields.js',
     'resources/js/loan.js',
 ], 'public/js/loan-script.js')
+
+.scripts([
+    'resources/js/faq.js',
+], 'public/js/faq-script.js')
     
 .version()
