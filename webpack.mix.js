@@ -55,6 +55,7 @@ mix
     'resources/js/infinite-scroller.js',
     'resources/js/simulator.js',
     'resources/js/slider-opinions.js',
+    'resources/js/verify_fields.js',
 ], 'public/js/home-script.js')
 
 .scripts([

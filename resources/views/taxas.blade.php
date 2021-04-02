@@ -232,6 +232,7 @@
     </section>
 
     <x-footer/>
+    <x-cookies-popup/>
 
     <script src='{{ url(mix('js/global-script.js'))}}'></script>
     <script src='{{ url(mix('js/taxas-script.js'))}}'></script>

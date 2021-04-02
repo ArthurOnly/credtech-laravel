@@ -110,6 +110,42 @@ textarea{
     height: 160px;
 }
 
+div.checkbox input{
+    display: none;
+}
+
+.input-block.dark div.checkbox.active .checkbox-visible{
+    background-color: #fff;
+}
+
+.input-block.dark div.checkbox .checkbox-visible{
+    color: var(--blue-2);
+}
+
+div.checkbox{
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    align-items: center;
+}
+
+div.checkbox .text{
+    font-size: 0.7rem;
+    line-height: 1rem;
+}
+
+div.checkbox .checkbox-visible{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 2px solid var(--blue-1);
+    flex-shrink: 0;
+    transition: 0.1s;
+    border-radius: 4px;
+}
+
 .input-block.dark input::placeholder{
     color: #fff;
     opacity: 0.5;

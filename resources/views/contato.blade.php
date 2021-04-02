@@ -94,6 +94,7 @@ Bloco D – Ponta Negra, Natal – RN.</h6>
                 width="100%" height="350px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
     <x-footer/>
+    <x-cookies-popup/>
 
     <script src='{{ url(mix('js/global-script.js'))}}'></script>
 </body>

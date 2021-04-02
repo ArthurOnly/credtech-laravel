@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/nnx6nqd.css">
+    <x-google-analytics/>
     <title>Cretech - Home</title>
 </head>
 
@@ -120,6 +121,20 @@
                             <spam class='error-label'>
                                 <i class="fas fa-times-circle"></i>
                                 <p>Telefone social inválido</p>
+                            </spam>
+                            <spam class='focus-decorator'/>
+                        </div>
+                        <div class='input-block dark'>
+                            <div class='checkbox'>
+                                <label class='checkbox-visible' for='accept_data'>
+                                    <i class="fas fa-check"></i>
+                                </label>
+                                <input id='accept_data' name='accept_data' type='checkbox'/>
+                                <label class='text'>Aceito que meus dados sejam salvos com a finalidade de pesquisa.</label>
+                            </div>
+                            <spam class='error-label'>
+                                <i class="fas fa-times-circle"></i>
+                                <p>Obrigatório</p>
                             </spam>
                             <spam class='focus-decorator'/>
                         </div>
@@ -434,7 +449,9 @@
             </div>
         </div>
     </section>
+
     <x-footer/>
+    <x-cookies-popup/>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

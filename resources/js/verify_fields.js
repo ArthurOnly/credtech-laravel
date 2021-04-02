@@ -72,6 +72,20 @@ function handleUploadFields(){
 }
 handleUploadFields()
 
+function handleCheckboxFields(){
+    const checkboxDivs = document.querySelectorAll('div.checkbox')
+    checkboxDivs.forEach(checkboxDiv => {
+        const checkboxHidden = checkboxDiv.querySelector('input')
+        checkboxHidden.addEventListener('change', (event)=>{
+            if(checkboxHidden.checked){
+                checkboxDiv.classList.add('active')
+            } else{
+                checkboxDiv.classList.remove('active')
+            }
+        })
+    })
+}handleCheckboxFields()
+
 function toggleErrorNode(node, hasError, message){
     const inputBlock = node.parent()
     if (hasError){
