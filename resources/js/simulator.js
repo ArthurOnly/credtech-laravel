@@ -77,10 +77,10 @@ nextButton.addEventListener('click', ()=>{
 })
 
 /*Control slider*/
-const sliderAmmount = document.querySelector('input[name="ammount"]')
-const labelAmmount = document.querySelector('h5[ref="ammount"]')
-const sliderTime = document.querySelector('input[name="how-times"]')
-const labelTime = document.querySelector('h5[ref="how-times"]')
+const sliderAmmount = document.querySelector('input[name="value"]')
+const labelAmmount = document.querySelector('h5[ref="value"]')
+const sliderTime = document.querySelector('input[name="parcels"]')
+const labelTime = document.querySelector('h5[ref="parcels"]')
 
 const inputCicle = document.querySelector('select[name="cicle"]')
 
@@ -113,4 +113,15 @@ sliderTime.addEventListener('input', (event)=>{
         return
     }
     labelTime.innerHTML = `${event.target.value} vezes`
+})
+
+/*Simulator calc*/
+const form = $('form')
+form.on('submit', (event)=>{
+    event.preventDefault()
+})
+
+simulateButton.addEventListener('click', ()=>{
+    const data = formDataToJSON('form')
+    console.log(data)
 })

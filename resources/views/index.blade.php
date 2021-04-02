@@ -27,7 +27,7 @@
                 <h1>Conheça a melhor empresa de crédito do RN</h1>
                 <p>Faça empréstimos com as melhores taxas do mercado!</p>
             </div>
-            <div class='right-container container'>
+            <form class='right-container container'>
                 <div class='simulator'>
                     <h3>Simulador</h3>
                     <div class='simulator-controller'>
@@ -50,8 +50,8 @@
                     <div class='simulator-step active' id='step-1'>
                         <div class='input-block'>
                             <label for="">De quanto você precisa?</label>
-                            <input type="range" min="200" max="3000" value="200" step="200" class="slider" name="ammount">
-                            <h5 ref='ammount'>R$ 200</h5>
+                            <input type="range" min="200" max="3000" value="200" step="200" class="slider" name="value">
+                            <h5 ref='value'>R$ 200</h5>
                         </div>
                         <div class='input-block'>
                             <label>Qual o seu ciclo de pagamento?</label>
@@ -63,27 +63,27 @@
                         </div>
                         <div class='input-block'>
                             <label for="">Em quantas vezes deseja pagar?</label>
-                            <input type="range" min="1" max="12" value="1" step="1" class="slider" name="how-times">
-                            <h5 ref='how-times'>1 vez</h5>
+                            <input type="range" min="1" max="12" value="1" step="1" class="slider" name="parcels">
+                            <h5 ref='parcels'>1 vez</h5>
                         </div>
                     </div>
                     <div class='simulator-step d-none' id='step-2'>
                         <div class='input-block'>
                             <label>Qual o seu segmento de atuação?</label>
-                            <select>
-                                <option>Comércio</option>
-                                <option>Serviços</option>
-                                <option>Indústria</option>
-                                <option>Outros</option>
+                            <select name='segment'>
+                                <option value='Comércio'>Comércio</option>
+                                <option value='Serviços'>Serviços</option>
+                                <option value='Indústria'>Indústria</option>
+                                <option value='Outros'>Outros</option>
                             </select>
                         </div>
                         <div class='input-block'>
                             <label>Selecione uma garantia</label>
-                            <select>
-                                <option>Sem garantia</option>
-                                <option>Semi garantia</option>
-                                <option>Garantia parcial</option>
-                                <option>Garantia integral</option>
+                            <select name='warranty'>
+                                <option value='Sem garantia'>Sem garantia</option>
+                                <option value='Semi garantia'>Semi garantia</option>
+                                <option value='Garantia parcial'>Garantia parcial</option>
+                                <option value='Garantia integral'>Garantia integral</option>
                             </select>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
     <section class='how-work'>
