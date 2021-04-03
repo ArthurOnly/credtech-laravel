@@ -6,6 +6,7 @@ const simulateButton = document.querySelector('#simulate-button')
 const step1 = document.querySelector('#step-1')
 const step2 = document.querySelector('#step-2')
 const step3 = document.querySelector('#step-3')
+const step4 = document.querySelector('#step-4')
 
 const stepController1 = document.querySelector('div[ref="step-1"]')
 const stepController2 = document.querySelector('div[ref="step-2"]')
@@ -14,7 +15,7 @@ const stepController3 = document.querySelector('div[ref="step-3"]')
 var currentStep = 1
 
 function ofAllForms(){
-    [step1, step2, step3].forEach(element => {
+    [step1, step2, step3, step4].forEach(element => {
         if (!element.classList.contains('d-none')){
             element.classList.add('d-none')
         }
@@ -63,6 +64,17 @@ function updateStep(step){
             nextButton.classList.add('d-none')
             simulateButton.classList.remove('d-none')
             break
+        case 4:
+            step4.classList.remove('d-none')
+            window.setTimeout(()=> step4.classList.add('active'), 10)
+            stepController1.classList.add('active')
+            stepController2.classList.add('active')
+            stepController3.classList.add('active')
+    
+            nextButton.classList.add('d-none')
+            previouslyButton.classList.remove('d-none')
+            simulateButton.classList.add('d-none')
+            break
     }
 }
 
@@ -87,15 +99,15 @@ const inputCicle = document.querySelector('select[name="cicle"]')
 inputCicle.addEventListener('change', (event)=>{
     const newCicle = event.target.value
     switch (newCicle){
-        case 'mensal':
+        case 'Mensal':
             sliderTime.setAttribute('max', '3')
             sliderTime.setAttribute('value', '3')
             break
-        case 'quinzenal':
+        case 'Quinzenal':
             sliderTime.setAttribute('max', '6')
             sliderTime.setAttribute('value', '6')
             break
-        case 'semanal':
+        case 'Semanal':
             sliderTime.setAttribute('max', '12')
             sliderTime.setAttribute('value', '12')
             break
@@ -119,9 +131,237 @@ sliderTime.addEventListener('input', (event)=>{
 const form = $('form')
 form.on('submit', (event)=>{
     event.preventDefault()
+
+    var hasErrors = false
+    
+    if (verifyBlanks('form')) hasErrors = true
+    if (verifyFields('form')) hasErrors = true
+
+    if (hasErrors) return
+
+    const data = formDataToJSON('form')
+    delete data['accept_data']
+
+    fetch('http://localhost:8000/api/simulations', {
+        body: JSON.stringify(data),
+        method: 'POST',
+        headers: {
+            "content-type":"application/json" 
+        }
+    })
+
+    currentStep +=1    
+    updateStep(4)
+    passResultsToFields(data)
 })
 
-simulateButton.addEventListener('click', ()=>{
-    const data = formDataToJSON('form')
-    console.log(data)
-})
+function passResultsToFields(data){
+    const requestValue = document.querySelector('#request_value')
+    const requestParcels = document.querySelector('#request_parcels')
+    const requestParcelsValue = document.querySelector('#request_parcels_value')
+    const requestIOF = document.querySelector('#request_iof')
+    const requestTable = document.querySelector('#requested_table')
+    const requestTax = document.querySelector('#request_tax')
+
+    const taxValue = taxas[data.segment][data.warranty][data.cicle]
+    const parcelValue = calculateParcels(data.value, taxValue, data.parcels)
+
+    const personType = data["cpf/cnpj"].length > 14 ? "juridical" : "physical"
+    const fixedIOF = calculateFixedIOF(parcelValue, data.parcels, personType)
+
+    var cicleDays = 0
+    switch (data['cicle']){
+        case 'Mensal':
+            cicleDays = 30
+            break
+        case 'Quinzenal':
+            cicleDays = 15
+            break
+        case 'Semanal':
+            cicleDays = 7
+            break
+    }
+    const variableIOF = calculateVariableIOF(parcelValue, data.parcels, cicleDays,personType)
+
+    requestIOF.innerHTML = (variableIOF+fixedIOF).toFixed(2)
+    requestTax.innerHTML = (taxValue*100).toFixed(2)
+    requestParcels.innerHTML = data.parcels
+    requestParcelsValue.innerHTML = parcelValue
+    requestValue.innerHTML = data.value
+    generateTable(requestTable, generateParcelsTable(parcelValue, data.parcels))
+}
+
+function generateTable(table, json){
+    table.innerHTML = ''
+    json = {
+        0:{
+            index: '',
+            value: 'Parcela',
+            rest: 'Restante'
+        },...json
+    }
+    Object.keys(json).map(key => {
+        var tr = document.createElement('tr')
+        
+        var index = document.createElement('td')
+        const indexText = json[key].index
+        index.innerHTML = indexText
+
+        var parcel = document.createElement('td')
+        const parcelText = `R$ ${json[key].value}`
+        parcel.innerHTML = parcelText
+
+        var fullValue = document.createElement('td')
+        const fullValueText =  `R$ ${json[key].rest}`
+        fullValue.innerHTML = fullValueText
+
+        tr.appendChild(index)
+        tr.appendChild(parcel)
+        tr.appendChild(fullValue)
+        
+        table.appendChild(tr)
+    })
+}
+
+/*Simulator formules*/
+const IOFtaxs = {
+    'physical': {
+        'fixed': 0.0038,
+        'perDay': 0.000082
+    },
+    'juridical': {
+        'fixed': 0.0038,
+        'perDay': 0.000041
+    }
+}
+
+const taxas = {
+    "Comércio": {
+        "Sem garantia": {
+            "Semanal": 0.0145,
+            "Quinzenal": 0.0340,
+            "Mensal": 0.0880
+        },
+        "Semi garantia": {
+            "Semanal": 0.0130,
+            "Quinzenal": 0.0325,
+            "Mensal": 0.0750
+        },
+        "Garantia parcial": {
+            "Semanal": 0.0099,
+            "Quinzenal": 0.0225,
+            "Mensal": 0.0550
+        },
+        "Garantia integral": {
+            "Semanal": null,
+            "Quinzenal": null,
+            "Mensal": 0.0450
+        }
+    },
+    "Serviços": {
+        "Sem garantia": {
+            "Semanal": 0.0170,
+            "Quinzenal": 0.0390,
+            "Mensal": 0.0980
+        },
+        "Semi garantia": {
+            "Semanal": 0.0150,
+            "Quinzenal": 0.0350,
+            "Mensal": 0.0850
+        },
+        "Garantia parcial": {
+            "Semanal": 0.0115,
+            "Quinzenal": 0.0248,
+            "Mensal": 0.0590
+        },
+        "Garantia integral": {
+            "Semanal": null,
+            "Quinzenal": null,
+            "Mensal": 0.0499
+        }
+    },
+    "Indústria": {
+        "Sem garantia": {
+            "Semanal": 0.0120,
+            "Quinzenal": 0.0290,
+            "Mensal": 0.0780
+        },
+        "Semi garantia": {
+            "Semanal": 0.0105,
+            "Quinzenal": 0.0275,
+            "Mensal": 0.065
+        },
+        "Garantia parcial": {
+            "Semanal": 0.0090,
+            "Quinzenal": 0.020,
+            "Mensal": 0.0450
+        },
+        "Garantia integral": {
+            "Semanal": null,
+            "Quinzenal": null,
+            "Mensal": 0.0399
+        }
+    },
+    "Outros": {
+        "Sem garantia": {
+            "Semanal": 0.0170,
+            "Quinzenal": 0.0390,
+            "Mensal": 0.0980
+        },
+        "Semi garantia": {
+            "Semanal": 0.0150,
+            "Quinzenal": 0.0350,
+            "Mensal": 0.0850
+        },
+        "Garantia parcial": {
+            "Semanal": 0.0115,
+            "Quinzenal": 0.0248,
+            "Mensal": 0.059
+        },
+        "Garantia integral": {
+            "Semanal": null,
+            "Quinzenal": null,
+            "Mensal": 0.0499
+        }
+    }
+}
+
+function calculateParcels(loanValue, loanTax, loanParcels){
+    const multiply = ((1+loanTax)**loanParcels*loanTax)/((1+loanTax)**loanParcels-1)
+    const parcel = loanValue*multiply
+    return Number(parcel.toFixed(2))
+}
+
+function generateParcelsTable(parcelFixed, loanParcels){
+    var fullValue = parcelFixed*loanParcels
+    var parcelsJson = {}
+
+    let index = 1
+    for(loanParcels; loanParcels > 0; loanParcels-=1){
+        fullValue-=parcelFixed
+        parcelsJson[index] = {
+            index: index,
+            value: parcelFixed.toFixed(2),
+            rest: fullValue.toFixed(2)
+        }
+        index+=1
+    }
+    return parcelsJson
+}
+
+function calculateFixedIOF(parcelFixed, loanParcels, personType){
+    const fixedIOF = parcelFixed * loanParcels * IOFtaxs[personType]['fixed']
+    return Number(fixedIOF.toFixed(2))
+}
+
+function calculateVariableIOF(parcelFixed, loanParcels, cicleDays, personType){
+    var fullValue = parcelFixed*loanParcels
+    var variableIOF = 0
+    while (fullValue > 0){
+        parcelIOF = fullValue * IOFtaxs[personType]['perDay'] * cicleDays
+        variableIOF += parcelIOF
+        fullValue -= parcelFixed
+    }
+    return Number(variableIOF.toFixed(2))
+}
+/*End*/

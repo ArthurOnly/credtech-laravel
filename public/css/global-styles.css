@@ -4818,7 +4818,7 @@ div.checkbox .checkbox-visible{
 }
 
 .input-block.error .focus-decorator{
-    bottom: 36px; /*errorLabel space*/
+    bottom: 34px; /*errorLabel space*/
 }
 
 
@@ -4890,7 +4890,7 @@ table{
     border-spacing: 0;
 }
 
-table tbody{
+table{
     font-size: 1rem;
     line-height: 2rem;
     font-family: 'droid-sans', sans-serif;
@@ -5175,7 +5175,7 @@ footer .up-section .container > div > * + *{
 .table-wrapper{
     width: 100%;
     overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-y: scroll;
     position: relative;
 }
 

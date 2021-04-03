@@ -86,6 +86,36 @@ function handleCheckboxFields(){
     })
 }handleCheckboxFields()
 
+function addMaksInFields(){
+    const inputsCelphone = $('input[name="celphone"]')
+    inputsCelphone.each(function(){
+        $(this).mask('(00) 00000-0000');
+    })
+
+    const inputsCPF = $('input[name="cpf"]')
+    inputsCPF.each(function(){
+        $(this).mask('000.000.000-00')
+    })
+
+    const inputsCNPJ = $('input[name="cnpj"]')
+    inputsCNPJ.each(function(){
+        $(this).mask('00.000.000/0000-00')
+    })
+
+    const inputsCPFcnpj = $('input[name="cpf/cnpj"]')
+    inputsCPFcnpj.each(function(){
+        var options =  {
+            onKeyPress: function(inputText, e, field, options) {
+              var masks = ['000.000.000-00', '00.000.000/0000-00'];
+              var mask = (inputText.length>13) ? masks[1] : masks[0];
+              $('input[name="cpf/cnpj"]').mask(mask, options);
+            }
+        }
+          
+        $(this).mask('000.000.000-00', options);
+    })
+}addMaksInFields()
+
 function toggleErrorNode(node, hasError, message){
     const inputBlock = node.parent()
     if (hasError){

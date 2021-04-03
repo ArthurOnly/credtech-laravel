@@ -50,15 +50,15 @@
                     <div class='simulator-step active' id='step-1'>
                         <div class='input-block'>
                             <label for="">De quanto você precisa?</label>
-                            <input type="range" min="200" max="3000" value="200" step="200" class="slider" name="value">
+                            <input type="range" min="200" max="3000" value="200" step="100" class="slider" name="value">
                             <h5 ref='value'>R$ 200</h5>
                         </div>
                         <div class='input-block'>
                             <label>Qual o seu ciclo de pagamento?</label>
                             <select name='cicle'>
-                                <option value='mensal'>Mensal</option>
-                                <option value='quinzenal'>Quinzenal</option>
-                                <option value='semanal'>Semanal</option>
+                                <option value='Semanal'>Semanal</option>
+                                <option value='Quinzenal'>Quinzenal</option>
+                                <option value='Mensal'>Mensal</option>
                             </select>
                         </div>
                         <div class='input-block'>
@@ -139,15 +139,32 @@
                             <spam class='focus-decorator'/>
                         </div>
                     </div>
+                    <div class='simulator-step d-none' id='step-4'>
+                        <p><strong>Valor requisitado:</strong> R$ <spam id='request_value'>1000.00</spam><p/>
+                        <p><strong>Quantidade de parcelas:</strong> <spam id='request_parcels'>2 parcelas</spam><p/>
+                        <p><strong>Taxa por parcela:</strong> <spam id='request_tax'>1</spam>%<p/>
+                        <p><strong>Valor das parcelas:</strong> R$ <spam id='request_parcels_value'>1000.00</spam><p/>
+                        <p><strong>IOF:</strong> R$ <spam id='request_iof'>12.00</strong><p/>
+                        <div class='table-wrapper'>
+                            <table id='requested_table'>
+                                <tr>
+                                    <td></td>
+                                    <td>Parcela</td>
+                                    <td>Valor restante<t/d>
+                                <tr>
+                                
+                            </table>
+                        </div>
+                    </div>
 
                     <div class='buttons'>
-                        <button class='btn btn-outline d-none' id='previously-button'>
+                        <button type='button' class='btn btn-outline d-none' id='previously-button'>
                             <i class="fas fa-arrow-circle-left"></i>Anterior
                         </button>
-                        <button class='btn btn-fill' id='next-button'>
+                        <button type='button' class='btn btn-fill' id='next-button'>
                             Próximo<i class="fas fa-arrow-circle-right"></i>
                         </button>
-                        <button class='btn btn-fill d-none' id='simulate-button'>
+                        <button type='submit' class='btn btn-fill d-none' id='simulate-button'>
                             Ver simulação
                         </button>
                     </div>
@@ -456,6 +473,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+    <script src='{{ url(mix('js/jquery.js'))}}'></script>
     <script src='{{ url(mix('js/global-script.js'))}}'></script>
     <script src='{{ url(mix('js/home-script.js'))}}'></script>
 

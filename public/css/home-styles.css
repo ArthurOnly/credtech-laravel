@@ -109,9 +109,20 @@
     margin-bottom: -100px;
     border-radius: 4px;
     float: right;
-    height: 656px;
+    min-height: 600px;
+    max-height: fit-content;
+    height: auto;
+    transition: 0.2s;
     display: flex;
     flex-direction: column;
+}
+
+.simulator .table-wrapper{
+    height: 200px;
+}
+
+.simulator .table-wrapper table{
+    box-shadow: none;
 }
 
 .simulator .simulator-controller{
@@ -126,6 +137,7 @@
     justify-content: center;
     column-gap: 24px;
     height: 100%;
+    flex: 1;
 }
 
 .simulator .buttons :first-child i{

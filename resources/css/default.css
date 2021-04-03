@@ -198,7 +198,7 @@ div.checkbox .checkbox-visible{
 }
 
 .input-block.error .focus-decorator{
-    bottom: 36px; /*errorLabel space*/
+    bottom: 34px; /*errorLabel space*/
 }
 
 
@@ -270,7 +270,7 @@ table{
     border-spacing: 0;
 }
 
-table tbody{
+table{
     font-size: 1rem;
     line-height: 2rem;
     font-family: 'droid-sans', sans-serif;
