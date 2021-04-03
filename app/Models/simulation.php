@@ -13,11 +13,26 @@ class Simulation extends Model
         'value',
         'cicle',
         'parcels',
-        'segment',
-        'warranty',
+        'segment_id',
+        'warranty_id',
         'name',
         'cpf/cnpj',
         'email',
         'celphone'
     ];
+
+    protected $hidden = [
+        'warranty_id',
+        'segment_id'
+    ];
+
+    public function warranty()
+    {
+        return $this->hasOne(Warranty::class, 'id', 'warranty_id')->first();
+    }
+
+    public function segment()
+    {
+        return $this->hasOne(ClientSegment::class, 'id', 'segment_id')->first();
+    }
 }

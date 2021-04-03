@@ -4,7 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+use function Ramsey\Uuid\v1;
+
+class CreateLoansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +15,15 @@ class CreateSimulationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('simulations', function (Blueprint $table) {
+        Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->string('value');
             $table->string('cicle');
             $table->string('parcels');
-            $table->string('segment');
-            $table->string('warranty');
-            $table->string('name');
-            $table->string('cpf/cnpj');
-            $table->string('email');
-            $table->string('celphone');
+            $table->string('segment_id');
+            $table->foreign('segment_id')->references('id')->on('client_segments');
+            $table->string('warrenty_id');
+            $table->foreign('warrenty_id')->references('id')->on('warranties');
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ class CreateSimulationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('simulations');
+        Schema::dropIfExists('loans');
     }
 }

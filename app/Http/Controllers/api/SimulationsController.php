@@ -8,6 +8,15 @@ use App\Models\Simulation;
 
 class SimulationsController extends Controller
 {
+    private function addRelations($simulation){
+        $warranty = $simulation->warranty();
+        $segment = $simulation->segment();
+
+        $simulation['warranty'] = $warranty;
+        $simulation['segment'] = $segment;
+        return $simulation;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,11 @@ class SimulationsController extends Controller
      */
     public function index()
     {
-        return Simulation::all();
+        $simulations = Simulation::all();
+        foreach($simulations as $simulation){
+           $simulation = $this->addRelations($simulation);
+        }
+        return $simulations;
     }
 
     /**
@@ -26,7 +39,7 @@ class SimulationsController extends Controller
      */
     public function store(Request $request)
     {
-        Simulation::create($request->all());
+        return Simulation::create($request->all());
     }
 
     /**
@@ -37,7 +50,9 @@ class SimulationsController extends Controller
      */
     public function show($id)
     {
-        return Simulation::findOrFail($id);
+        $simulation = Simulation::findOrFail($id);
+        $simulation = $this->addRelations($simulation);
+        return $simulation;
     }
 
     /**
