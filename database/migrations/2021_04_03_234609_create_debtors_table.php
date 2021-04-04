@@ -15,7 +15,7 @@ class CreateDebtorsTable extends Migration
     {
         Schema::create('debtors', function (Blueprint $table) {
             $table->id();
-            $table->string('person_id');
+            $table->bigInteger('person_id')->unsigned();
             $table->foreign('person_id')->references('id')->on('persons');
             $table->string('cpf');
             $table->timestamps();

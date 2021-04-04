@@ -20,10 +20,10 @@ class CreateLoansTable extends Migration
             $table->string('value');
             $table->string('cicle');
             $table->string('parcels');
-            $table->string('segment_id');
+            $table->bigInteger('segment_id')->unsigned();
             $table->foreign('segment_id')->references('id')->on('client_segments');
-            $table->string('warrenty_id');
-            $table->foreign('warrenty_id')->references('id')->on('warranties');
+            $table->bigInteger('warranty_id')->unsigned();
+            $table->foreign('warranty_id')->references('id')->on('warranties');
             $table->timestamps();
         });
     }

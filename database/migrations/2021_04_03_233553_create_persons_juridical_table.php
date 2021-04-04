@@ -14,7 +14,7 @@ class CreatePersonsJuridicalTable extends Migration
     public function up()
     {
         Schema::create('persons_juridical', function (Blueprint $table) {
-            $table->string('person_id')->primary();
+            $table->bigInteger('person_id')->primary()->unsigned();
             $table->foreign('person_id')->references('id')->on('persons');
             $table->string('cpnj');
             $table->string('cpf_partner')->nullable();

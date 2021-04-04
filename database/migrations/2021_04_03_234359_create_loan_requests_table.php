@@ -15,9 +15,9 @@ class CreateLoanRequestsTable extends Migration
     {
         Schema::create('loan_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('loan_id');
+            $table->bigInteger('loan_id')->unsigned();
             $table->foreign('loan_id')->references('id')->on('loans');
-            $table->string('person_id');
+            $table->bigInteger('person_id')->unsigned();
             $table->foreign('person_id')->references('id')->on('persons');
             $table->timestamps();
         });
