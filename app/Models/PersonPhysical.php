@@ -15,4 +15,8 @@ class PersonPhysical extends Model
         "person_id",
         "cpf"
     ];
+
+    protected $hidden = [
+        "person_id"
+    ];
 }

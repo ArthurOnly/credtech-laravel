@@ -30,9 +30,9 @@ class Person extends Model
 
     public function additionalData(){
         if ($this['type_id'] == $this->TYPE_PHYSICAL){
-            return $this->hasOne(PersonPhysical::class);
+            return $this->hasOne(PersonPhysical::class)->first();
         } else{
-            return $this->hasOne(PersonJuridical::class);
+            return $this->hasOne(PersonJuridical::class)->first();
         }
     }
 

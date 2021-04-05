@@ -10,7 +10,7 @@ function formDataToJSON(form){
 
 function verifyBlanks(form){
     var hasErrors = false
-    const formNodes = $(`${form} input,select`)
+    const formNodes = $(`${form} input[require],select[require]`)
 
     formNodes.each(function() {
         if ($(this).val() == '' || $(this).val() == undefined){

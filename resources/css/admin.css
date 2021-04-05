@@ -1,0 +1,122 @@
+aside{
+    max-width: 25px;
+    background-color: #222;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    overflow-x: hidden;
+    transition: 0.4s;
+}
+
+aside.active{
+    max-width: 300px;
+}
+
+aside a{
+    color: #fff;
+    user-select: none;
+}
+
+aside .menu-container{
+    padding: 48px 48px 48px 24px;
+}
+
+aside .menu-container .menu-item{
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 8px;
+    border-radius: 4px;
+    width: 200px;
+}
+
+aside .menu-container .menu-item:hover{
+    background-color: rgb(36, 36, 36);
+}
+
+aside .menu-container .menu-item.active{
+    background-color: #333;
+}
+
+aside .menu-container .menu-item i{
+    margin-right: 8px;
+}
+
+aside .danger{
+    color: var(--red);
+}
+
+aside .closer{
+    position: absolute;
+    right: 0px;
+    height: 100vh;
+    width: 25px;
+    background-color:#333;
+    top: -25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+aside .closer i{
+    transition: 0.4s;
+}
+
+aside .closer.close-state i{
+    transform: rotate(180deg);
+}
+
+/* content-flow */
+.content-flow{
+    margin-left: 300px;
+    padding: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.content-flow.full{
+    margin-left: 25px;
+    padding: 48px;
+}
+
+.content-flow .content-card{
+    flex-basis: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--blue-1);
+    row-gap: 24px;
+    width: 100%;
+    min-width: 200px;
+    flex: 1;
+}
+
+.content-flow .options{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    align-items: flex-end;
+}
+
+.content-flow .options .delete{
+    color: var(--red);
+    cursor: pointer;
+}
+
+.content-flow .options.disable .delete{
+    color: #333;
+    cursor: default;
+}
+
+p{
+    font-weight: normal;
+}
+
+.content-card h5{
+    margin-top: 24px;
+}

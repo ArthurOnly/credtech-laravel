@@ -45,6 +45,11 @@ $(formPhysical).submit((event)=>{
     blackOverlay.addClass('active')
     loanPopup.addClass('active')
 
+    const data = formDataToJSON(formPhysical)
+    delete data['accept_data']
+
+    console.log(data);
+
 
 })
 

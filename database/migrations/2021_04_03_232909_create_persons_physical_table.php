@@ -15,7 +15,7 @@ class CreatePersonsPhysicalTable extends Migration
     {
         Schema::create('persons_physical', function (Blueprint $table) {
             $table->bigInteger('person_id')->primary()->unsigned();
-            $table->foreign('person_id')->references('id')->on('persons');
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');;
             $table->string('cpf');
             $table->timestamps();
         });

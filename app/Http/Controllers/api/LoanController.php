@@ -10,20 +10,11 @@ use App\Models\Loan;
 use App\models\Person;
 use App\models\PersonJuridical;
 use App\models\PersonPhysical;
-use App\models\SimulationRequest;
+use App\models\LoanRequest;
 use Exception;
 
-class SimulationsController extends Controller
+class LoanController extends Controller
 {
-    private function addRelations($simulation){
-        $warranty = $simulation->warranty();
-        $segment = $simulation->segment();
-
-        $simulation['warranty'] = $warranty;
-        $simulation['segment'] = $segment;
-        return $simulation;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -31,11 +22,7 @@ class SimulationsController extends Controller
      */
     public function index()
     {
-        //$simulations = Simulation::all();
-        //foreach($simulations as $simulation){
-        //   $simulation = $this->addRelations($simulation);
-        //}
-        //return $simulations;
+        //
     }
 
     /**
@@ -105,7 +92,7 @@ class SimulationsController extends Controller
             $newLoanId = $newLoan['id'];
 
             //Criando simulação (Relaciona uma pessoa a um empréstimo)
-            $newSimulation = SimulationRequest::create([
+            $newSimulation = LoanRequest::create([
                 "person_id" => $newPersonId,
                 "loan_id" => $newLoanId
             ]); 
@@ -126,19 +113,30 @@ class SimulationsController extends Controller
      */
     public function show($id)
     {
-        $simulation = SimulationRequest::findOrFail($id);
+        //
+    }
 
-        //dd($simulation);
-        $person = $simulation->person();
-        $personAddicional = $person->additionalData();
-        $loan = $simulation->loan();
-        return response([
-            "simulation_request" => $simulation, 
-            "person_data" => [
-                "main_data" => $person,
-                "addicional_data" => $personAddicional                
-            ], 
-            "loan_data" => $loan],200);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     /**
@@ -149,7 +147,6 @@ class SimulationsController extends Controller
      */
     public function destroy($id)
     {
-        $Simulation = SimulationRequest::findOrFail($id);
-        $Simulation->delete();
+        //
     }
 }

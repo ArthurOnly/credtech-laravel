@@ -46,6 +46,10 @@ mix
     'resources/css/faq.css',
 ], 'public/css/faq-styles.css')
 
+.styles([
+    'resources/css/admin.css',
+], 'public/css/admin-styles.css')
+
 .copy(
     'node_modules/@fortawesome/fontawesome-free/webfonts',
     'public/webfonts'

@@ -17,4 +17,8 @@ class PersonJuridical extends Model
         "cpf_partner",
         "doc_address_comp_partner"
     ];
+
+    protected $hidden = [
+        "person_id"
+    ];
 }

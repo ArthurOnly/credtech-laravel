@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,7 @@ Route::get('/quem-somos', function () {
 Route::get('/faq', function () {
     return view('faq');
 });
+
+Route::get('admin', 'App\Http\Controllers\AdminController@index');
+Route::get('admin/panel', 'App\Http\Controllers\AdminController@panel');
+Route::get('admin/simulacoes', 'App\Http\Controllers\AdminController@simulacoes');

@@ -15,10 +15,10 @@ class SimulationRequest extends Model
     ];
 
     public function person(){
-        return $this->hasOne(Person::class, 'id', 'person_id');
+        return $this->hasOne(Person::class, 'id', 'person_id')->first();
     }
 
     public function loan(){
-        return $this->hasOne(Loan::class, 'id', 'loan_id');
+        return $this->hasOne(Loan::class, 'id', 'loan_id')->first();
     }
 }

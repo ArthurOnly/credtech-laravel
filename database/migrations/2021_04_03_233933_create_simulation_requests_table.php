@@ -16,9 +16,9 @@ class CreateSimulationRequestsTable extends Migration
         Schema::create('simulation_requests', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('loan_id')->unsigned();
-            $table->foreign('loan_id')->references('id')->on('loans');
+            $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');;
             $table->bigInteger('person_id')->unsigned();
-            $table->foreign('person_id')->references('id')->on('persons');
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade');;
             $table->timestamps();
         });
     }

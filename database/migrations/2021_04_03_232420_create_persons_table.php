@@ -15,7 +15,7 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->id();
-            $table->string('type_id');
+            $table->integer('type_id');
             $table->string('name');
             $table->string('address')->nullable();
             $table->string('CEP')->nullable();
