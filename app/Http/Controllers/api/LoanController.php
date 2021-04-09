@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Loan;
 use App\models\Person;
@@ -12,6 +13,7 @@ use App\models\PersonJuridical;
 use App\models\PersonPhysical;
 use App\models\LoanRequest;
 use Exception;
+use GrahamCampbell\ResultType\Success;
 
 class LoanController extends Controller
 {
@@ -22,7 +24,7 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        return 'yer';
     }
 
     /**
@@ -31,13 +33,48 @@ class LoanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
+    private function storeDoc($doc){
+        $extension = $doc->extension();
+        $name = uniqid("");
+        $fullName = "{$name}.{$extension}";
+        $doc->storeAs("docs", $fullName);
+        return $fullName;
+    }
+
+    private function deleteDoc($doc){
+        Storage::delete("docs/{$doc}");
+    }
+
+    private function verifyFiles($request, $file){
+        $isValid = true;
+        foreach ($file as $fileName){
+            if (!($request->hasFile($fileName) && $request->file($fileName)->isValid())){
+                $isValid = false;
+            }
+        }
+        return $isValid;
+    }
+
+
     public function store(Request $request)
     {
+        //Verificar arquivos
+        $isValid = $this->verifyFiles($request, ['doc_selfie', 'doc_monthly_income', 'doc_address_comp', 'doc_rg_verse']);
+        if (!$isValid){
+            return response('{error: true}', 400);
+        }
+        //Salva todos os arquivos
+        $fileName_doc_selfie = $this->storeDoc($request->file('doc_selfie'));
+        $fileName_doc_monthly_income = $this->storeDoc($request->file('doc_monthly_income'));
+        $fileName_doc_address_comp = $this->storeDoc($request->file('doc_address_comp'));
+        $fileName_doc_rg_verse = $this->storeDoc($request->file('doc_rg_verse'));
+
         try{
             //Verificando tipo de pessoa
             $personJuridicalData = array();
             $personPhysicalData = array();
-            if (strlen($request['cpf_cnpj']) < 13){
+            if (strlen($request['cpf_cnpj']) < 15){
                 $personType = 0;
 
                 //Dados para o model de pessoa física
@@ -49,7 +86,9 @@ class LoanController extends Controller
 
                 //Dados para o model de pessoa jurídica
                 $personJuridicalData = [
-                    "cnpj" => $request['cpf_cnpj']
+                    "cnpj" => $request['cpf_cnpj'],
+                    "cpf_partner" => '',
+                    "doc_address_comp_partner" => ''
                 ];
             }
 
@@ -59,6 +98,13 @@ class LoanController extends Controller
                 "celphone" => $request['celphone'],
                 "email" => $request['email'],
                 "type_id" => $personType,
+                "address" => $request['address'],
+                "CEP" => $request['CEP'],
+                "monthly_income" => $request['monthly_income'],
+                "doc_selfie" => $fileName_doc_selfie,
+                "doc_address_comp" => $fileName_doc_address_comp,
+                "doc_monthly_income" => $fileName_doc_monthly_income,
+                "doc_rg_verse" => $fileName_doc_rg_verse,
             ];
 
             //Dados para o model de empréstimo
@@ -101,6 +147,13 @@ class LoanController extends Controller
             return $newSimulation;
         }catch (Exception $ex){
             DB::rollBack();
+
+            $this->deleteDoc($fileName_doc_selfie);
+            $this->deleteDoc($fileName_doc_address_comp);
+            $this->deleteDoc($fileName_doc_monthly_income);
+            $this->deleteDoc($fileName_doc_rg_verse);
+
+            dd($ex);
             return 'rollback';
         }
     }

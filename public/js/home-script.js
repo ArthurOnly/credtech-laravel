@@ -497,14 +497,41 @@ function calculateVariableIOF(parcelFixed, loanParcels, cicleDays, personType){
     return Number(variableIOF.toFixed(2))
 }
 /*End*/
-function formDataToJSON(form){
-    let formJson = {}
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    try{
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    }catch (ex){
+        return 'no_data'
+    }
+});
+
+function inputFilesToFormData(form){
+    var formData = new FormData()
     $(`${form} input,select`).each(function () {
         const fieldName = $(this).attr('name')
-        const fieldValue = $(this).val()
-        formJson[fieldName] = fieldValue
+        var fieldValue = ''
+        if ($(this).attr('type') == 'file'){
+            fieldValue = $(this).get(0).files[0]
+            formData.append(fieldName, fieldValue)
+        } 
     });
-    return formJson
+    return formData
+}
+
+function formDataToJson(form){
+    var formData = {}
+    $(`${form} input,select`).each(function () {
+        const fieldName = $(this).attr('name')
+        var fieldValue = ''
+        if (!$(this).attr('type') == 'file'){
+            fieldValue = $(this).val()
+            formData[fieldName] = fieldValue
+        } 
+    });
+    return formData
 }
 
 function verifyBlanks(form){
@@ -575,7 +602,7 @@ function handleCheckboxFields(){
     const checkboxDivs = document.querySelectorAll('div.checkbox')
     checkboxDivs.forEach(checkboxDiv => {
         const checkboxHidden = checkboxDiv.querySelector('input')
-        checkboxHidden.addEventListener('change', (event)=>{
+        checkboxHidden.addEventListener('change', ()=>{
             if(checkboxHidden.checked){
                 checkboxDiv.classList.add('active')
             } else{
@@ -629,9 +656,9 @@ function toggleErrorNode(node, hasError, message){
 
 function correctName(name){
     if (name == undefined || name.lenght<2){
-        return true
-    } else{
         return false
+    } else{
+        return true
     }
 }
 

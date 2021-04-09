@@ -29,8 +29,15 @@ loanPopupCloser.click(function(){
     loanPopup.removeClass('active')
 })
 
-$(formPhysical).submit((event)=>{
+$(formPhysical).submit(async (event)=>{
     event.preventDefault()
+
+    //const verifyAccept = document.querySelector('.form-physical accept_data')
+    //const isAccept = verifyAccept.checked
+
+    /*if (!isAccept){
+
+    }*/
     
     var hasErrors = false
     
@@ -38,19 +45,20 @@ $(formPhysical).submit((event)=>{
 
     if (verifyFields(formPhysical)) hasErrors = true
 
-    if (!hasErrors){
+    if (hasErrors){
         return
     }
 
-    blackOverlay.addClass('active')
+    /*blackOverlay.addClass('active')
     loanPopup.addClass('active')
 
-    const data = formDataToJSON(formPhysical)
-    delete data['accept_data']
+    const formData = new FormData(document.querySelector(formPhysical))
+    formData.delete('accept_data');
 
-    console.log(data);
-
-
+    const request = await fetch('http://localhost:8000/api/loan', {
+        body: formData,
+        method: 'post',
+    })*/
 })
 
 

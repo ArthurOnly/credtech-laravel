@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel='stylesheet' href="{{ url(mix('css/global-styles.css'))}}">
-    <link rel='stylesheet' href="{{ url(mix('css/loan-styles.css'))}}">
-    
+    <link rel='stylesheet' href="{{ url(mix('css/global-styles.css')) }}">
+    <link rel='stylesheet' href="{{ url(mix('css/loan-styles.css')) }}">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap"
@@ -15,8 +16,9 @@
     <link rel="stylesheet" href="https://use.typekit.net/nnx6nqd.css">
     <title>Document</title>
 </head>
+
 <body>
-    <x-navbar/>
+    <x-navbar />
     <section class='select-type'>
         <div class='select-type-container nav-margin container section-container t-fade-in-up active'>
             <div class='left-container container'>
@@ -69,21 +71,22 @@
                 <h5>Informações pessoais</h5>
                 <div class='input-block light'>
                     <label>Nome</label>
-                    <input require value='' placeholder='Isaac Danilo' name='name' type='text'></input>
+                    <input require value='Arthur' placeholder='Isaac Danilo' name='name' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Nome inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>CPF</label>
-                    <input require value='' name='cpf' type='text' placeholder='111.111.111-11'></input>
+                    <input require value='103.948.454-98' name='cpf_cnpj' type='text'
+                        placeholder='111.111.111-11'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>CPF inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Telefone</label>
@@ -92,7 +95,7 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Telefone inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Email</label>
@@ -101,16 +104,17 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Endereço</label>
-                    <input require placeholder='Bairro X, Rua Y, 31. Natal/RN' value='' name='address' type='text'></input>
+                    <input require placeholder='Bairro X, Rua Y, 31. Natal/RN' value='' name='address'
+                        type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Endereço inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>CEP</label>
@@ -119,7 +123,7 @@
                         <i class="fas fa-times-circle"></i>
                         <p>CEP inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Rendimento mensal</label>
@@ -128,70 +132,78 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Rendimento inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <h5>Documentos</h5>
                 <div class='input-block input-upload light'>
                     <label>Selfie com RG ou CNH</label>
-                    <label class='upload-label' for='selfie_doc'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='selfie_doc' name='selfie_doc'></input>
+                    <label class='upload-label' for='doc_selfie'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_selfie' name='doc_selfie'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Arquivo inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Verso RG ou CNH</label>
-                    <label class='upload-label' for='doc_verse'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='doc_verse' name='doc_verse'></input>
+                    <label class='upload-label' for='doc_rg_verse'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_rg_verse' name='doc_rg_verse'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Arquivo inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Comprovante de endereço</label>
-                    <label class='upload-label' for='addr_comp'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='addr_comp' name='addr_comp'></input>
+                    <label class='upload-label' for='doc_address_comp'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_address_comp' name='doc_address_comp'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Arquivo inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Comprovante de renda</label>
-                    <label class='upload-label' for='income_comp'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='income_comp' name='income_comp'></input>
+                    <label class='upload-label' for='doc_monthly_income'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_monthly_income' name='doc_monthly_income'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Arquivo inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
             </div>
             <div class='right-container form-container container'>
                 <h5>Informações de empréstimo</h5>
                 <div class='input-block light'>
                     <label>Valor do empréstimo</label>
-                    <input require value='' placeholder='1.000,00' name ='loan_value' type='text'></input>
+                    <input require value='' placeholder='1.000,00' name='value' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Valor inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Segmento de atuação</label>
-                    <select require name='segment' value='comercio'>
-                        <option value='comercio'>Comércio</option>
-                        <option value='servicos'>Serviços</option>
-                        <option value='industria'>Indústria</option>
-                        <option value='servicos'>Outros</option>
+                    <select require name='segment_id' value='1'>
+                        <option value='1'>Comércio</option>
+                        <option value='2'>Serviços</option>
+                        <option value='3'>Indústria</option>
+                        <option value='4'>Outros</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Ciclo</label>
@@ -200,46 +212,46 @@
                         <option value='quinzenal'>Quinzenal</option>
                         <option value='mensal'>Mensal</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Quantidade de parcelas</label>
-                    <select require name='parcel' value='1x'>
-                        <option value='1x'>1 parcela</option>
-                        <option value='2x'>2 parcelas</option>
-                        <option value='3x'>3 parcelas</option>
-                        <option value='4x'>4 parcelas</option>
-                        <option value='5x'>5 parcelas</option>
-                        <option value='6x'>6 parcelas</option>
-                        <option value='7x'>7 parcelas</option>
-                        <option value='8x'>8 parcelas</option>
-                        <option value='9x'>9 parcelas</option>
-                        <option value='10x'>10 parcelas</option>
-                        <option value='11x'>11 parcelas</option>
-                        <option value='12x'>12 parcelas</option>
+                    <select require name='parcels' value='1'>
+                        <option value='1'>1 parcela</option>
+                        <option value='2'>2 parcelas</option>
+                        <option value='3'>3 parcelas</option>
+                        <option value='4'>4 parcelas</option>
+                        <option value='5'>5 parcelas</option>
+                        <option value='6'>6 parcelas</option>
+                        <option value='7'>7 parcelas</option>
+                        <option value='8'>8 parcelas</option>
+                        <option value='9'>9 parcelas</option>
+                        <option value='10'>10 parcelas</option>
+                        <option value='11'>11 parcelas</option>
+                        <option value='12'>12 parcelas</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Garantia</label>
-                    <select require name='warranty' value='sem_garantia'>
-                        <option value='sem_garantia'>Sem garantia</option>
-                        <option value='semi_garantia'>Semi garantia</option>
-                        <option value='garantia_parcial'>Garantia parcial</option>
-                        <option value='garantia_integral'>Garantia integral</option>
+                    <select require name='warranty_id' value='1'>
+                        <option value='1'>Sem garantia</option>
+                        <option value='2'>Semi garantia</option>
+                        <option value='3'>Garantia parcial</option>
+                        <option value='4'>Garantia integral</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <h5>Informações adicionais (Opcional)</h5>
                 <div class='input-block light'>
-                        <label>CPF devedor solidário 1</label>
-                        <input value='' name='cpf_dev1' type='text' placeholder='111.111.111-11'></input>
-                        <spam class='error-label'>
-                            <i class="fas fa-times-circle"></i>
-                            <p>CPF inválido</p>
-                        </spam>
-                        <spam class='focus-decorator'/>
-                    </div>
+                    <label>CPF devedor solidário 1</label>
+                    <input value='' name='cpf_dev1' type='text' placeholder='111.111.111-11'></input>
+                    <spam class='error-label'>
+                        <i class="fas fa-times-circle"></i>
+                        <p>CPF inválido</p>
+                    </spam>
+                    <spam class='focus-decorator' />
+                </div>
                 <div class='input-block light'>
                     <label>CPF devedor solidário 2</label>
                     <input value='' name='cpf_dev2' type='text' placeholder='111.111.111-11'></input>
@@ -247,7 +259,7 @@
                         <i class="fas fa-times-circle"></i>
                         <p>CPF inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>CPF devedor solidário 3</label>
@@ -256,7 +268,21 @@
                         <i class="fas fa-times-circle"></i>
                         <p>CPF inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
+                </div>
+                <div class='input-block light'>
+                    <div class='checkbox'>
+                        <label class='checkbox-visible' for='accept_data'>
+                            <i class="fas fa-check"></i>
+                        </label>
+                        <input require id='accept_data' name='accept_data' type='checkbox' />
+                        <label class='text'>Aceito que meus dados sejam salvos para que a empresa possa contatar-me.</label>
+                    </div>
+                    <spam class='error-label'>
+                        <i class="fas fa-times-circle"></i>
+                        <p>Obrigatório</p>
+                    </spam>
+                    <spam class='focus-decorator' />
                 </div>
                 <button type='submit' class='btn btn-fill'>Finalizar pedido</button>
             </div>
@@ -279,16 +305,25 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Nome inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
-                    <label>CPF</label>
+                    <label>CNPJ</label>
                     <input require value='' name='cpf_cnpj' type='text' placeholder='111.111.111-11'></input>
+                    <spam class='error-label'>
+                        <i class="fas fa-times-circle"></i>
+                        <p>CNPJ inválido</p>
+                    </spam>
+                    <spam class='focus-decorator' />
+                </div>
+                <div class='input-block light'>
+                    <label>CPF do sócio requerente</label>
+                    <input require value='' name='cpf_partner' type='text' placeholder='111.111.111-11'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>CPF inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Telefone</label>
@@ -297,7 +332,7 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Telefone inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Email</label>
@@ -306,16 +341,17 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
-                    <label>Endereço</label>
-                    <input require placeholder='Bairro X, Rua Y, 31. Natal/RN' value='' name='address' type='text'></input>
+                    <label>Endereço comercial</label>
+                    <input require placeholder='Bairro X, Rua Y, 31. Natal/RN' value='' name='address'
+                        type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Endereço inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>CEP</label>
@@ -324,79 +360,99 @@
                         <i class="fas fa-times-circle"></i>
                         <p>CEP inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
-                    <label>Rendimento mensal</label>
+                    <label>Faturamento mensal</label>
                     <input require placeholder='1.000,00' value='' name='monthly_income' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
-                        <p>Rendimento inválido</p>
+                        <p>Faturamento inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <h5>Documentos</h5>
                 <div class='input-block input-upload light'>
                     <label>Selfie com RG ou CNH</label>
-                    <label class='upload-label' for='selfie_doc'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='selfie_doc' name='selfie_doc'></input>
+                    <label class='upload-label' for='doc_selfie'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_selfie' name='doc_selfie'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Verso RG ou CNH</label>
-                    <label class='upload-label' for='doc_verse'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='doc_verse' name='doc_verse'></input>
+                    <label class='upload-label' for='doc_rg_verse'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_rg_verse' name='doc_rg_verse'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Comprovante de endereço</label>
-                    <label class='upload-label' for='addr_comp'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='addr_comp' name='addr_comp'></input>
+                    <label class='upload-label' for='doc_address_comp'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_address_comp' name='doc_address_comp'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block input-upload light'>
-                    <label>Comprovante de renda</label>
-                    <label class='upload-label' for='income_comp'><i class="fas fa-upload"></i><spam>Upload</spam></label>
-                    <input require type='file' id='income_comp' name='income_comp'></input>
+                    <label>Comprovante de endereço do sócio requerente</label>
+                    <label class='upload-label' for='doc_address_comp_partner'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_address_comp_partner' name='doc_address_comp_partner'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
+                </div>
+                <div class='input-block input-upload light'>
+                    <label>Comprovante de faturamento</label>
+                    <label class='upload-label' for='doc_monthly_income'><i class="fas fa-upload"></i>
+                        <spam>Upload</spam>
+                    </label>
+                    <input require type='file' id='doc_monthly_income' name='doc_monthly_income'></input>
+                    <spam class='error-label'>
+                        <i class="fas fa-times-circle"></i>
+                        <p>Email inválido</p>
+                    </spam>
+                    <spam class='focus-decorator' />
                 </div>
             </div>
             <div class='right-container form-container container'>
                 <h5>Informações de empréstimo</h5>
                 <div class='input-block light'>
                     <label>Valor do empréstimo</label>
-                    <input require value='' placeholder='1.000,00' name ='loan_value' type='text'></input>
+                    <input require value='' placeholder='1.000,00' name='value' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Valor inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Segmento de atuação</label>
-                    <select require name='segment' value='comercio'>
-                        <option value='comercio'>Comércio</option>
-                        <option value='servicos'>Serviços</option>
-                        <option value='industria'>Indústria</option>
-                        <option value='servicos'>Outros</option>
+                    <select require name='segment_id' value='1'>
+                        <option value='1'>Comércio</option>
+                        <option value='2'>Serviços</option>
+                        <option value='3'>Indústria</option>
+                        <option value='4'>Outros</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Ciclo</label>
@@ -405,46 +461,46 @@
                         <option value='quinzenal'>Quinzenal</option>
                         <option value='mensal'>Mensal</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Quantidade de parcelas</label>
-                    <select require name='parcel' value='1x'>
-                        <option value='1x'>1 parcela</option>
-                        <option value='2x'>2 parcelas</option>
-                        <option value='3x'>3 parcelas</option>
-                        <option value='4x'>4 parcelas</option>
-                        <option value='5x'>5 parcelas</option>
-                        <option value='6x'>6 parcelas</option>
-                        <option value='7x'>7 parcelas</option>
-                        <option value='8x'>8 parcelas</option>
-                        <option value='9x'>9 parcelas</option>
-                        <option value='10x'>10 parcelas</option>
-                        <option value='11x'>11 parcelas</option>
-                        <option value='12x'>12 parcelas</option>
+                    <select require name='parcels' value='1'>
+                        <option value='1'>1 parcela</option>
+                        <option value='2'>2 parcelas</option>
+                        <option value='3'>3 parcelas</option>
+                        <option value='4'>4 parcelas</option>
+                        <option value='5'>5 parcelas</option>
+                        <option value='6'>6 parcelas</option>
+                        <option value='7'>7 parcelas</option>
+                        <option value='8'>8 parcelas</option>
+                        <option value='9'>9 parcelas</option>
+                        <option value='10'>10 parcelas</option>
+                        <option value='11'>11 parcelas</option>
+                        <option value='12'>12 parcelas</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>Garantia</label>
-                    <select require name='warranty' value='sem_garantia'>
-                        <option value='sem_garantia'>Sem garantia</option>
-                        <option value='semi_garantia'>Semi garantia</option>
-                        <option value='garantia_parcial'>Garantia parcial</option>
-                        <option value='garantia_integral'>Garantia integral</option>
+                    <select require name='warranty_id' value='1'>
+                        <option value='1'>Sem garantia</option>
+                        <option value='2'>Semi garantia</option>
+                        <option value='3'>Garantia parcial</option>
+                        <option value='4'>Garantia integral</option>
                     </select>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <h5>Informações adicionais (Opcional)</h5>
                 <div class='input-block light'>
-                        <label>CPF devedor solidário 1</label>
-                        <input value='' name='cpf_dev1' type='text' placeholder='111.111.111-11'></input>
-                        <spam class='error-label'>
-                            <i class="fas fa-times-circle"></i>
-                            <p>CPF inválido</p>
-                        </spam>
-                        <spam class='focus-decorator'/>
-                    </div>
+                    <label>CPF devedor solidário 1</label>
+                    <input value='' name='cpf_dev1' type='text' placeholder='111.111.111-11'></input>
+                    <spam class='error-label'>
+                        <i class="fas fa-times-circle"></i>
+                        <p>CPF inválido</p>
+                    </spam>
+                    <spam class='focus-decorator' />
+                </div>
                 <div class='input-block light'>
                     <label>CPF devedor solidário 2</label>
                     <input value='' name='cpf_dev2' type='text' placeholder='111.111.111-11'></input>
@@ -452,7 +508,7 @@
                         <i class="fas fa-times-circle"></i>
                         <p>CPF inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
                     <label>CPF devedor solidário 3</label>
@@ -461,19 +517,34 @@
                         <i class="fas fa-times-circle"></i>
                         <p>CPF inválido</p>
                     </spam>
-                    <spam class='focus-decorator'/>
+                    <spam class='focus-decorator' />
                 </div>
-                <input type='hidden' name='client-type' value='physical-person'/>
+                <div class='input-block light'>
+                    <div class='checkbox'>
+                        <label class='checkbox-visible' for='accept_data_2'>
+                            <i class="fas fa-check"></i>
+                        </label>
+                        <input id='accept_data_2' name='accept_data_2' type='checkbox' />
+                        <label class='text'>Aceito que meus dados sejam salvos para que a empresa possa contatar-me.</label>
+                    </div>
+                    <spam class='error-label'>
+                        <i class="fas fa-times-circle"></i>
+                        <p>Obrigatório</p>
+                    </spam>
+                    <spam class='focus-decorator' />
+                </div>
+                <input type='hidden' name='client-type' value='0' />
                 <button type='submit' class='btn btn-fill'>Finalizar pedido</button>
             </div>
         </form>
     </section>
 
-    <x-footer/>
-    <x-cookies-popup/>
+    <x-footer />
+    <x-cookies-popup />
 
-    <script src='{{ url(mix('js/global-script.js'))}}'></script>
-    <script src='{{ url(mix('js/jquery.js'))}}'></script>
-    <script src='{{ url(mix('js/loan-script.js'))}}'></script>
+    <script src='{{ url(mix('js/global-script.js')) }}'></script>
+    <script src='{{ url(mix('js/jquery.js')) }}'></script>
+    <script src='{{ url(mix('js/loan-script.js')) }}'></script>
 </body>
+
 </html>
