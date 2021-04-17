@@ -20,6 +20,10 @@
         flex-direction: row;
         justify-content: space-between;
     }
+
+    body footer .down-section .container > * + * {
+        margin-bottom: 0;
+    }
 }
 
 footer{

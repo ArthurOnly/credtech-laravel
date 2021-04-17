@@ -11,7 +11,7 @@
             <a href='/quem-somos'>Quem somos</a>
             <a href='/faq'>FAQ</a>
             <a href='/contato'>Contato</a>
-            <a class='btn btn-outline f-bold' href='#'>Trocar cheques</a>
+            <a class='btn btn-outline f-bold' href='/desconto-de-titulos'>Trocar cheques</a>
             <a class='btn btn-fill f-bold' href='/emprestimo'>Solicitar empréstimo</a>
         </div>
         <div class='toggle'>
@@ -23,7 +23,7 @@
             <a href='/quem-somos'>Quem somos</a>
             <a href='/faq'>FAQ</a>
             <a href='/contato'>Contato</a>
-            <a class='btn btn-outline f-bold' href='#'>Trocar cheques</a>
+            <a class='btn btn-outline f-bold' href='/desconto-de-titulos'>Trocar cheques</a>
             <a class='btn btn-fill f-bold' href='/emprestimo'>Solicitar empréstimo</a>
         </aside>
     </div>

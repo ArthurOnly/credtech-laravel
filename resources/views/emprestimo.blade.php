@@ -282,7 +282,6 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Obrigatório</p>
                     </spam>
-                    <spam class='focus-decorator' />
                 </div>
                 <button type='submit' class='btn btn-fill'>Finalizar pedido</button>
             </div>
@@ -531,7 +530,6 @@
                         <i class="fas fa-times-circle"></i>
                         <p>Obrigatório</p>
                     </spam>
-                    <spam class='focus-decorator' />
                 </div>
                 <input type='hidden' name='client-type' value='0' />
                 <button type='submit' class='btn btn-fill'>Finalizar pedido</button>

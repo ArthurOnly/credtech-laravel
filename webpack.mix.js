@@ -83,6 +83,11 @@ mix
 ], 'public/js/loan-script.js')
 
 .scripts([
+    'resources/js/verify_fields.js',
+    'resources/js/des-tit.js',
+], 'public/js/desc-tit.js')
+
+.scripts([
     'resources/js/faq.js',
 ], 'public/js/faq-script.js')
     

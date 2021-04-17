@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use App\Helpers\FileHelper;
 
 use App\Models\Loan;
 use App\models\Person;
@@ -18,57 +18,24 @@ use GrahamCampbell\ResultType\Success;
 class LoanController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return 'yer';
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-    private function storeDoc($doc){
-        $extension = $doc->extension();
-        $name = uniqid("");
-        $fullName = "{$name}.{$extension}";
-        $doc->storeAs("docs", $fullName);
-        return $fullName;
-    }
-
-    private function deleteDoc($doc){
-        Storage::delete("docs/{$doc}");
-    }
-
-    private function verifyFiles($request, $file){
-        $isValid = true;
-        foreach ($file as $fileName){
-            if (!($request->hasFile($fileName) && $request->file($fileName)->isValid())){
-                $isValid = false;
-            }
-        }
-        return $isValid;
-    }
-
 
     public function store(Request $request)
     {
-        //Verificar arquivos
-        $isValid = $this->verifyFiles($request, ['doc_selfie', 'doc_monthly_income', 'doc_address_comp', 'doc_rg_verse']);
+        $isValid = FileHelper::verifyFiles($request, ['doc_selfie', 'doc_monthly_income', 'doc_address_comp', 'doc_rg_verse']);
         if (!$isValid){
             return response('{error: true}', 400);
         }
+
         //Salva todos os arquivos
-        $fileName_doc_selfie = $this->storeDoc($request->file('doc_selfie'));
-        $fileName_doc_monthly_income = $this->storeDoc($request->file('doc_monthly_income'));
-        $fileName_doc_address_comp = $this->storeDoc($request->file('doc_address_comp'));
-        $fileName_doc_rg_verse = $this->storeDoc($request->file('doc_rg_verse'));
+        $fileName_doc_selfie = FileHelper::storeDoc($request->file('doc_selfie'));
+        $fileName_doc_monthly_income = FileHelper::storeDoc($request->file('doc_monthly_income'));
+        $fileName_doc_address_comp = FileHelper::storeDoc($request->file('doc_address_comp'));
+        $fileName_doc_rg_verse = FileHelper::storeDoc($request->file('doc_rg_verse'));
 
         try{
             //Verificando tipo de pessoa
@@ -84,11 +51,18 @@ class LoanController extends Controller
             } else{
                 $personType = 1;
 
+                $isValidCpfDoc = FileHelper::verifyFiles($request, ['doc_address_comp_partner']);
+                if (!$isValidCpfDoc){
+                    return response('{error: true}', 400);
+                }
+
+                $fileName_doc_address_comp_partner = FileHelper::storeDoc($request->file('doc_address_comp_partner'));
+
                 //Dados para o model de pessoa jurídica
                 $personJuridicalData = [
                     "cnpj" => $request['cpf_cnpj'],
-                    "cpf_partner" => '',
-                    "doc_address_comp_partner" => ''
+                    "cpf_partner" => $request['cpf_partner'],
+                    "doc_address_comp_partner" => $request[$fileName_doc_address_comp_partner]
                 ];
             }
 
@@ -148,58 +122,14 @@ class LoanController extends Controller
         }catch (Exception $ex){
             DB::rollBack();
 
-            $this->deleteDoc($fileName_doc_selfie);
-            $this->deleteDoc($fileName_doc_address_comp);
-            $this->deleteDoc($fileName_doc_monthly_income);
-            $this->deleteDoc($fileName_doc_rg_verse);
+            FileHelper::deleteDoc($fileName_doc_selfie);
+            FileHelper::deleteDoc($fileName_doc_address_comp);
+            FileHelper::deleteDoc($fileName_doc_monthly_income);
+            FileHelper::deleteDoc($fileName_doc_rg_verse);
+            FileHelper::deleteDoc($fileName_doc_address_comp_partner);
 
-            dd($ex);
-            return 'rollback';
+            return response('{error: true}', 400);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

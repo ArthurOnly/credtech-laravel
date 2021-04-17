@@ -32,12 +32,13 @@ loanPopupCloser.click(function(){
 $(formPhysical).submit(async (event)=>{
     event.preventDefault()
 
-    //const verifyAccept = document.querySelector('.form-physical accept_data')
-    //const isAccept = verifyAccept.checked
+    const verifyAccept = document.querySelector(`${formPhysical} #accept_data`)
+    const isAccept = verifyAccept.checked
 
-    /*if (!isAccept){
-
-    }*/
+    if (!isAccept){
+        verifyAccept.parentNode.parentNode.classList.add('error')
+        return
+    }
     
     var hasErrors = false
     
@@ -49,7 +50,7 @@ $(formPhysical).submit(async (event)=>{
         return
     }
 
-    /*blackOverlay.addClass('active')
+    blackOverlay.addClass('active')
     loanPopup.addClass('active')
 
     const formData = new FormData(document.querySelector(formPhysical))
@@ -58,7 +59,7 @@ $(formPhysical).submit(async (event)=>{
     const request = await fetch('http://localhost:8000/api/loan', {
         body: formData,
         method: 'post',
-    })*/
+    })
 })
 
 

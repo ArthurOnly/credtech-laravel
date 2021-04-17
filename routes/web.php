@@ -30,6 +30,10 @@ Route::get('/emprestimo', function () {
     return view('emprestimo');
 });
 
+Route::get('/desconto-de-titulos', function () {
+    return view('trocar_cheques');
+});
+
 Route::get('/quem-somos', function () {
     return view('quem_somos');
 });

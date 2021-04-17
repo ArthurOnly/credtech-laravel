@@ -15,15 +15,6 @@ use Exception;
 
 class SimulationsController extends Controller
 {
-    private function addRelations($simulation){
-        $warranty = $simulation->warranty();
-        $segment = $simulation->segment();
-
-        $simulation['warranty'] = $warranty;
-        $simulation['segment'] = $segment;
-        return $simulation;
-    }
-
     /**
      * Display a listing of the resource.
      *

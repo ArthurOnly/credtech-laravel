@@ -1,5 +1,5 @@
 {
-    "/css/global-styles.css": "/css/global-styles.css?id=f0bc6aeea30a193c2c3c",
+    "/css/global-styles.css": "/css/global-styles.css?id=88cb9a622a1a9f5d729e",
     "/css/home-styles.css": "/css/home-styles.css?id=64f591f424e41765c46e",
     "/css/taxas-styles.css": "/css/taxas-styles.css?id=3178b712eadf3d5a8d2d",
     "/css/contact-styles.css": "/css/contact-styles.css?id=44ffd38bbce12ac38f30",
@@ -22,10 +22,11 @@
     "/webfonts/fa-solid-900.ttf": "/webfonts/fa-solid-900.ttf?id=1828deab434c894cf16e",
     "/webfonts/fa-solid-900.woff": "/webfonts/fa-solid-900.woff?id=2cd966756e4b2e254242",
     "/webfonts/fa-solid-900.woff2": "/webfonts/fa-solid-900.woff2?id=fc56faf526ca07331a77",
-    "/js/home-script.js": "/js/home-script.js?id=ecc7bb5f162c24fa50c0",
+    "/js/home-script.js": "/js/home-script.js?id=76116248ce58902e8cc8",
     "/js/global-script.js": "/js/global-script.js?id=64a53aaaa717a3bbdfcf",
     "/js/taxas-script.js": "/js/taxas-script.js?id=70e76a587619313b15f7",
     "/js/jquery.js": "/js/jquery.js?id=c6a576ca47ae7af099c9",
-    "/js/loan-script.js": "/js/loan-script.js?id=7b9ea12289dc3c0a743d",
+    "/js/loan-script.js": "/js/loan-script.js?id=53467beefc9c2f7f5e8d",
+    "/js/desc-tit.js": "/js/desc-tit.js?id=12dcd39f183cb913db9a",
     "/js/faq-script.js": "/js/faq-script.js?id=a26d16849e03b602862e"
 }
