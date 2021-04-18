@@ -70,20 +70,20 @@
                     <div class='simulator-step d-none' id='step-2'>
                         <div class='input-block'>
                             <label>Qual o seu segmento de atuação?</label>
-                            <select name='segment'>
-                                <option value='Comércio'>Comércio</option>
-                                <option value='Serviços'>Serviços</option>
-                                <option value='Indústria'>Indústria</option>
-                                <option value='Outros'>Outros</option>
+                            <select name='segment_id'>
+                                <option value='1'>Comércio</option>
+                                <option value='2'>Serviços</option>
+                                <option value='3'>Indústria</option>
+                                <option value='4'>Outros</option>
                             </select>
                         </div>
                         <div class='input-block'>
                             <label>Selecione uma garantia</label>
-                            <select name='warranty'>
-                                <option value='Sem garantia'>Sem garantia</option>
-                                <option value='Semi garantia'>Semi garantia</option>
-                                <option value='Garantia parcial'>Garantia parcial</option>
-                                <option value='Garantia integral'>Garantia integral</option>
+                            <select name='warranty_id'>
+                                <option value='1'>Sem garantia</option>
+                                <option value='2'>Semi garantia</option>
+                                <option value='3'>Garantia parcial</option>
+                                <option value='4'>Garantia integral</option>
                             </select>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         </div>
                         <div class='input-block dark'>
                             <label>CPF ou CNPJ</label>
-                            <input name='cpf/cnpj' placeholder='100.200.300-40' type='text'/>
+                            <input name='cpf_cnpj' placeholder='100.200.300-40' type='text'/>
                             <spam class='error-label'>
                                 <i class="fas fa-times-circle"></i>
                                 <p>CPF inválido</p>

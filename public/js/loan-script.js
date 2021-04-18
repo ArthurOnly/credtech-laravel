@@ -249,7 +249,7 @@ $(formPhysical).submit(async (event)=>{
     loanPopup.addClass('active')
 
     const formData = new FormData(document.querySelector(formPhysical))
-    formData.delete('accept_data');
+    formData.delete('accept_data')
 
     const request = await fetch('http://localhost:8000/api/loan', {
         body: formData,

@@ -139,20 +139,17 @@ form.on('submit', (event)=>{
 
     if (hasErrors) return
 
-    const data = formDataToJSON('form')
-    delete data['accept_data']
+    const formData = new FormData(document.querySelector('form'))
+    formData.delete('accept_data')
 
     fetch('http://localhost:8000/api/simulations', {
-        body: JSON.stringify(data),
-        method: 'POST',
-        headers: {
-            "content-type":"application/json" 
-        }
+        body: formData,
+        method: 'POST'
     })
 
     currentStep +=1    
     updateStep(4)
-    passResultsToFields(data)
+    passResultsToFields(formData)
 })
 
 function passResultsToFields(data){
@@ -163,14 +160,46 @@ function passResultsToFields(data){
     const requestTable = document.querySelector('#requested_table')
     const requestTax = document.querySelector('#request_tax')
 
-    const taxValue = taxas[data.segment][data.warranty][data.cicle]
-    const parcelValue = calculateParcels(data.value, taxValue, data.parcels)
+    var warranty = ''
+    
+    switch(data.get('segment_id')){
+        case'1': 
+            warranty = 'Sem garantia'
+            break
+        case'2': 
+            warranty = 'Semi garantia'
+            break
+        case'3': 
+            warranty = 'Garantia parcial'
+            break
+        case'4': 
+            warranty = 'Garantia integral'
+            break
+    }
+    var segment = ''
+    switch(data.get('segment_id')){
+        case'1': 
+            segment = 'Comércio'
+            break
+        case'2': 
+            segment = 'Serviços'
+            break
+        case'3': 
+            segment = 'Indústria'
+            break
+        case'4': 
+            segment = 'Outros'
+            break
+    }
 
-    const personType = data["cpf/cnpj"].length > 14 ? "juridical" : "physical"
-    const fixedIOF = calculateFixedIOF(parcelValue, data.parcels, personType)
+    const taxValue = taxas[segment][warranty][data.get('cicle')]
+    const parcelValue = calculateParcels(data.get('value'), taxValue, data.get('parcels'))
+
+    const personType = data.get("cpf_cnpj").length > 14 ? "juridical" : "physical"
+    const fixedIOF = calculateFixedIOF(parcelValue, data.get('parcels'), personType)
 
     var cicleDays = 0
-    switch (data['cicle']){
+    switch (data.get('cicle')){
         case 'Mensal':
             cicleDays = 30
             break
@@ -181,14 +210,14 @@ function passResultsToFields(data){
             cicleDays = 7
             break
     }
-    const variableIOF = calculateVariableIOF(parcelValue, data.parcels, cicleDays,personType)
+    const variableIOF = calculateVariableIOF(parcelValue, data.get('parcels'), cicleDays,personType)
 
     requestIOF.innerHTML = (variableIOF+fixedIOF).toFixed(2)
     requestTax.innerHTML = (taxValue*100).toFixed(2)
-    requestParcels.innerHTML = data.parcels
+    requestParcels.innerHTML = data.get('parcels')
     requestParcelsValue.innerHTML = parcelValue
-    requestValue.innerHTML = data.value
-    generateTable(requestTable, generateParcelsTable(parcelValue, data.parcels))
+    requestValue.innerHTML = data.get('value')
+    generateTable(requestTable, generateParcelsTable(parcelValue, data.get('parcels')))
 }
 
 function generateTable(table, json){
