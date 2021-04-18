@@ -30,6 +30,8 @@ class AuthController extends Controller
         if ($success){
             return redirect()->route('admin.panel');
         }
+
+        return redirect()->back()->withInput();
     }
 
     public function signupForm(){

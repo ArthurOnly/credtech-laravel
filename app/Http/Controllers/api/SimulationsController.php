@@ -41,7 +41,7 @@ class SimulationsController extends Controller
             //Verificando tipo de pessoa
             $personJuridicalData = array();
             $personPhysicalData = array();
-            if (strlen($request['cpf_cnpj']) < 13){
+            if (strlen($request['cpf_cnpj']) < 15){
                 $personType = 0;
 
                 //Dados para o model de pessoa física
@@ -88,6 +88,7 @@ class SimulationsController extends Controller
                 $personPhysicalData["person_id"] = $newPersonId;
                 PersonPhysical::create($personPhysicalData);
             } else{
+                $personJuridicalData["person_id"] = $newPersonId;
                 PersonJuridical::create($personJuridicalData);
             }
 
@@ -104,6 +105,7 @@ class SimulationsController extends Controller
             DB::commit();
             return $newSimulation;
         }catch (Exception $ex){
+            dd($ex);
             DB::rollBack();
             return 'rollback';
         }
