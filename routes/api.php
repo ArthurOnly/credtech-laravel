@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('simulations', 'App\Http\Controllers\api\SimulationsController');
 Route::apiResource('loan', 'App\Http\Controllers\api\LoanController');
+Route::apiResource('checks', 'App\Http\Controllers\api\ChecksController');

@@ -20,13 +20,23 @@
 <body>
     <x-navbar />
 
+    <div class='popup'>
+        <div class='popup-container'>
+            <div class='pop-body'>
+                <h4>
+                    <i class="fas fa-spinner loading"></i>
+                </h4>
+            </div>
+        </div>
+    </div>
+
     <section class='contact-form-section nav-margin'>
         <form class='container section-container'>
             <div class='left-container form-container container'>
                 <h5>Dados pessoais</h5>
                 <div class='input-block light'>
                     <label>Nome ou Razão Social</label>
-                    <input placeholder='Isaac Danilo' name='name' type='text'></input>
+                    <input require placeholder='Isaac Danilo' name='name' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Nome ou Razão Social inválido</p>
@@ -35,7 +45,7 @@
                 </div>
                 <div class='input-block light'>
                     <label>CPF ou CNPJ</label>
-                    <input name='cpf/cnpj' placeholder='100.200.300-40' type='text' />
+                    <input require name='cpf_cnpj' placeholder='100.200.300-40' type='text' />
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>CPF inválido</p>
@@ -44,7 +54,7 @@
                 </div>
                 <div class='input-block light'>
                     <label>Email</label>
-                    <input placeholder='emailcred@gmail.com' name='email' type='text'></input>
+                    <input require placeholder='emailcred@gmail.com' name='email' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
@@ -52,8 +62,8 @@
                     <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
-                    <label name='celphone'>Telefone</label>
-                    <input placeholder='(84) 9999-8888' type='text'></input>
+                    <label>Telefone</label>
+                    <input require name='celphone' placeholder='(84) 9999-8888' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Telefone inválido</p>
@@ -83,7 +93,7 @@
             <div class='right-container form-container container'>
                 <h5>Dados do cheque</h5>
                 <div class='input-block light'>
-                    <label>Valor do empréstimo</label>
+                    <label>Valor do título</label>
                     <input require value='' placeholder='1.000,00' name='value' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
@@ -92,9 +102,21 @@
                     <spam class='focus-decorator' />
                 </div>
                 <div class='input-block light'>
+                    <?php
+                        date_default_timezone_set('UTC');
+                        $minDate = mktime (0, 0, 0, date("m")  , date("d")+7, date("Y"));
+                        $maxDate = mktime (0, 0, 0, date("m")+3  , date("d"), date("Y"));
+
+                        $minDate = date('Y-m-d',$minDate);
+                        $maxDate = date('Y-m-d',$maxDate);
+                    ?>
                     <label>Pré-datado para</label>
                     <label class='secondary-label'>No mínimo 7 dias no futuro e máximo de 90</label>
-                    <input name='name' type='date'></input>
+                    <input name='pre_dated' type='date' 
+                        value={{$minDate}}
+                        min={{$minDate}}
+                        max={{$maxDate}}
+                    ></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Data inválida</p>
@@ -103,10 +125,10 @@
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Foto da frente do cheque</label>
-                    <label class='upload-label' for='doc_address_comp'><i class="fas fa-upload"></i>
+                    <label class='upload-label' for='doc_check_front'><i class="fas fa-upload"></i>
                         <spam>Upload</spam>
                     </label>
-                    <input require type='file' id='doc_address_comp' name='doc_address_comp'></input>
+                    <input require type='file' id='doc_check_front' name='doc_check_front'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Arquivo inválido</p>
@@ -115,10 +137,10 @@
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Foto de traz do cheque</label>
-                    <label class='upload-label' for='doc_address_comp'><i class="fas fa-upload"></i>
+                    <label class='upload-label' for='doc_check_verse'><i class="fas fa-upload"></i>
                         <spam>Upload</spam>
                     </label>
-                    <input require type='file' id='doc_address_comp' name='doc_address_comp'></input>
+                    <input require type='file' id='doc_check_verse' name='doc_check_verse'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Arquivo inválido</p>
@@ -138,6 +160,7 @@
                         <p>Obrigatório</p>
                     </spam>
                 </div>
+                @csrf
                 <button type='submit' class='btn-fill'>
                     Enviar
                     </submit>
@@ -149,6 +172,7 @@
     <x-cookies-popup />
 
     <script src='{{ url(mix('js/global-script.js')) }}'></script>
+    <script src='{{ url(mix('js/jquery.js')) }}'></script>
     <script src='{{ url(mix('js/desc-tit.js')) }}'></script>
 </body>
 

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,33 +14,40 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('site.index');
 });
 
 Route::get('/taxas', function () {
-    return view('taxas');
+    return view('site.taxas');
 });
 
 Route::get('/contato', function () {
-    return view('contato');
+    return view('site.contato');
 });
 
 Route::get('/emprestimo', function () {
-    return view('emprestimo');
+    return view('site.emprestimo');
 });
 
 Route::get('/desconto-de-titulos', function () {
-    return view('trocar_cheques');
+    return view('site.trocar_cheques');
 });
 
 Route::get('/quem-somos', function () {
-    return view('quem_somos');
+    return view('site.quem_somos');
 });
 
 Route::get('/faq', function () {
-    return view('faq');
+    return view('site.faq');
 });
 
-Route::get('admin', 'App\Http\Controllers\AdminController@index');
-Route::get('admin/panel', 'App\Http\Controllers\AdminController@panel');
-Route::get('admin/simulacoes', 'App\Http\Controllers\AdminController@simulacoes');
+Route::get('auth/login', 'App\Http\Controllers\AuthController@loginForm');
+Route::get('auth/sign-up', 'App\Http\Controllers\AuthController@signupForm');
+Route::get('auth/logout', 'App\Http\Controllers\AuthController@logout')->name('auth.logout');
+
+Route::post('auth/login', 'App\Http\Controllers\AuthController@login')->name('auth.login');
+Route::post('auth/sign-up', 'App\Http\Controllers\AuthController@signUp')->name('auth.signup');
+
+
+Route::get('admin/panel', 'App\Http\Controllers\AdminController@panel')->name('admin.panel')->middleware('auth');
+Route::get('admin/simulacoes', 'App\Http\Controllers\AdminController@simulacoes')->middleware('auth');

@@ -91,6 +91,36 @@ label.secondary-label{
     font-size: 0.8rem;
 }
 
+.popup.active{
+    display: flex;
+}
+
+.popup{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.popup .popup-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    width: 100%;
+    max-width: 250px;
+    padding: 16px;
+    background-color: #fff;
+}
+
+.popup .popup-container .pop-body{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
 
 .container{
     width: 100%;
@@ -205,4 +235,16 @@ label.secondary-label{
 .feat-card i {
     font-size: 64px;
     color: #fff;
+}
+
+.loading{
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+    } to { 
+        transform: rotate(360deg); 
+    }
 }

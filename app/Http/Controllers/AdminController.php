@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SimulationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -12,7 +13,7 @@ class AdminController extends Controller
     }
     public function panel(){
         $numberOfSimulations = SimulationRequest::count();
-        return view('admin', ['totalSimulations' => $numberOfSimulations]);
+        return view('admin.panel', ['totalSimulations' => $numberOfSimulations]);
     }
 
     public function simulacoes(){
@@ -33,6 +34,6 @@ class AdminController extends Controller
             array_push($simulations, $simulation);
         }
 
-        return view('admin-simulacoes', ['simulations' => $simulations]);
+        return view('admin.panel-simulacoes', ['simulations' => $simulations]);
     }
 }

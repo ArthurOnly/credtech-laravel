@@ -50,6 +50,10 @@ mix
     'resources/css/admin.css',
 ], 'public/css/admin-styles.css')
 
+.styles([
+    'resources/css/auth/auth.css',
+], 'public/css/auth-styles.css')
+
 .copy(
     'node_modules/@fortawesome/fontawesome-free/webfonts',
     'public/webfonts'
@@ -84,7 +88,7 @@ mix
 
 .scripts([
     'resources/js/verify_fields.js',
-    'resources/js/des-tit.js',
+    'resources/js/desc-tit.js',
 ], 'public/js/desc-tit.js')
 
 .scripts([

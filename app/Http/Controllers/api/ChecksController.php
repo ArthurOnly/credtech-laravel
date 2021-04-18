@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
 use Exception;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helpers\FileHelper;
+use App\Helpers\ResponseHelper;
+
 use Illuminate\Support\Facades\DB;
 
 use App\models\Person;
@@ -13,7 +16,7 @@ use App\models\PersonPhysical;
 use App\models\Check;
 use App\Models\CheckRequest;
 
-class TitDiscountController extends Controller
+class ChecksController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -27,7 +30,8 @@ class TitDiscountController extends Controller
             try{
                 $isValid = FileHelper::verifyFiles($request, ['doc_check_front', 'doc_check_verse']);
             if (!$isValid){
-                return response('{error: true}', 400);
+                $responseData = ResponseHelper::format_response(False, null, 'Erro na aquisição dos arquivos.');
+                return response($responseData, 400);
             }
 
             //Salva todos os arquivos
@@ -68,13 +72,14 @@ class TitDiscountController extends Controller
 
             //Dados para o cheque
             $checkData = [
-                'value' => $request['check_value'],
+                'value' => $request['value'],
                 'pre_dated' => $request['pre_dated'],
                 'doc_front' => $fileName_doc_check_front,
                 'doc_back' => $fileName_doc_check_back
             ];
         } catch (Exception $ex){
-            return response('{error: true}', 400);
+            $responseData = ResponseHelper::format_response(False, null, 'Erro na aquisição de dados.');
+            return response($responseData, 400);
         }
 
         //DB proccess
@@ -103,8 +108,13 @@ class TitDiscountController extends Controller
                 "check_id" => $newCheckId
             ]);
 
-        } catch (Exception $ex){
+            $responseData = ResponseHelper::format_response(True, $checkRequest, 'Sucesso na requisição.');
+            return response($responseData, 201);
 
+        } catch (Exception $ex){
+            dd($ex);
+            $responseData = ResponseHelper::format_response(False, null, 'Erro na transação com o BD.');
+            return response($responseData, 400);
         }
     }
 }

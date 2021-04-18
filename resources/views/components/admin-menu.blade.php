@@ -20,7 +20,7 @@
             <i class="fas fa-map-marker-alt"></i>
             Configurações
         </a>
-        <a class='menu-item danger'>
+        <a class='menu-item danger' href={{ route('auth.logout') }}>
             <i class="fas fa-map-marker-alt"></i>
             Sair
         </a>

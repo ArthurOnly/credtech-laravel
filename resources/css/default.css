@@ -154,7 +154,7 @@ div.checkbox .checkbox-visible{
     border-radius: 4px;
 }
 
-.input-block.light div.checkbox .checkbox-visible{
+.input-block.dark div.checkbox .checkbox-visible{
     border: 2px solid var(--blue-1);
 }
 

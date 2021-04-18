@@ -13,7 +13,6 @@ use App\models\PersonJuridical;
 use App\models\PersonPhysical;
 use App\models\LoanRequest;
 use Exception;
-use GrahamCampbell\ResultType\Success;
 
 class LoanController extends Controller
 {

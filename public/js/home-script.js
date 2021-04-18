@@ -606,17 +606,18 @@ function addMaksInFields(){
         $(this).mask('00.000.000/0000-00')
     })
 
-    const inputsCPFcnpj = $('input[name="cpf/cnpj"]')
+    const inputsCPFcnpj = $('input[name="cpf_cnpj"]')
     inputsCPFcnpj.each(function(){
         var options =  {
             onKeyPress: function(inputText, e, field, options) {
-              var masks = ['000.000.000-00', '00.000.000/0000-00'];
-              var mask = (inputText.length>13) ? masks[1] : masks[0];
-              $('input[name="cpf/cnpj"]').mask(mask, options);
+              var masks = ['000.000.000-000', '00.000.000/0000-00'];             
+              var mask = inputText.length < 15 ? masks[0] : masks[1]
+
+              $('input[name="cpf_cnpj"]').mask(mask, options);
             }
         }
           
-        $(this).mask('000.000.000-00', options);
+        $(this).mask('000.000.000-000', options);
     })
 }addMaksInFields()
 

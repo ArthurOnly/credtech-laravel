@@ -13,7 +13,7 @@ class CheckRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('check_request', function (Blueprint $table) {
+        Schema::create('check_requests', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('check_id')->unsigned();
             $table->foreign('check_id')->references('id')->on('checks')->onDelete('cascade');
@@ -30,6 +30,6 @@ class CheckRequestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('check_request');
+        Schema::dropIfExists('check_requests');
     }
 }
