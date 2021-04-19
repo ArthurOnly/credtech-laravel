@@ -42,11 +42,11 @@ Route::get('/faq', function () {
 });
 
 Route::get('auth/login', 'App\Http\Controllers\AuthController@loginForm');
-Route::get('auth/sign-up', 'App\Http\Controllers\AuthController@signupForm');
+//Route::get('auth/sign-up', 'App\Http\Controllers\AuthController@signupForm');
 Route::get('auth/logout', 'App\Http\Controllers\AuthController@logout')->name('auth.logout');
 
 Route::post('auth/login', 'App\Http\Controllers\AuthController@login')->name('auth.login');
-Route::post('auth/sign-up', 'App\Http\Controllers\AuthController@signUp')->name('auth.signup');
+//Route::post('auth/sign-up', 'App\Http\Controllers\AuthController@signUp')->name('auth.signup');
 
 
 Route::get('admin/panel', 'App\Http\Controllers\AdminController@panel')->name('admin.panel')->middleware('auth');

@@ -1,15 +1,1 @@
-const faqCards = document.querySelectorAll('.faq-card')
-
-faqCards.forEach(faqCard => {
-    const faqCardTitle = faqCard.querySelector('.title')
-    const faqCardIcon = faqCard.querySelector('.title i')
-    faqCardTitle.addEventListener('click', ()=>{
-        if (faqCard.classList.contains('active')){
-            faqCard.classList.remove('active')
-            faqCardIcon.classList.remove('to-close')
-            return
-        } 
-        faqCardIcon.classList.add('to-close')
-        faqCard.classList.add('active')
-    })
-})
+const faqCards=document.querySelectorAll(".faq-card");faqCards.forEach((e=>{const t=e.querySelector(".title"),s=e.querySelector(".title i");t.addEventListener("click",(()=>{if(e.classList.contains("active"))return e.classList.remove("active"),void s.classList.remove("to-close");s.classList.add("to-close"),e.classList.add("active")}))}));
