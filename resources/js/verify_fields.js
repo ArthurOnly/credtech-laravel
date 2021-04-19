@@ -97,6 +97,11 @@ function addMaksInFields(){
         $(this).mask('(00) 00000-0000');
     })
 
+    const inputsValue = $('input[name="value"]')
+    inputsValue.each(function(){
+        $(this).mask('000.000.000.000.000,00', {reverse: true})
+    })
+
     const inputsCPF = $('input[name="cpf"]')
     inputsCPF.each(function(){
         $(this).mask('000.000.000-00')
