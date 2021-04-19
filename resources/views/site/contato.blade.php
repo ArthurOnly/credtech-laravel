@@ -17,6 +17,7 @@
 </head>
 <body>
     <x-navbar/>
+    <x-popup/>
     <section class='contact-form-section nav-margin'>
         <div class='container section-container'>
             <div class='left-container'>
@@ -24,7 +25,7 @@
                     <h4>Entre em contato conosco</h4>
                     <div class='input-block light'>
                         <label>Nome</label>
-                        <input name='name' type='text'></input>
+                        <input value='' required placeholder='Isaac Danilo' name='name' type='text'></input>
                         <spam class='error-label'>
                             <i class="fas fa-times-circle"></i>
                             <p>Nome inválido</p>
@@ -33,7 +34,7 @@
                     </div>
                     <div class='input-block light'>
                         <label>Email</label>
-                        <input name='email' type='text'></input>
+                        <input required name='email' type='text' placeholder='emailcred@gmail.com'></input>
                         <spam class='error-label'>
                             <i class="fas fa-times-circle"></i>
                             <p>Email inválido</p>
@@ -42,7 +43,7 @@
                     </div>
                     <div class='input-block light'>
                         <label name='celphone'>Telefone</label>
-                        <input type='text'></input>
+                        <input name='celphone' required placeholder='(84) 9999-8888' type='text'></input>
                         <spam class='error-label'>
                             <i class="fas fa-times-circle"></i>
                             <p>Telefone inválido</p>
@@ -51,13 +52,26 @@
                     </div>
                     <div class='input-block light'>
                         <label>Mensagem</label>
-                        <textarea name='message' type='text'></textarea>
+                        <textarea required placeholder='Olá, gostaria de saber...' name='message' type='text'></textarea>
                         <spam class='error-label'>
                             <i class="fas fa-times-circle"></i>
                             <p>Digite uma mensagem</p>
                         </spam>
                         <spam class='focus-decorator'/>
                     </div>
+                    <div class='input-block light'>
+                    <div class='checkbox'>
+                        <label class='checkbox-visible' for='accept_data'>
+                            <i class="fas fa-check"></i>
+                        </label>
+                        <input id='accept_data' name='accept_data' type='checkbox' />
+                        <label class='text'>Aceito que meus dados sejam salvos para que a empresa possa contatar-me.</label>
+                    </div>
+                    <spam class='error-label'>
+                        <i class="fas fa-times-circle"></i>
+                        <p>Obrigatório</p>
+                    </spam>
+                </div>
                     <button type='submit' class='btn-fill'>
                         Enviar
                     </submit>
@@ -96,6 +110,8 @@ Bloco D – Ponta Negra, Natal – RN.</h6>
     <x-footer/>
     <x-cookies-popup/>
 
+    <script src='{{ url(mix('js/jquery.js')) }}'></script>
+    <script src='{{ url(mix('js/contact-script.js'))}}'></script>
     <script src='{{ url(mix('js/global-script.js'))}}'></script>
 </body>
 </html>

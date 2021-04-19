@@ -90,7 +90,7 @@
                     <div class='simulator-step d-none' id='step-3'>
                         <div class='input-block dark'>
                             <label>Razão social ou Nome</label>
-                            <input name='name' placeholder='Isaac Danilo' type='text'/>
+                            <input require name='name' placeholder='Isaac Danilo' type='text'/>
                             <spam class='error-label'>
                                 <i class="fas fa-times-circle"></i>
                                 <p>Nome/Razão social inválido</p>
@@ -99,7 +99,7 @@
                         </div>
                         <div class='input-block dark'>
                             <label>CPF ou CNPJ</label>
-                            <input name='cpf_cnpj' placeholder='100.200.300-40' type='text'/>
+                            <input require name='cpf_cnpj' placeholder='100.200.300-40' type='text'/>
                             <spam class='error-label'>
                                 <i class="fas fa-times-circle"></i>
                                 <p>CPF inválido</p>
@@ -108,7 +108,7 @@
                         </div>
                         <div class='input-block dark'>
                             <label>Email</label>
-                            <input name='email' placeholder='emailcred@gmail.com' type='text'/>
+                            <input require name='email' placeholder='emailcred@gmail.com' type='text'/>
                             <spam class='error-label'>
                                 <i class="fas fa-times-circle"></i>
                                 <p>Email inválido</p>
@@ -117,7 +117,7 @@
                         </div>
                         <div class='input-block dark'>
                             <label>Telefone</label>
-                            <input name='celphone' placeholder='(84) 9999-8888' type='text'/>
+                            <input require name='celphone' placeholder='(84) 9999-8888' type='text'/>
                             <spam class='error-label'>
                                 <i class="fas fa-times-circle"></i>
                                 <p>Telefone social inválido</p>

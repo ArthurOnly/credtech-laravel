@@ -19,17 +19,7 @@
 
 <body>
     <x-navbar />
-
-    <div class='popup'>
-        <div class='popup-container'>
-            <div class='pop-body'>
-                <h4>
-                    <i class="fas fa-spinner loading"></i>
-                </h4>
-            </div>
-        </div>
-    </div>
-
+    <x-popup/>
     <section class='contact-form-section nav-margin'>
         <form class='container section-container'>
             <div class='left-container form-container container'>

@@ -92,6 +92,11 @@ mix
 ], 'public/js/desc-tit.js')
 
 .scripts([
+    'resources/js/verify_fields.js',
+    'resources/js/contact.js',
+], 'public/js/contact-script.js')
+
+.scripts([
     'resources/js/faq.js',
 ], 'public/js/faq-script.js')
     

@@ -1,19 +1,20 @@
 <div class='cookie-popup container d-none'>
     <p>Utilizamos ferramentas e serviços de terceiros que usam cookies. Elas nos ajudam a melhorar sua experiência no
         site. Ao clicar em "Certo" ou continuar navegando, você concorda com o nosso uso de cookies no nosso site.</p>
-    <button class='btn-outline'>Certo</button>
+    <a href='#'>Certo</button>
 
     <style>
         .cookie-popup {
             position: fixed;
-            background-color: #fff;
-            bottom: 20px;
-            left: 20px;
-            padding: 8px;
+            background-color: var(--blue-4);
+            color: #fff;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 16px;
             width: 100%;
-            max-width: 300px;
+            max-width: 450px;
             z-index: 11;
-            border: 1px solid rgb(0, 0, 0, 0.1)
         }
 
         .cookie-popup p {
@@ -47,14 +48,15 @@
     var acceptCookies = getCookie('acceptCookies')
 
     const cookiePop = document.querySelector('.cookie-popup')
-    const cookieButton = document.querySelector('.cookie-popup button')
+    const cookieButton = document.querySelector('.cookie-popup a')
 
     if (!acceptCookies) {
         cookiePop.classList.remove('d-none')
         window.setTimeout(()=>setCookie('acceptCookies','true'), 20000)
     }
 
-    cookieButton.addEventListener('click', ()=>{
+    cookieButton.addEventListener('click', (event)=>{
+        event.preventDefault()
         setCookie('acceptCookies','true')
         cookiePop.classList.add('d-none')
     })

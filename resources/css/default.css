@@ -162,12 +162,14 @@ div.checkbox .checkbox-visible{
     border: 2px solid rgb(245, 245, 245);
 }
 
-.input-block.dark input::placeholder{
+.input-block.dark input::placeholder,
+.input-block.dark textarea::placeholder{
     color: #fff;
     opacity: 0.5;
 }
 
-.input-block.light input::placeholder{
+.input-block.light input::placeholder,
+.input-block.light textarea::placeholder{
     color: #000;
     opacity: 0.3;
 }
