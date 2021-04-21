@@ -1,1 +1,54 @@
-.faq-card{display:flex;flex-direction:column;padding:0 8px}.faq-card .body,.faq-card .title{padding:8px}.faq .right-container{display:flex;justify-content:flex-start;flex-direction:column}.faq-card .title{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgb(0,0,0,.1)}.faq-card .title h6,.faq-card .title i{max-width:80%;color:var(--blue-1)}.fa-plus-circle{transition:.2s}.fa-plus-circle.to-close{transform:rotate(45deg)}.faq-card .body{transition:.4s;overflow-y:hidden;max-height:0;transform-origin:top}.faq-card.active .body{transform:scaleY(1);max-height:450px;padding:8px}.faq-card .title i{font-size:24px}
+.faq-card{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 8px;
+}
+
+.faq-card .title,
+.faq-card .body{
+    padding: 8px;
+}
+
+.faq .right-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.faq-card .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(0,0,0,0.1);
+}
+
+.faq-card .title h6,
+.faq-card .title i{
+    max-width: 80%;
+    color: var(--blue-1);
+}
+
+.fa-plus-circle{
+    transition: 0.2s;
+}
+
+.fa-plus-circle.to-close{
+    transform: rotate(45deg);
+}
+
+.faq-card .body{
+    transition: 0.4s;
+    overflow-y: hidden;
+    max-height: 0;
+    transform-origin: top;
+}
+
+.faq-card.active .body{
+    transform: scaleY(1);
+    max-height: 450px;
+    padding: 8px;
+}
+
+.faq-card .title i{
+    font-size: 24px;
+}

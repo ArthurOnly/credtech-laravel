@@ -53,24 +53,24 @@
                         </tr>
                         <tr>
                             <th>Semanal (Até 12x)</th>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
+                            <td>1.45% a.s</td>
+                            <td>1.30% a.s</td>
+                            <td>0.99% a.s</td>
+                            <td>Não se aplica</td>
                         </tr>
                         <tr>
                             <th>Quinzenal (Até 6x)</th>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
+                            <td>3.40% a.q</td>
+                            <td>3.25% a.q</td>
+                            <td>2.25% a.q</td>
+                            <td>Não se aplica</td>
                         </tr>
                         <tr>
                             <th>Mensal (Até 3x)</th>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
-                            <td>1.10% a.s</td>
+                            <td>8.80% a.m</td>
+                            <td>7.50% a.m</td>
+                            <td>5.50% a.m</td>
+                            <td>4.50% a.m</td>
                         </tr>
                     </tbody>
                 </table>
@@ -85,24 +85,24 @@
                         </tr>
                         <tr>
                             <th>Semanal (Até 12x)</th>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
+                            <td>1.70% a.s</td>
+                            <td>1.50% a.s</td>
+                            <td>1.15% a.s</td>
+                            <td>Não se aplica</td>
                         </tr>
                         <tr>
                             <th>Quinzenal (Até 6x)</th>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
+                            <td>3.90% a.q</td>
+                            <td>3.50% a.q</td>
+                            <td>2.48% a.q</td>
+                            <td>Não se aplica</td>
                         </tr>
                         <tr>
                             <th>Mensal (Até 3x)</th>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
-                            <td>2.20% a.s</td>
+                            <td>9.80% a.m</td>
+                            <td>8.50% a.m</td>
+                            <td>5.90% a.m</td>
+                            <td>4.99% a.m</td>
                         </tr>
                     </tbody>
                 </table>
@@ -117,24 +117,24 @@
                         </tr>
                         <tr>
                             <th>Semanal (Até 12x)</th>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
+                            <td>1.20% a.s</td>
+                            <td>1.05% a.s</td>
+                            <td>0.90% a.s</td>
+                            <td>Não se aplica</td>
                         </tr>
                         <tr>
                             <th>Quinzenal (Até 6x)</th>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
+                            <td>2.90% a.s</td>
+                            <td>2.75% a.s</td>
+                            <td>2.00% a.s</td>
+                            <td>Não se aplica</td>
                         </tr>
                         <tr>
                             <th>Mensal (Até 3x)</th>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
-                            <td>3.30% a.s</td>
+                            <td>7.80% a.s</td>
+                            <td>6.50% a.s</td>
+                            <td>4.50% a.s</td>
+                            <td>3.99% a.s</td>
                         </tr>
                     </tbody>
                 </table>

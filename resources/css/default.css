@@ -306,6 +306,9 @@ table thead{
 table tbody tr:nth-child(2n){
     background-color: rgb(246, 246, 246);
 }
+table tbody tr:nth-child(2n-1){
+    background-color: #fff;
+}
 
 table td, table th{
     padding: 8px 16px;
@@ -326,10 +329,6 @@ ul{
 }
 
 ul.mobile-only{
-    display: block;
-}
-
-body ul.desktop-only{
     display: block;
 }
 

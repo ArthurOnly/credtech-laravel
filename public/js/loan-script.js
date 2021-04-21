@@ -1,1 +1,306 @@
-function inputFilesToFormData(e){var a=new FormData;return $(`${e} input,select`).each((function(){const e=$(this).attr("name");var t="";"file"==$(this).attr("type")&&(t=$(this).get(0).files[0],a.append(e,t))})),a}function verifyBlanks(e){var a=!1;return $(`${e} input[require],select[require]`).each((function(){""==$(this).val()||null==$(this).val()?(toggleErrorNode($(this),!0),a=!0):toggleErrorNode($(this),!1)})),a}function verifyFields(e){return $(`${e} input,select`).each((function(){const e=$(this).attr("name"),a=$(this).val();let t;switch(e){case"name":t=!correctName(a),toggleErrorNode($(this),t);break;case"name":t=!correctEmail(a),toggleErrorNode($(this),t);break;case"loan_value":t=!correctLoanVale(a),toggleErrorNode($(this),t,"Valor mínimo R$ 100,00");break;case"cep":!async function(){t=await!correctCEP(a),toggleErrorNode($(this),t)}();break;case"CPF":t=!correctCPF(a),toggleErrorNode($(this),t)}})),!1}function handleUploadFields(){document.querySelectorAll('input[type="file"]').forEach((e=>{const a=document.querySelector(`label[for='${e.getAttribute("id")}'] spam`);e.addEventListener("change",(e=>{a.innerHTML=e.target.value.split(/(\\|\/)/g).pop()}))}))}function handleCheckboxFields(){document.querySelectorAll("div.checkbox").forEach((e=>{const a=e.querySelector("input");a.addEventListener("change",(()=>{a.checked?(e.classList.add("active"),e.parentNode.classList.remove("error")):(e.classList.remove("active"),e.parentNode.classList.add("error"))}))}))}function addMaksInFields(){$('input[name="celphone"]').each((function(){$(this).mask("(00) 00000-0000")}));$('input[name="value"]').each((function(){$(this).mask("000.000.000.000.000,00",{reverse:!0})}));$('input[name="cpf"]').each((function(){$(this).mask("000.000.000-00")}));$('input[name="cnpj"]').each((function(){$(this).mask("00.000.000/0000-00")}));$('input[name="cpf_cnpj"]').each((function(){var e={onKeyPress:function(e,a,t,c){var i=["000.000.000-000","00.000.000/0000-00"],n=e.length<15?i[0]:i[1];$('input[name="cpf_cnpj"]').mask(n,c)}};$(this).mask("000.000.000-000",e)}))}function toggleErrorNode(e,a,t){const c=e.parent();a?(c.addClass("error"),t&&c.find(".error-label p").text(t)):c.removeClass("error")}function correctName(e){return!(null==e||e.lenght<2)}function correctEmail(e){return!(null==e||e.lenght<4||!e.contains("@")||!e.contains("."))}function correctLoanVale(e){return null!=e&&(e=e.replaceAll(".","")),null!=e&&(e=e.replace(",",".")),!((e=Number(e))<100)}async function correctCEP(e){let a=e.replace("-","");a=a||"00000000";return!(await(await fetch(`http://viacep.com.br/ws/${a}/json/`)).json()).erro}function correctCPF(e){var a,t;if(a=0,"00000000000"==(e=(e=e.replaceAll(".","")).replace("-","")))return!1;for(i=1;i<=9;i++)a+=parseInt(e.substring(i-1,i))*(11-i);if(10!=(t=10*a%11)&&11!=t||(t=0),t!=parseInt(e.substring(9,10)))return!1;for(a=0,i=1;i<=10;i++)a+=parseInt(e.substring(i-1,i))*(12-i);return 10!=(t=10*a%11)&&11!=t||(t=0),t==parseInt(e.substring(10,11))}handleUploadFields(),handleCheckboxFields(),addMaksInFields();var strCPF="12345678909";const formPhysical='form[name="physical-person-form"]',physicalCpf=$(`${formPhysical} input[name="cpf"]`),physicalMoney=$(`${formPhysical} input[name='loan_value']`),physicalMonthly_income=$(`${formPhysical} input[name='monthly_income']`),physicalCep=$(`${formPhysical} input[name='cep']`),physicalCelphone=$(`${formPhysical} input[name='celphone']`);$(document).ready((function(){physicalCpf.mask("000.000.000-00"),physicalCep.mask("00000-000"),physicalCelphone.mask("(00) 00000-0000"),physicalMoney.mask("000.000,00",{reverse:!0}),physicalMonthly_income.mask("000.000.000,00",{reverse:!0})}));const blackOverlay=$(".black-overlay"),loanPopup=$(".loan-popup"),loanPopupCloser=$(".loan-popup-container > i");console.log(loanPopupCloser),loanPopupCloser.click((function(){blackOverlay.removeClass("active"),loanPopup.removeClass("active")})),$(formPhysical).submit((async e=>{e.preventDefault();const a=document.querySelector(`${formPhysical} #accept_data`);if(!a.checked)return void a.parentNode.parentNode.classList.add("error");var t=!1;if(verifyBlanks(formPhysical)&&(t=!0),verifyFields(formPhysical)&&(t=!0),t)return;blackOverlay.addClass("active"),loanPopup.addClass("active");const c=new FormData(document.querySelector(formPhysical));c.delete("accept_data");await fetch("http://localhost:8000/api/loan",{body:c,method:"post"})}));const selectSection=$(".select-type-container"),selectPhysical=$('button[name="select-pysical"]'),selectJuridical=$('button[name="select-juridical"]'),returnSelection=$(".return-to-select"),physicalSection=$("section.physical-person form"),physicalSectionHeader=$("section.physical-person .header"),juridicalSection=$("section.juridical-person form"),juridicalSectionHeader=$("section.juridical-person .header");returnSelection.each((function(){$(this).click((()=>{selectSection.addClass("active nav-margin"),juridicalSection.removeClass("active"),juridicalSectionHeader.removeClass("active nav-margin"),physicalSection.removeClass("active"),physicalSectionHeader.removeClass("active nav-margin")}))})),selectPhysical.click((()=>{selectSection.removeClass("active nav-margin"),physicalSection.addClass("active"),physicalSectionHeader.addClass("active nav-margin"),juridicalSectionHeader.removeClass("active nav-margin"),juridicalSection.removeClass("active")})),selectJuridical.click((()=>{selectSection.removeClass("active nav-margin"),juridicalSection.addClass("active"),juridicalSectionHeader.addClass("active nav-margin"),physicalSection.removeClass("active"),physicalSectionHeader.removeClass("active nav-margin")}));
+function inputFilesToFormData(form){
+    var formData = new FormData()
+    $(`${form} input,select`).each(function () {
+        const fieldName = $(this).attr('name')
+        var fieldValue = ''
+        if ($(this).attr('type') == 'file'){
+            fieldValue = $(this).get(0).files[0]
+            formData.append(fieldName, fieldValue)
+        } 
+    });
+    return formData
+}
+
+function verifyBlanks(form){
+    var hasErrors = false
+    const formNodes = $(`${form} input[require],select[require]`)
+
+    formNodes.each(function() {
+        if ($(this).val() == '' || $(this).val() == undefined){
+            toggleErrorNode($(this), true)
+            hasErrors = true
+        } else{
+            toggleErrorNode($(this), false)
+        }
+    })
+    return hasErrors
+}
+
+function verifyFields(form){
+    var hasErrors = false
+    const formNodes = $(`${form} input,select`)
+    
+    formNodes.each(function() {
+        const fieldName = $(this).attr('name')
+        const fieldValue = $(this).val()
+        
+        let hasError
+        switch (fieldName){
+            case 'name':
+                hasError = !correctName(fieldValue)
+                toggleErrorNode($(this), hasError)
+                break
+            case 'name':
+                hasError = !correctEmail(fieldValue)
+                toggleErrorNode($(this), hasError)
+                break
+            case 'loan_value':
+                hasError = !correctLoanVale(fieldValue)
+                toggleErrorNode($(this), hasError, 'Valor mínimo R$ 100,00')
+                break
+            case 'cep':
+                async function f(){
+                    hasError = await!correctCEP(fieldValue)
+                    toggleErrorNode($(this), hasError)
+                }f()
+                break
+            case 'CPF':
+                hasError = !correctCPF(fieldValue)
+                toggleErrorNode($(this), hasError)
+                break
+        }
+    })
+
+    return hasErrors
+}
+
+function handleUploadFields(){
+    const uploadFields = document.querySelectorAll('input[type="file"]')
+    uploadFields.forEach(uploadField=>{
+        const uploadLabel = document.querySelector(`label[for='${uploadField.getAttribute('id')}'] spam`)
+        uploadField.addEventListener('change', (event)=>{
+            uploadLabel.innerHTML = event.target.value.split(/(\\|\/)/g).pop()
+        })
+    })
+}
+handleUploadFields()
+
+function handleCheckboxFields(){
+    const checkboxDivs = document.querySelectorAll('div.checkbox')
+    checkboxDivs.forEach(checkboxDiv => {
+        const checkboxHidden = checkboxDiv.querySelector('input')
+        checkboxHidden.addEventListener('change', ()=>{
+            if(checkboxHidden.checked){
+                checkboxDiv.classList.add('active')
+                checkboxDiv.parentNode.classList.remove('error')
+            } else{
+                checkboxDiv.classList.remove('active')
+                checkboxDiv.parentNode.classList.add('error')
+            }
+        })
+    })
+}handleCheckboxFields()
+
+function addMaksInFields(){
+    const inputsCelphone = $('input[name="celphone"]')
+    inputsCelphone.each(function(){
+        $(this).mask('(00) 00000-0000');
+    })
+
+    const inputsValue = $('input[name="value"]')
+    inputsValue.each(function(){
+        $(this).mask('000.000.000.000.000,00', {reverse: true})
+    })
+
+    const inputsCPF = $('input[name="cpf"]')
+    inputsCPF.each(function(){
+        $(this).mask('000.000.000-00')
+    })
+
+    const inputsCNPJ = $('input[name="cnpj"]')
+    inputsCNPJ.each(function(){
+        $(this).mask('00.000.000/0000-00')
+    })
+
+    const inputsCPFcnpj = $('input[name="cpf_cnpj"]')
+    inputsCPFcnpj.each(function(){
+        var options =  {
+            onKeyPress: function(inputText, e, field, options) {
+              var masks = ['000.000.000-000', '00.000.000/0000-00'];             
+              var mask = inputText.length < 15 ? masks[0] : masks[1]
+
+              $('input[name="cpf_cnpj"]').mask(mask, options);
+            }
+        }
+          
+        $(this).mask('000.000.000-000', options);
+    })
+}addMaksInFields()
+
+function toggleErrorNode(node, hasError, message){
+    const inputBlock = node.parent()
+    if (hasError){
+        inputBlock.addClass('error')
+        if (message) {
+            inputBlock.find('.error-label p').text(message)
+        }
+    } else{
+        inputBlock.removeClass('error')
+    }
+}
+
+function correctName(name){
+    if (name == undefined || name.lenght<2){
+        return false
+    } else{
+        return true
+    }
+}
+
+function correctEmail(email){
+    if (email == undefined || email.lenght<4 || !email.contains('@') || !email.contains('.')){
+        return false
+    } else{
+        return true
+    }
+}
+
+function correctLoanVale(value){
+    if (value != undefined) value = value.replaceAll('.','')
+    if (value != undefined) value = value.replace(',','.')
+    value = Number(value)
+    if (value < 100){
+        return false
+    } else{
+        return true
+    }
+}
+
+async function correctCEP(cep){
+    let cepValue = cep.replace('-','')
+    cepValue = cepValue ? cepValue : '00000000'
+    const cepInfo = await (await fetch(`http://viacep.com.br/ws/${cepValue}/json/`)).json()
+    
+    if (cepInfo.erro) return false
+    return true
+}
+
+function correctCPF(strCPF) {
+    var Soma;
+    var Resto;
+    Soma = 0;
+    strCPF = strCPF.replaceAll('.','')
+    strCPF = strCPF.replace('-','')
+    if (strCPF == "00000000000") return false;
+
+    for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+        if ((Resto == 10) || (Resto == 11))  Resto = 0;
+        if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+
+    Soma = 0;
+        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+        Resto = (Soma * 10) % 11;
+
+        if ((Resto == 10) || (Resto == 11))  Resto = 0;
+        if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+        return true;
+}
+var strCPF = "12345678909";
+const formPhysical = 'form[name="physical-person-form"]'
+
+const physicalCpf = $(`${formPhysical} input[name="cpf"]`)
+const physicalMoney = $(`${formPhysical} input[name='loan_value']`)
+const physicalMonthly_income = $(`${formPhysical} input[name='monthly_income']`)
+const physicalCep = $(`${formPhysical} input[name='cep']`)
+const physicalCelphone = $(`${formPhysical} input[name='celphone']`)
+
+/*masks*/
+$(document).ready(function(){
+    physicalCpf.mask('000.000.000-00');
+    physicalCep.mask('00000-000');
+    physicalCelphone.mask('(00) 00000-0000');
+    physicalMoney.mask('000.000,00', {
+        reverse: true,
+    });
+    physicalMonthly_income.mask('000.000.000,00', {reverse: true});
+})
+
+/*Physicial form handler*/
+const blackOverlay = $('.black-overlay')
+const loanPopup = $('.loan-popup')
+const loanPopupCloser = $('.loan-popup-container > i')
+
+console.log(loanPopupCloser)
+
+loanPopupCloser.click(function(){
+    blackOverlay.removeClass('active')
+    loanPopup.removeClass('active')
+})
+
+$(formPhysical).submit(async (event)=>{
+    event.preventDefault()
+
+    const verifyAccept = document.querySelector(`${formPhysical} #accept_data`)
+    const isAccept = verifyAccept.checked
+
+    if (!isAccept){
+        verifyAccept.parentNode.parentNode.classList.add('error')
+        return
+    }
+    
+    var hasErrors = false
+    
+    if (verifyBlanks(formPhysical)) hasErrors = true
+
+    if (verifyFields(formPhysical)) hasErrors = true
+
+    if (hasErrors){
+        return
+    }
+
+    blackOverlay.addClass('active')
+    loanPopup.addClass('active')
+
+    const formData = new FormData(document.querySelector(formPhysical))
+    formData.delete('accept_data')
+
+    const request = await fetch('http://localhost:8000/api/loan', {
+        body: formData,
+        method: 'post',
+    })
+})
+
+
+/*Form selector*/
+const selectSection = $('.select-type-container')
+const selectPhysical = $('button[name="select-pysical"]')
+const selectJuridical = $('button[name="select-juridical"]')
+const returnSelection = $('.return-to-select')
+
+const physicalSection = $('section.physical-person form')
+const physicalSectionHeader = $('section.physical-person .header')
+const juridicalSection = $('section.juridical-person form')
+const juridicalSectionHeader = $('section.juridical-person .header')
+
+returnSelection.each(function(){
+    $(this).click(()=>{
+        selectSection.addClass('active nav-margin')
+
+        juridicalSection.removeClass('active')
+        juridicalSectionHeader.removeClass('active nav-margin')
+        physicalSection.removeClass('active')
+        physicalSectionHeader.removeClass('active nav-margin')
+    })
+})
+
+selectPhysical.click(()=>{
+    selectSection.removeClass('active nav-margin')
+    
+    physicalSection.addClass('active')
+    physicalSectionHeader.addClass('active nav-margin')
+
+    juridicalSectionHeader.removeClass('active nav-margin')
+    juridicalSection.removeClass('active')
+})
+
+selectJuridical.click(()=>{
+    selectSection.removeClass('active nav-margin')
+
+    juridicalSection.addClass('active')
+    juridicalSectionHeader.addClass('active nav-margin')
+
+    physicalSection.removeClass('active')
+    physicalSectionHeader.removeClass('active nav-margin')
+})

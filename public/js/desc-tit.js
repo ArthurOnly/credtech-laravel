@@ -1,1 +1,248 @@
-function inputFilesToFormData(e){var t=new FormData;return $(`${e} input,select`).each((function(){const e=$(this).attr("name");var r="";"file"==$(this).attr("type")&&(r=$(this).get(0).files[0],t.append(e,r))})),t}function verifyBlanks(e){var t=!1;return $(`${e} input[require],select[require]`).each((function(){""==$(this).val()||null==$(this).val()?(toggleErrorNode($(this),!0),t=!0):toggleErrorNode($(this),!1)})),t}function verifyFields(e){return $(`${e} input,select`).each((function(){const e=$(this).attr("name"),t=$(this).val();let r;switch(e){case"name":r=!correctName(t),toggleErrorNode($(this),r);break;case"name":r=!correctEmail(t),toggleErrorNode($(this),r);break;case"loan_value":r=!correctLoanVale(t),toggleErrorNode($(this),r,"Valor mínimo R$ 100,00");break;case"cep":!async function(){r=await!correctCEP(t),toggleErrorNode($(this),r)}();break;case"CPF":r=!correctCPF(t),toggleErrorNode($(this),r)}})),!1}function handleUploadFields(){document.querySelectorAll('input[type="file"]').forEach((e=>{const t=document.querySelector(`label[for='${e.getAttribute("id")}'] spam`);e.addEventListener("change",(e=>{t.innerHTML=e.target.value.split(/(\\|\/)/g).pop()}))}))}function handleCheckboxFields(){document.querySelectorAll("div.checkbox").forEach((e=>{const t=e.querySelector("input");t.addEventListener("change",(()=>{t.checked?(e.classList.add("active"),e.parentNode.classList.remove("error")):(e.classList.remove("active"),e.parentNode.classList.add("error"))}))}))}function addMaksInFields(){$('input[name="celphone"]').each((function(){$(this).mask("(00) 00000-0000")}));$('input[name="value"]').each((function(){$(this).mask("000.000.000.000.000,00",{reverse:!0})}));$('input[name="cpf"]').each((function(){$(this).mask("000.000.000-00")}));$('input[name="cnpj"]').each((function(){$(this).mask("00.000.000/0000-00")}));$('input[name="cpf_cnpj"]').each((function(){var e={onKeyPress:function(e,t,r,n){var a=["000.000.000-000","00.000.000/0000-00"],o=e.length<15?a[0]:a[1];$('input[name="cpf_cnpj"]').mask(o,n)}};$(this).mask("000.000.000-000",e)}))}function toggleErrorNode(e,t,r){const n=e.parent();t?(n.addClass("error"),r&&n.find(".error-label p").text(r)):n.removeClass("error")}function correctName(e){return!(null==e||e.lenght<2)}function correctEmail(e){return!(null==e||e.lenght<4||!e.contains("@")||!e.contains("."))}function correctLoanVale(e){return null!=e&&(e=e.replaceAll(".","")),null!=e&&(e=e.replace(",",".")),!((e=Number(e))<100)}async function correctCEP(e){let t=e.replace("-","");t=t||"00000000";return!(await(await fetch(`http://viacep.com.br/ws/${t}/json/`)).json()).erro}function correctCPF(e){var t,r;if(t=0,"00000000000"==(e=(e=e.replaceAll(".","")).replace("-","")))return!1;for(i=1;i<=9;i++)t+=parseInt(e.substring(i-1,i))*(11-i);if(10!=(r=10*t%11)&&11!=r||(r=0),r!=parseInt(e.substring(9,10)))return!1;for(t=0,i=1;i<=10;i++)t+=parseInt(e.substring(i-1,i))*(12-i);return 10!=(r=10*t%11)&&11!=r||(r=0),r==parseInt(e.substring(10,11))}handleUploadFields(),handleCheckboxFields(),addMaksInFields();var strCPF="12345678909";const form=document.querySelector("form"),popup=document.querySelector(".popup"),popupBody=document.querySelector(".popup h4");form.addEventListener("submit",(async e=>{e.preventDefault();const t=document.querySelector("#accept_data");if(!t.checked)return void t.parentNode.parentNode.classList.add("error");var r=!1;if(verifyBlanks("form")&&(r=!0),verifyFields("form")&&(r=!0),r)return;popup.classList.add("active"),popupBody.innerHTML='<h4><i class="fas fa-spinner loading"></i></h4>';const n=new FormData(form);n.delete("accept_data");const a=await fetch("http://localhost:8000/api/checks",{body:n,method:"post"}),o=await a.json();console.log(o.success),o.success?popupBody.innerHTML="<h4 class='success'>Sucesso</h4>":popupBody.innerHTML="<h4 class='fail'>Falha na solicitação</h4>",window.setTimeout((()=>popup.classList.remove("active")),3e3)}));
+function inputFilesToFormData(form){
+    var formData = new FormData()
+    $(`${form} input,select`).each(function () {
+        const fieldName = $(this).attr('name')
+        var fieldValue = ''
+        if ($(this).attr('type') == 'file'){
+            fieldValue = $(this).get(0).files[0]
+            formData.append(fieldName, fieldValue)
+        } 
+    });
+    return formData
+}
+
+function verifyBlanks(form){
+    var hasErrors = false
+    const formNodes = $(`${form} input[require],select[require]`)
+
+    formNodes.each(function() {
+        if ($(this).val() == '' || $(this).val() == undefined){
+            toggleErrorNode($(this), true)
+            hasErrors = true
+        } else{
+            toggleErrorNode($(this), false)
+        }
+    })
+    return hasErrors
+}
+
+function verifyFields(form){
+    var hasErrors = false
+    const formNodes = $(`${form} input,select`)
+    
+    formNodes.each(function() {
+        const fieldName = $(this).attr('name')
+        const fieldValue = $(this).val()
+        
+        let hasError
+        switch (fieldName){
+            case 'name':
+                hasError = !correctName(fieldValue)
+                toggleErrorNode($(this), hasError)
+                break
+            case 'name':
+                hasError = !correctEmail(fieldValue)
+                toggleErrorNode($(this), hasError)
+                break
+            case 'loan_value':
+                hasError = !correctLoanVale(fieldValue)
+                toggleErrorNode($(this), hasError, 'Valor mínimo R$ 100,00')
+                break
+            case 'cep':
+                async function f(){
+                    hasError = await!correctCEP(fieldValue)
+                    toggleErrorNode($(this), hasError)
+                }f()
+                break
+            case 'CPF':
+                hasError = !correctCPF(fieldValue)
+                toggleErrorNode($(this), hasError)
+                break
+        }
+    })
+
+    return hasErrors
+}
+
+function handleUploadFields(){
+    const uploadFields = document.querySelectorAll('input[type="file"]')
+    uploadFields.forEach(uploadField=>{
+        const uploadLabel = document.querySelector(`label[for='${uploadField.getAttribute('id')}'] spam`)
+        uploadField.addEventListener('change', (event)=>{
+            uploadLabel.innerHTML = event.target.value.split(/(\\|\/)/g).pop()
+        })
+    })
+}
+handleUploadFields()
+
+function handleCheckboxFields(){
+    const checkboxDivs = document.querySelectorAll('div.checkbox')
+    checkboxDivs.forEach(checkboxDiv => {
+        const checkboxHidden = checkboxDiv.querySelector('input')
+        checkboxHidden.addEventListener('change', ()=>{
+            if(checkboxHidden.checked){
+                checkboxDiv.classList.add('active')
+                checkboxDiv.parentNode.classList.remove('error')
+            } else{
+                checkboxDiv.classList.remove('active')
+                checkboxDiv.parentNode.classList.add('error')
+            }
+        })
+    })
+}handleCheckboxFields()
+
+function addMaksInFields(){
+    const inputsCelphone = $('input[name="celphone"]')
+    inputsCelphone.each(function(){
+        $(this).mask('(00) 00000-0000');
+    })
+
+    const inputsValue = $('input[name="value"]')
+    inputsValue.each(function(){
+        $(this).mask('000.000.000.000.000,00', {reverse: true})
+    })
+
+    const inputsCPF = $('input[name="cpf"]')
+    inputsCPF.each(function(){
+        $(this).mask('000.000.000-00')
+    })
+
+    const inputsCNPJ = $('input[name="cnpj"]')
+    inputsCNPJ.each(function(){
+        $(this).mask('00.000.000/0000-00')
+    })
+
+    const inputsCPFcnpj = $('input[name="cpf_cnpj"]')
+    inputsCPFcnpj.each(function(){
+        var options =  {
+            onKeyPress: function(inputText, e, field, options) {
+              var masks = ['000.000.000-000', '00.000.000/0000-00'];             
+              var mask = inputText.length < 15 ? masks[0] : masks[1]
+
+              $('input[name="cpf_cnpj"]').mask(mask, options);
+            }
+        }
+          
+        $(this).mask('000.000.000-000', options);
+    })
+}addMaksInFields()
+
+function toggleErrorNode(node, hasError, message){
+    const inputBlock = node.parent()
+    if (hasError){
+        inputBlock.addClass('error')
+        if (message) {
+            inputBlock.find('.error-label p').text(message)
+        }
+    } else{
+        inputBlock.removeClass('error')
+    }
+}
+
+function correctName(name){
+    if (name == undefined || name.lenght<2){
+        return false
+    } else{
+        return true
+    }
+}
+
+function correctEmail(email){
+    if (email == undefined || email.lenght<4 || !email.contains('@') || !email.contains('.')){
+        return false
+    } else{
+        return true
+    }
+}
+
+function correctLoanVale(value){
+    if (value != undefined) value = value.replaceAll('.','')
+    if (value != undefined) value = value.replace(',','.')
+    value = Number(value)
+    if (value < 100){
+        return false
+    } else{
+        return true
+    }
+}
+
+async function correctCEP(cep){
+    let cepValue = cep.replace('-','')
+    cepValue = cepValue ? cepValue : '00000000'
+    const cepInfo = await (await fetch(`http://viacep.com.br/ws/${cepValue}/json/`)).json()
+    
+    if (cepInfo.erro) return false
+    return true
+}
+
+function correctCPF(strCPF) {
+    var Soma;
+    var Resto;
+    Soma = 0;
+    strCPF = strCPF.replaceAll('.','')
+    strCPF = strCPF.replace('-','')
+    if (strCPF == "00000000000") return false;
+
+    for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+        if ((Resto == 10) || (Resto == 11))  Resto = 0;
+        if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+
+    Soma = 0;
+        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+        Resto = (Soma * 10) % 11;
+
+        if ((Resto == 10) || (Resto == 11))  Resto = 0;
+        if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+        return true;
+}
+var strCPF = "12345678909";
+const form = document.querySelector('form')
+const popup = document.querySelector('.popup')
+const popupBody = document.querySelector('.popup h4')
+
+form.addEventListener('submit', async(event)=>{
+    event.preventDefault()
+
+    const verifyAccept = document.querySelector(`#accept_data`)
+    const isAccept = verifyAccept.checked
+
+    if (!isAccept){
+        verifyAccept.parentNode.parentNode.classList.add('error')
+        return
+    }
+    
+    var hasErrors = false
+    
+    if (verifyBlanks('form')) hasErrors = true
+
+    if (verifyFields('form')) hasErrors = true
+
+    if (hasErrors){
+        return
+    }
+
+    popup.classList.add('active')
+    popupBody.innerHTML = `<h4><i class="fas fa-spinner loading"></i></h4>`
+
+    const formData = new FormData(form)
+    formData.delete('accept_data');
+
+    const request = await fetch('http://localhost:8000/api/checks', {
+        body: formData,
+        method: 'post',
+    })
+
+    const response = await request.json()
+
+    console.log(response.success)
+
+    if (response.success){
+        popupBody.innerHTML = `<h4 class='success'>Sucesso</h4>`
+    } else{
+        popupBody.innerHTML = `<h4 class='fail'>Falha na solicitação</h4>`
+    }
+
+    window.setTimeout(()=>popup.classList.remove('active'), 3000)
+})

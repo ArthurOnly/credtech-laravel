@@ -2,6 +2,9 @@
     .credit-card-loan th{
         font-size: 1rem;
     }
+    body ul.desktop-only{
+        display: block;
+    }
 }
 
 .taxs-credit{
