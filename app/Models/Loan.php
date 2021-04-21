@@ -17,4 +17,16 @@ class Loan extends Model
         "segment_id"
     ];
 
+    protected $hidden = [
+        'updated_at'
+    ];
+
+    public function Warranty(){
+        return $this->hasOne(Warranty::class, 'id', "warranty_id");
+    }
+
+    public function Segment(){
+        return $this->hasOne(ClientSegment::class, 'id', "segment_id");
+    }
+
 }
