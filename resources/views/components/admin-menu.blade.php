@@ -1,24 +1,24 @@
 <aside class='active'>
     <div class='menu-container container'>
-        <a class='menu-item active'>
+        <a class='menu-item {{$activeRoute === "admin.panel" ? "active" : ""}}' href={{ route('admin.panel') }}>
             <i class="fas fa-map-marker-alt"></i>
             Painel
         </a>
-        <a class='menu-item'>
+        <a class='menu-item {{$activeRoute === "admin.simulacoes" ? "active" : ""}}' href={{ route('admin.simulacoes') }}>
             <i class="fas fa-map-marker-alt"></i>
             Simulações
         </a>
-        <a class='menu-item'>
+        <a class='menu-item {{$activeRoute === "admin.emprestimos" ? "active" : ""}}' href={{ route('admin.emprestimos')}}>
             <i class="fas fa-map-marker-alt"></i>
             Empréstimos
         </a>
-        <a class='menu-item'>
+        <a class='menu-item {{$activeRoute === "admin.checks" ? "active" : ""}}' href={{ route('admin.cheques')}}>
             <i class="fas fa-map-marker-alt"></i>
             Desconto de títulos
         </a>
-        <a class='menu-item'>
+        <a class='menu-item {{$activeRoute === "admin.contatos" ? "active" : ""}}' href={{ route('admin.contatos')}}>
             <i class="fas fa-map-marker-alt"></i>
-            Configurações
+            Contatos
         </a>
         <a class='menu-item danger' href={{ route('auth.logout') }}>
             <i class="fas fa-map-marker-alt"></i>

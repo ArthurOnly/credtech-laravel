@@ -15,4 +15,8 @@ class Contact extends Model
         'celphone',
         'message'
     ];
+
+    protected $hidden = [
+        'updated_at'
+    ];
 }

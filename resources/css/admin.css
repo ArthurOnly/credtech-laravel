@@ -92,7 +92,7 @@ aside .closer.close-state i{
     border-top: 4px solid var(--blue-1);
     row-gap: 24px;
     width: 100%;
-    min-width: 200px;
+    min-width: 350px;
     flex: 1;
 }
 
