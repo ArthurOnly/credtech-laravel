@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/taxas', function () {
     return view('site.taxas');
-});
+})->name('taxas');
 
 Route::get('/contato', function () {
     return view('site.contato');
@@ -35,7 +35,7 @@ Route::get('/desconto-de-titulos', function () {
 
 Route::get('/quem-somos', function () {
     return view('site.quem_somos');
-});
+})->name('quemsomos');
 
 Route::get('/faq', function () {
     return view('site.faq');

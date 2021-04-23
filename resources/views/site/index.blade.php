@@ -23,7 +23,7 @@
     <section class='page-header nav-margin'>
         <div class='container section-container'>
             <div class='left-container container'>
-                <img class='cred-logo' src='images/credtechB.png' />
+                <img class='cred-logo' src="{{asset('images/credtechB.png')}}"/>
                 <h1>Conheça a melhor empresa de crédito do RN</h1>
                 <p>Faça empréstimos com as melhores taxas do mercado!</p>
             </div>
@@ -248,10 +248,10 @@
                     expectativas, tragam
                     inovações, diferenciais e principalmente vantagens competitivas para nossos clientes.
                 </h4>
-                <a href='#'><i class="fas fa-arrow-right rotate-arrow"></i>Saiba mais</a>
+                <a href={{route('quemsomos')}}><i class="fas fa-arrow-right rotate-arrow"></i>Saiba mais</a>
             </div>
             <div class='right-container container'>
-                <img class='section-image' src='images/pc-pen.png'>
+                <img class='section-image' src="{{asset('images/pc-pen.png')}}">
             </div>
         </div>
     </section>
@@ -263,10 +263,10 @@
                     burocracia dos Bancos e atua com recursos próprios para melhor atender nossos clientes. Por esse
                     motivo temos as melhores condições e taxas do mercado.
                 </h4>
-                <a href='#'><i class="fas fa-arrow-right rotate-arrow"></i>Saiba mais</a>
+                <a href={{route('taxas')}}><i class="fas fa-arrow-right rotate-arrow"></i>Saiba mais</a>
             </div>
             <div class='right-container container'>
-                <img class='section-image' src='images/taxas.png'>
+                <img class='section-image' src="{{asset('images/taxas.png')}}">
             </div>
         </div>
     </section>
@@ -275,10 +275,10 @@
             <div class='full-grid-container container'>
                 <p class='partners-text'>- PARCEIROS -</p>
                 <div class='part-logos'>
-                    <img class='section-image' src='images/sebrae.png'>
-                    <img class='section-image' src='images/anfac.png'>
-                    <img class='section-image' src='images/serasa.png'>
-                    <img class='section-image' src='images/f5tec.png'>
+                    <img class='section-image' src="{{asset('images/sebrae.png')}}">
+                    <img class='section-image' src="{{asset('images/anfac.png')}}">
+                    <img class='section-image' src="{{asset('images/serasa.png')}}">
+                    <img class='section-image' src="{{asset('images/f5tec.png')}}">
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
                                         Recomendo a todos."</p>
                                 </div>
                                 <div class='footer-section active'>
-                                    <img src='images/braulio.png' />
+                                    <img src="{{asset('images/braulio.png')}}"/>
                                     <h5><i class="fas fa-user"></i>Braúlio Castillo</h5>
                                     <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO Mulambo Novo -
                                         Natal/RN</p>
@@ -319,7 +319,7 @@
                                         Recomendo a todos."</p>
                                 </div>
                                 <div class='footer-section'>
-                                    <img src='images/alexandre.jpg' />
+                                    <img src="{{asset('images/alexandre.jpg')}}"/>
                                     <h5><i class="fas fa-user"></i>Alexandre Pinto</h5>
                                     <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO Colégio Ciências
                                         Aplicadas - Natal/RN</p>
@@ -337,7 +337,7 @@
                                         recomendada!"</p>
                                 </div>
                                 <div class='footer-section'>
-                                    <img src='images/marcos.jpg' />
+                                    <img src="{{asset('images/marcos.jpg')}}"/>
                                     <h5><i class="fas fa-user"></i>Marcos Oliveira</h5>
                                     <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO NatalMakers -
                                         Natal/RN</p>
@@ -354,7 +354,7 @@
                                         justa, bom atendimento e flexibilidade para o empresário."</p>
                                 </div>
                                 <div class='footer-section'>
-                                    <img src='images/maximo.jpg' />
+                                    <img src="{{asset('images/maximo.jpg')}}"/>
                                     <h5><i class="fas fa-user"></i>Manassés Máximo</h5>
                                     <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO Pastelouco -
                                         Parnamirim/RN</p>
@@ -372,7 +372,7 @@
                                         profissionais fantásticos. Parceiro excelente!”</p>
                                 </div>
                                 <div class='footer-section '>
-                                    <img src='images/dinah.jpg' />
+                                    <img src="{{asset('images/dinah.jpg')}}"/>
                                     <h5><i class="fas fa-user"></i>Luciano Nascimento e Dinah Ciriaco</h5>
                                     <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEOs Presentei -
                                         Natal/RN</p>
@@ -396,7 +396,7 @@
                                 Recomendo a todos."</p>
                         </div>
                         <div class='footer-section'>
-                            <img src='images/braulio.png' />
+                            <img src="{{asset('images/braulio.png')}}"/>
                             <h5><i class="fas fa-user"></i>Braúlio Castillo</h5>
                             <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO Mulambo Novo - Natal/RN
                             </p>
@@ -410,7 +410,7 @@
                                 Recomendo a todos."</p>
                         </div>
                         <div class='footer-section'>
-                            <img src='images/alexandre.jpg' />
+                            <img src="{{asset('images/alexandre.jpg')}}"/>
                             <h5><i class="fas fa-user"></i>Alexandre Pinto</h5>
                             <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO Colégio Ciências Aplicadas
                                 - Natal/RN</p>
@@ -424,7 +424,7 @@
                                 recomendada!"</p>
                         </div>
                         <div class='footer-section'>
-                            <img src='images/marcos.jpg' />
+                            <img src="{{asset('images/marcos.jpg')}}"/>
                             <h5><i class="fas fa-user"></i>Marcos Oliveira</h5>
                             <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO NatalMakers - Natal/RN</p>
                         </div>
@@ -436,7 +436,7 @@
                                 justa, bom atendimento e flexibilidade para o empresário."</p>
                         </div>
                         <div class='footer-section'>
-                            <img src='images/maximo.jpg' />
+                            <img src="{{asset('images/maximo.jpg')}}"/>
                             <h5><i class="fas fa-user"></i>Manassés Máximo</h5>
                             <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEO Pastelouco - Parnamirim/RN
                             </p>
@@ -450,7 +450,7 @@
                                 profissionais fantásticos. Parceiro excelente!”</p>
                         </div>
                         <div class='footer-section'>
-                            <img src='images/dinah.jpg' />
+                            <img src="{{asset('images/dinah.jpg')}}"/>
                             <h5><i class="fas fa-user"></i>Luciano Nascimento e Dinah Ciriaco</h5>
                             <p class='opinions-func'><i class="fas fa-map-marker-alt"></i>CEOs Presentei - Natal/RN</p>
                         </div>
@@ -469,9 +469,7 @@
 
     <x-footer/>
     <x-cookies-popup/>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
 
     <script src='{{ url(mix('js/jquery.js'))}}'></script>
     <script src='{{ url(mix('js/global-script.js'))}}'></script>
@@ -484,6 +482,5 @@
             direction: 'left',
         })
     </script>
-</body>
 
 </html>

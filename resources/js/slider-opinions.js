@@ -4,13 +4,13 @@ const allSlides = document.querySelector('.opinions-slider').querySelectorAll('.
 //window.setInterval(()=>passToNext, 10000)
 var changedBeforeInterval = false
 
-/*window.setInterval(()=>{
+window.setInterval(()=>{
   if (!changedBeforeInterval){
     passToNext()
   }
   changedBeforeInterval = false
 
-}, 15000)*/
+}, 15000)
 
 function passToNext(){
   var find = false
