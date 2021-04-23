@@ -49,8 +49,8 @@
                     </div>
                     <div class='simulator-step active' id='step-1'>
                         <div class='input-block'>
-                            <label for="">De quanto você precisa?</label>
-                            <input type="range" min="200" max="3000" value="200" step="100" class="slider" name="value">
+                            <label for="value">De quanto você precisa?</label>
+                            <input id='value' type="range" min="200" max="3000" value="200" step="100" class="slider" name="value">
                             <h5 ref='value'>R$ 200</h5>
                         </div>
                         <div class='input-block'>

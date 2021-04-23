@@ -626,8 +626,8 @@ function addMaksInFields(){
     })
 
     const inputsValue = $('input[name="value"]')
-    inputsValue.each(function(){
-        $(this).mask('000.000.000.000.000,00', {reverse: true})
+    inputsValue.each(function(input){
+        if ($(this).attr('type') != 'range') $(this).mask('000.000.000.000.000,00', {reverse: true})
     })
 
     const inputsCPF = $('input[name="cpf"]')
