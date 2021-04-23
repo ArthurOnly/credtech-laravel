@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('layouts.site')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@section('title', 'Home')
 
+@section('css')
     <link rel='stylesheet' href="{{ url(mix('css/global-styles.css'))}}">
     <link rel='stylesheet' href="{{ url(mix('css/home-styles.css'))}}">
+@endsection
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://use.typekit.net/nnx6nqd.css">
-    <x-google-analytics/>
-    <title>Cretech - Home</title>
-</head>
-
-<body>
-    <x-navbar/>
+@section('content')
     <section class='page-header nav-margin'>
         <div class='container section-container'>
             <div class='left-container container'>
@@ -466,11 +454,9 @@
             </div>
         </div>
     </section>
+@endsection
 
-    <x-footer/>
-    <x-cookies-popup/>
-</body>
-
+@section('js')
     <script src='{{ url(mix('js/jquery.js'))}}'></script>
     <script src='{{ url(mix('js/global-script.js'))}}'></script>
     <script src='{{ url(mix('js/home-script.js'))}}'></script>
@@ -482,5 +468,4 @@
             direction: 'left',
         })
     </script>
-
-</html>
+@endsection
