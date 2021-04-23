@@ -5089,7 +5089,6 @@ footer .up-section .container > div > * + *{
 
     body .table-wrapper{
         overflow-x: hidden;
-        overflow-y: hidden;
         width: auto;
     }
 
@@ -5231,7 +5230,6 @@ label.secondary-label{
 .table-wrapper{
     width: 100%;
     overflow-x: scroll;
-    overflow-y: hidden;
     position: relative;
 }
 
@@ -5350,6 +5348,22 @@ nav{
     box-shadow: 0px 1px 20px -1px rgba(0,0,0,0.10);
 }
 
+
+.nav-overlay{
+    position: fixed;
+    background-color: rgba(0,0,0);
+    opacity: 0;
+    width: 100vw;
+    height: 0vh;
+    transition: opacity 1s;
+    z-index: 201;
+}
+
+.nav-overlay.active{
+    height: 200vh;
+    opacity: 0.2;
+}
+
 nav .left-content a{
     display: flex;
     flex-direction: row;
@@ -5423,7 +5437,6 @@ nav .mobile-nav{
 
 nav .mobile-nav.active{
     right: 250px;
-    box-shadow: -164px 0px 0px 0px rgba(0,0,0,0.75);
 }
 
 nav .mobile-nav i {

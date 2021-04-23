@@ -7,6 +7,10 @@
     }
 }
 
+.table-wrapper.wrapper-taxas{
+    overflow-y: hidden;
+}
+
 .taxs-credit{
     background-color: var(--blue-3);
 }

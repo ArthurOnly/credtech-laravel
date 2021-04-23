@@ -41,7 +41,7 @@
                     <li><strong>Garantia integral</strong>: Cartão de Crédito ou Cartão CredTech + Contrato.</li>
                 </ul>
             </div>
-            <div class='table-wrapper'>
+            <div class='table-wrapper wrapper-taxas'>
                 <table id='tax-comercio' class='t-fade-in-up active'>
                     <tbody>
                         <tr>
