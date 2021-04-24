@@ -15,4 +15,8 @@ class Check extends Model
         'doc_front',
         'doc_back'
     ];
+
+    protected $casts = [
+        'pre_dated' => 'datetime:d/m/Y',
+    ];
 }

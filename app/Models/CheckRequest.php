@@ -13,12 +13,13 @@ class CheckRequest extends Model
         "person_id",
         "check_id"
     ];
+    
 
-    public function person(){
+    public function Person(){
         return $this->hasOne(Person::class, 'id', 'person_id');
     }
 
-    public function check(){
+    public function Check(){
         return $this->hasOne(Check::class, 'id', 'check_id');
     }
 }

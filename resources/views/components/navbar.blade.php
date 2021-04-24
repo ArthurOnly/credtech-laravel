@@ -27,4 +27,5 @@
             <a class='btn btn-fill f-bold' href='/emprestimo'>Solicitar empréstimo</a>
         </aside>
     </div>
+    <div class='nav-overlay'></div>
 </nav>

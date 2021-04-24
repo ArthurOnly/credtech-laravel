@@ -1,1 +1,39 @@
-.contact-form-section{background:linear-gradient(90deg,#fff 0,#fff 50%,#fff 50%,#fff 100%);color:var(--blue-4)}.right-container .contact-block{display:flex;flex-direction:column;align-items:center;text-align:center;color:var(--blue-4)}.right-container .contact-block h6{max-width:300px}.right-container .contact-block .contact-circle{height:80px;width:80px;background-color:var(--blue-1);display:flex;justify-content:center;align-items:center;border-radius:100%;margin-right:8px}.right-container .contact-block .contact-circle i{font-size:32px;color:#fff}.right-container .contact-block+.contact-block{margin-top:32px}
+.contact-form-section{
+    background: linear-gradient(90deg, #fff 0%, #fff 50%, #fff 50%, #fff 100%);
+    color: var(--blue-4);
+}
+
+
+.right-container .contact-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--blue-4);
+}
+
+.right-container .contact-block h6{
+    max-width: 300px;
+}
+
+.right-container .contact-block .contact-circle{
+    height: 80px;
+    width: 80px;
+    background-color: var(--blue-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    margin-right: 8px;
+}
+
+.right-container .contact-block .contact-circle i{
+    font-size: 32px;
+    color: #fff;
+}
+
+.right-container .contact-block + .contact-block{
+    margin-top: 32px;
+}
+
+

@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/taxas', function () {
     return view('site.taxas');
-});
+})->name('taxas');
 
 Route::get('/contato', function () {
     return view('site.contato');
@@ -35,7 +35,7 @@ Route::get('/desconto-de-titulos', function () {
 
 Route::get('/quem-somos', function () {
     return view('site.quem_somos');
-});
+})->name('quemsomos');
 
 Route::get('/faq', function () {
     return view('site.faq');
@@ -50,4 +50,7 @@ Route::post('auth/login', 'App\Http\Controllers\AuthController@login')->name('au
 
 
 Route::get('admin/panel', 'App\Http\Controllers\AdminController@panel')->name('admin.panel')->middleware('auth');
-Route::get('admin/simulacoes', 'App\Http\Controllers\AdminController@simulacoes')->middleware('auth');
+Route::get('admin/simulacoes', 'App\Http\Controllers\AdminController@simulacoes')->name('admin.simulacoes')->middleware('auth');
+Route::get('admin/contatos', 'App\Http\Controllers\AdminController@contatos')->name('admin.contatos')->middleware('auth');
+Route::get('admin/emprestimos', 'App\Http\Controllers\AdminController@emprestimos')->name('admin.emprestimos')->middleware('auth');
+Route::get('admin/cheques', 'App\Http\Controllers\AdminController@cheques')->name('admin.cheques')->middleware('auth');

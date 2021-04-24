@@ -17,6 +17,8 @@ class PersonPhysical extends Model
     ];
 
     protected $hidden = [
-        "person_id"
+        "person_id",
+        'updated_at', 
+        'created_at'
     ];
 }

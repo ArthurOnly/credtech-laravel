@@ -22,7 +22,6 @@
 
     body .table-wrapper{
         overflow-x: hidden;
-        overflow-y: hidden;
         width: auto;
     }
 
@@ -164,7 +163,6 @@ label.secondary-label{
 .table-wrapper{
     width: 100%;
     overflow-x: scroll;
-    overflow-y: hidden;
     position: relative;
 }
 

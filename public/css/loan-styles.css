@@ -1,1 +1,125 @@
-.loan-card>i{font-size:5rem}.loan-card{box-shadow:0 0 20px -1px rgba(0,0,0,.05);padding:16px}.loan-card>*+*{margin-top:16px}.loan-card button i{margin-left:8px}form label.upload-label i{margin-right:8px}form h5:not(formh5:first-child){margin-top:40px}section.juridical-person,section.physical-person{display:flex;flex-direction:column;position:relative}section.juridical-person .header,section.physical-person .header{background-color:var(--blue-2);color:#fff;width:100%;display:flex;justify-content:center;align-items:center}body .header .section-container{display:flex;flex-direction:column}body .header .section-container i{margin-right:8px}.select-type{position:relative}section{overflow-y:hidden}.loan-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:100vh;z-index:10;justify-content:center;align-items:center;visibility:hidden;transition:.2s;pointer-events:none}.loan-popup.active{visibility:visible;pointer-events:all}.loan-popup>div{display:flex;justify-content:center;align-items:center}.loan-popup-container{width:100%;max-width:400px;box-shadow:0 0 20px -1px rgba(0,0,0,.05);background-color:#fff;padding:16px;border-radius:8px;position:relative}.loan-popup-container>h3{margin-top:0}.loan-popup-container>i{font-size:32px;position:absolute;right:0;transform:translate(20%,-20%);top:0;cursor:pointer}.black-overlay{position:fixed;width:100vw;height:100vh;background-color:#000;opacity:0;z-index:9;display:flex;transition:.5s;pointer-events:none;top:0}.black-overlay.active{opacity:.5;pointer-events:all}
+.loan-card > i{
+    font-size: 5rem;
+}
+
+.loan-card{
+    box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.05);
+    padding: 16px;
+}
+
+.loan-card > * + *{
+    margin-top: 16px;
+}
+
+.loan-card button i{
+    margin-left: 8px;
+}
+
+form label.upload-label i{
+    margin-right: 8px;
+}
+
+form h5:not(form h5:first-child){
+    margin-top: 40px;
+}
+
+section.physical-person,
+section.juridical-person{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+section.physical-person .header,
+section.juridical-person .header{
+    background-color: var(--blue-2);
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body .header .section-container{
+    display: flex;
+    flex-direction: column;
+}
+
+body .header .section-container i{
+    margin-right: 8px;
+}
+
+.select-type{
+    position: relative;
+}
+
+section{
+    overflow-y: hidden;
+}
+
+.loan-popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    transition: 0.2s;
+    pointer-events: none;
+}
+
+.loan-popup.active{
+    visibility: visible;
+    pointer-events: all;
+}
+
+.loan-popup > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loan-popup-container{
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.05);
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.loan-popup-container > h3{
+    margin-top: 0;
+}
+
+.loan-popup-container > i{
+    font-size: 32px;
+    position: absolute;
+    right: 0;
+    transform: translate(20%, -20%);
+    top: 0;
+    cursor: pointer;
+}
+
+.black-overlay{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0;
+    z-index: 9;
+    display: flex;
+    transition: 0.5s;
+    pointer-events: none;
+    top:0;
+}
+
+.black-overlay.active{
+    opacity: 0.5;
+    pointer-events: all;
+}

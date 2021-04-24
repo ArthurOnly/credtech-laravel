@@ -68,8 +68,6 @@ class ChecksController extends Controller
                 "CEP" => $request['CEP'],
             ];
 
-
-
             //Dados para o cheque
             $checkData = [
                 'value' => $request['value'],
@@ -109,10 +107,11 @@ class ChecksController extends Controller
             ]);
 
             $responseData = ResponseHelper::format_response(True, $checkRequest, 'Sucesso na requisição.');
+            DB::commit();
             return response($responseData, 201);
 
         } catch (Exception $ex){
-            dd($ex);
+            DB::rollBack();
             $responseData = ResponseHelper::format_response(False, null, 'Erro na transação com o BD.');
             return response($responseData, 400);
         }

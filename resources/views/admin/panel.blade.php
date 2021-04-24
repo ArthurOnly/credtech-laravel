@@ -16,7 +16,7 @@
     <title>Document</title>
 </head>
 <body>
-    <x-admin-menu/>
+    <x-admin-menu active-item='admin.panel'/>
     <div class='content-flow'>
         <div class='content-card'>
             <h4>Total de visitantes</h4>
