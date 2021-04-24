@@ -239,7 +239,7 @@
                 <a href={{route('quemsomos')}}><i class="fas fa-arrow-right rotate-arrow"></i>Saiba mais</a>
             </div>
             <div class='right-container container'>
-                <img class='section-image' src="{{asset('images/pc-pen.png')}}">
+                <img class='section-image' src="{{asset('images/idea.svg')}}">
             </div>
         </div>
     </section>
@@ -254,7 +254,7 @@
                 <a href={{route('taxas')}}><i class="fas fa-arrow-right rotate-arrow"></i>Saiba mais</a>
             </div>
             <div class='right-container container'>
-                <img class='section-image' src="{{asset('images/taxas.png')}}">
+                <img class='section-image' src="{{asset('images/moneySaving.svg')}}">
             </div>
         </div>
     </section>

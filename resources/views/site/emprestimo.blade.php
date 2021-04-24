@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.site')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@section('title', 'Empréstimo')
 
+@section('css')
     <link rel='stylesheet' href="{{ url(mix('css/global-styles.css')) }}">
     <link rel='stylesheet' href="{{ url(mix('css/loan-styles.css')) }}">
+@endsection
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://use.typekit.net/nnx6nqd.css">
-    <title>Document</title>
-</head>
-
-<body>
-    <x-navbar />
+@section('content')
     <section class='select-type'>
         <div class='select-type-container nav-margin container section-container t-fade-in-up active'>
             <div class='left-container container'>
@@ -536,13 +525,10 @@
             </div>
         </form>
     </section>
+@endsection
 
-    <x-footer />
-    <x-cookies-popup />
-
+@section('js')
     <script src='{{ url(mix('js/global-script.js')) }}'></script>
     <script src='{{ url(mix('js/jquery.js')) }}'></script>
     <script src='{{ url(mix('js/loan-script.js')) }}'></script>
-</body>
-
-</html>
+@endsection
