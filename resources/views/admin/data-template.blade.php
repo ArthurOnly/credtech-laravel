@@ -25,25 +25,31 @@
                 <div class='body'>
                     @foreach ($dataRow as $key => $value)
                         <h5>{{$key}}</h5>
-                        @foreach ($value as $key => $value)
-                            @if ($value != '')
-                                @if (is_array($value))
-                                    @foreach ($value as $key=>$value)
-                                        @if ($value != '')
-                                            <p>
-                                                <strong>{{$key}}:</strong> 
-                                                {{$value}}
-                                            </p>
-                                        @endif
-                                    @endforeach
-                                @else
-                                    <p>
-                                        <strong>{{$key}}:</strong> 
-                                        {{$value}}
-                                    </p>
+                        @if($key !== 'Documentos')
+                            @foreach ($value as $key => $value)
+                                @if ($value != '')
+                                    @if (is_array($value))
+                                        @foreach ($value as $key=>$value)
+                                            @if ($value != '')
+                                                <p>
+                                                    <strong>{{$key}}:</strong> 
+                                                    {{$value}}
+                                                </p>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <p>
+                                            <strong>{{$key}}:</strong> 
+                                            {{$value}}
+                                        </p>
+                                    @endif
                                 @endif
-                            @endif
-                        @endforeach
+                            @endforeach
+                        @else
+                            @foreach ($value as $key => $value)
+                                <a download href='{{route("admin.download", ["docname" => $value])}}'>{{$key}}</a><br>
+                            @endforeach
+                        @endif
                     @endforeach
                 </div>
             </div>

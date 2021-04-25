@@ -54,3 +54,4 @@ Route::get('admin/simulacoes', 'App\Http\Controllers\AdminController@simulacoes'
 Route::get('admin/contatos', 'App\Http\Controllers\AdminController@contatos')->name('admin.contatos')->middleware('auth');
 Route::get('admin/emprestimos', 'App\Http\Controllers\AdminController@emprestimos')->name('admin.emprestimos')->middleware('auth');
 Route::get('admin/cheques', 'App\Http\Controllers\AdminController@cheques')->name('admin.cheques')->middleware('auth');
+Route::get('admin/download/{docname?}', 'App\Http\Controllers\AdminController@downloadDoc')->name('admin.download')->middleware('auth');

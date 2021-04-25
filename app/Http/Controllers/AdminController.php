@@ -8,15 +8,24 @@ use App\Models\LoanRequest;
 use App\Models\SimulationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function index(){
-        return 'inex';
+        return redirect()->route('admin.panel');
     }
     public function panel(){
         $numberOfSimulations = SimulationRequest::count();
-        return view('admin.panel', ['totalSimulations' => $numberOfSimulations]);
+        $numberOfContacts = Contact::count();
+        $numberOfLoans = LoanRequest::count();
+        $numberOfChecks = CheckRequest::count();
+        return view('admin.panel', [
+            'totalSimulations' => $numberOfSimulations,
+            'totalLoans' => $numberOfLoans,
+            'totalContacts' => $numberOfContacts,
+            'totalChecks' => $numberOfChecks
+            ]);
     }
 
     public function simulacoes(){  
@@ -79,21 +88,31 @@ class AdminController extends Controller
         return view('admin.data-template', ['dataArray' => $loans]);
     }
 
+    public function downloadDoc($docname){
+        $file = Storage::get('docs/'.$docname);
+        return $file;
+    }
+
     public function cheques(){  
         $checkRequests = [];     
-        foreach (CheckRequest::all() as $check){
-            $person = $check->person()->first();
-            $personAddicional = $person->additionalData()->first();
-            $check = $check->Check()->first();
-            $check = [
-                "title" => "Pedido de desconto de título $check->id",
+        foreach (CheckRequest::all() as $checkRequest){
+            $person = $checkRequest->person()->first();
+            $personAddicional = $person->additionalData()->first();           
+            $check = $checkRequest->Check()->first();
+
+            $checkRequest = [
+                "title" => "Pedido de desconto de título $checkRequest->id",
                 "Dados pessoais" => [
                     "main_data" => $person->toArray(),
                     "addicional_data" => $personAddicional->toArray()             
                 ], 
-                "Dados do título" => $check->toArray()  
+                "Dados do título" => $check->toArray(),
+                "Documentos" => [
+                    "Verso título" => $check->doc_back,
+                    "Frente título" => $check->doc_front,
+                ]
             ];
-            array_push($checkRequests, $check);
+            array_push($checkRequests, $checkRequest);
         }
 
         return view('admin.data-template', ['dataArray' => $checkRequests]);

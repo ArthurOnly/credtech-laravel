@@ -60,7 +60,7 @@
                 <h5>Informações pessoais</h5>
                 <div class='input-block light'>
                     <label>Nome</label>
-                    <input require value='Arthur' placeholder='Isaac Danilo' name='name' type='text'></input>
+                    <input require value='' placeholder='Isaac Danilo' name='name' type='text'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Nome inválido</p>
@@ -69,7 +69,7 @@
                 </div>
                 <div class='input-block light'>
                     <label>CPF</label>
-                    <input require value='103.948.454-98' name='cpf_cnpj' type='text'
+                    <input require value='' name='cpf_cnpj' type='text'
                         placeholder='111.111.111-11'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>

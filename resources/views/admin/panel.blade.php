@@ -19,39 +19,27 @@
     <x-admin-menu active-item='admin.panel'/>
     <div class='content-flow'>
         <div class='content-card'>
-            <h4>Total de visitantes</h4>
-            <div class='body'>
-                <p>48 visitantes</p>
-            </div>
-            <div class='options'>
-                <p class='delete'><i class="fas fa-trash-alt"></i> Deletar</p>
-            </div>
-        </div>
-        <div class='content-card'>
             <h4>Total de simulações</h4>
             <div class='body'>
                 <p>{{$totalSimulations}} simulações</p>
-            </div>
-            <div class='options'>
-                <p class='delete'><i class="fas fa-trash-alt"></i> Deletar</p>
             </div>
         </div>
         <div class='content-card'>
             <h4>Total de pedidos de empréstimo</h4>
             <div class='body'>
-                <p>48 pedidos de empréstimo</p>
-            </div>
-            <div class='options'>
-                <p class='delete'><i class="fas fa-trash-alt"></i> Deletar</p>
+                <p>{{$totalLoans}} pedidos de empréstimo</p>
             </div>
         </div>
         <div class='content-card'>
             <h4>Total de pedidos de desconto de títulos</h4>
             <div class='body'>
-                <p>48 pedidos de desconto de títulos</p>
+                <p>{{$totalChecks}} pedidos de desconto de títulos</p>
             </div>
-            <div class='options disable'>
-                <p class='delete'><i class="fas fa-trash-alt"></i> Deletar</p>
+        </div>
+        <div class='content-card'>
+            <h4>Total de contatos</h4>
+            <div class='body'>
+                <p>{{$totalContacts}} contatos</p>
             </div>
         </div>
     </div>
