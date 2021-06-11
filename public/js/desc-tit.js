@@ -40,8 +40,6 @@ function verifyFields(form){
                 hasError = !correctName(fieldValue)
                 toggleErrorNode($(this), hasError)
                 break
-            case 'accept_data':
-                console.log(fieldValue)
             case 'email':
                 hasError = !correctEmail(fieldValue)
                 toggleErrorNode($(this), hasError)
@@ -242,8 +240,6 @@ form.addEventListener('submit', async(event)=>{
     })
 
     const response = await request.json()
-
-    console.log(response.success)
 
     if (response.success){
         popupBody.innerHTML = `<h4 class='success'>Sucesso</h4>`

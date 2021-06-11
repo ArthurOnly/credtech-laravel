@@ -18,16 +18,8 @@ $(document).ready(function(){
 })
 
 /*Physicial form handler*/
-const blackOverlay = $('.black-overlay')
-const loanPopup = $('.loan-popup')
-const loanPopupCloser = $('.loan-popup-container > i')
-
-console.log(loanPopupCloser)
-
-loanPopupCloser.click(function(){
-    blackOverlay.removeClass('active')
-    loanPopup.removeClass('active')
-})
+const popup = document.querySelector('.popup')
+const popupBody = document.querySelector('.popup h4')
 
 $(formPhysical).submit(async (event)=>{
     event.preventDefault()
@@ -50,8 +42,8 @@ $(formPhysical).submit(async (event)=>{
         return
     }
 
-    blackOverlay.addClass('active')
-    loanPopup.addClass('active')
+    popup.classList.add('active')
+    popupBody.innerHTML = `<h4><i class="fas fa-spinner loading"></i></h4>`
 
     const formData = new FormData(document.querySelector(formPhysical))
     formData.delete('accept_data')
@@ -60,6 +52,16 @@ $(formPhysical).submit(async (event)=>{
         body: formData,
         method: 'post',
     })
+
+    const response = await request.json()
+
+    if (response.id){
+        popupBody.innerHTML = `<h4 class='success'>Sucesso</h4>`
+    } else{
+        popupBody.innerHTML = `<h4 class='fail'>Falha na solicitação</h4>`
+    }
+
+    window.setTimeout(()=>popup.classList.remove('active'), 3000)
 })
 
 

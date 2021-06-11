@@ -32,22 +32,7 @@
             </div>
         </div>
     </section>
-    <section class='loan-popup'>
-        <div class='container section-container'>
-            <div class='full-grid-container loan-popup-container'>
-                <i class="fas fa-times-circle"></i>
-                <h3>Condições do seu empréstimo</h3>
-                <ul>
-                    <li>Ciclo de pagamento: Semanal</li>
-                    <li>Parcelas: 1</li>
-                    <li>Taxa: 1</li>
-                    <li>Valor de cada parcela: R$ 10,00</li>
-                </ul>
-                <button name='submit-loan' class='btn btn-fill'>Solicitar agora</button>
-            </div>
-        </div>
-    </section>
-    <div class='black-overlay'></div>
+    <x-popup/>
     <section class='physical-person'>
         <div class='header t-fade-in-up'>
             <div class='container section-container'>

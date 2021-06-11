@@ -649,8 +649,6 @@ function verifyFields(form){
                 hasError = !correctName(fieldValue)
                 toggleErrorNode($(this), hasError)
                 break
-            case 'accept_data':
-                console.log(fieldValue)
             case 'email':
                 hasError = !correctEmail(fieldValue)
                 toggleErrorNode($(this), hasError)

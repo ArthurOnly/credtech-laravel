@@ -36,8 +36,6 @@ form.addEventListener('submit', async(event)=>{
 
     const response = await request.json()
 
-    console.log(response.success)
-
     if (response.success){
         popupBody.innerHTML = `<h4 class='success'>Sucesso</h4>`
     } else{
