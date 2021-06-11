@@ -1,10 +1,17 @@
 const formPhysical = 'form[name="physical-person-form"]'
+const formJuridical = 'form[name="juridical-person-form"]'
 
 const physicalCpf = $(`${formPhysical} input[name="cpf"]`)
 const physicalMoney = $(`${formPhysical} input[name='loan_value']`)
 const physicalMonthly_income = $(`${formPhysical} input[name='monthly_income']`)
 const physicalCep = $(`${formPhysical} input[name='cep']`)
 const physicalCelphone = $(`${formPhysical} input[name='celphone']`)
+
+const juridicalCpf = $(`${formJuridical} input[name="cpf_partner"]`)
+const juridicalMoney = $(`${formJuridical} input[name='loan_value']`)
+const juridicalMonthly_income = $(`${formJuridical} input[name='monthly_income']`)
+const juridicalCep = $(`${formJuridical} input[name='cep']`)
+const juridicalCelphone = $(`${formJuridical} input[name='celphone']`)
 
 /*masks*/
 $(document).ready(function(){
@@ -15,6 +22,14 @@ $(document).ready(function(){
         reverse: true,
     });
     physicalMonthly_income.mask('000.000.000,00', {reverse: true});
+
+    juridicalCpf.mask('000.000.000-00');
+    juridicalCep.mask('00000-000');
+    juridicalCelphone.mask('(00) 00000-0000');
+    juridicalMoney.mask('000.000,00', {
+        reverse: true,
+    });
+    juridicalMonthly_income.mask('000.000.000,00', {reverse: true});
 })
 
 /*Physicial form handler*/
@@ -46,6 +61,49 @@ $(formPhysical).submit(async (event)=>{
     popupBody.innerHTML = `<h4><i class="fas fa-spinner loading"></i></h4>`
 
     const formData = new FormData(document.querySelector(formPhysical))
+    formData.delete('accept_data')
+
+    const request = await fetch('http://localhost:8000/api/loan', {
+        body: formData,
+        method: 'post',
+    })
+
+    const response = await request.json()
+
+    if (response.id){
+        popupBody.innerHTML = `<h4 class='success'>Sucesso</h4>`
+    } else{
+        popupBody.innerHTML = `<h4 class='fail'>Falha na solicitação</h4>`
+    }
+
+    window.setTimeout(()=>popup.classList.remove('active'), 3000)
+})
+
+$(formJuridical).submit(async (event)=>{
+    event.preventDefault()
+
+    const verifyAccept = document.querySelector(`${formJuridical} #accept_data_2`)
+    const isAccept = verifyAccept.checked
+
+    if (!isAccept){
+        verifyAccept.parentNode.parentNode.classList.add('error')
+        return
+    }
+    
+    var hasErrors = false
+    
+    if (verifyBlanks(formJuridical)) hasErrors = true
+
+    if (verifyFields(formJuridical)) hasErrors = true
+
+    if (hasErrors){
+        return
+    }
+
+    popup.classList.add('active')
+    popupBody.innerHTML = `<h4><i class="fas fa-spinner loading"></i></h4>`
+
+    const formData = new FormData(document.querySelector(formJuridical))
     formData.delete('accept_data')
 
     const request = await fetch('http://localhost:8000/api/loan', {

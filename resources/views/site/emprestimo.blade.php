@@ -347,10 +347,10 @@
                 <h5>Documentos</h5>
                 <div class='input-block input-upload light'>
                     <label>Selfie com RG ou CNH</label>
-                    <label class='upload-label' for='doc_selfie'><i class="fas fa-upload"></i>
+                    <label class='upload-label' for='doc_selfie_j'><i class="fas fa-upload"></i>
                         <spam>Upload</spam>
                     </label>
-                    <input require type='file' id='doc_selfie' name='doc_selfie'></input>
+                    <input require type='file' id='doc_selfie_j' name='doc_selfie'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
@@ -359,10 +359,10 @@
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Verso RG ou CNH</label>
-                    <label class='upload-label' for='doc_rg_verse'><i class="fas fa-upload"></i>
+                    <label class='upload-label' for='doc_rg_verse_j'><i class="fas fa-upload"></i>
                         <spam>Upload</spam>
                     </label>
-                    <input require type='file' id='doc_rg_verse' name='doc_rg_verse'></input>
+                    <input require type='file' id='doc_rg_verse_j' name='doc_rg_verse'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
@@ -371,10 +371,10 @@
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Comprovante de endereço</label>
-                    <label class='upload-label' for='doc_address_comp'><i class="fas fa-upload"></i>
+                    <label class='upload-label' for='doc_address_comp_'><i class="fas fa-upload"></i>
                         <spam>Upload</spam>
                     </label>
-                    <input require type='file' id='doc_address_comp' name='doc_address_comp'></input>
+                    <input require type='file' id='doc_address_comp_' name='doc_address_comp'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
@@ -383,10 +383,10 @@
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Comprovante de endereço do sócio requerente</label>
-                    <label class='upload-label' for='doc_address_comp_partner'><i class="fas fa-upload"></i>
+                    <label class='upload-label' for='doc_address_comp_partner_'><i class="fas fa-upload"></i>
                         <spam>Upload</spam>
                     </label>
-                    <input require type='file' id='doc_address_comp_partner' name='doc_address_comp_partner'></input>
+                    <input require type='file' id='doc_address_comp_partner_' name='doc_address_comp_partner'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
@@ -395,10 +395,10 @@
                 </div>
                 <div class='input-block input-upload light'>
                     <label>Comprovante de faturamento</label>
-                    <label class='upload-label' for='doc_monthly_income'><i class="fas fa-upload"></i>
+                    <label class='upload-label' for='doc_monthly_income_'><i class="fas fa-upload"></i>
                         <spam>Upload</spam>
                     </label>
-                    <input require type='file' id='doc_monthly_income' name='doc_monthly_income'></input>
+                    <input require type='file' id='doc_monthly_income_' name='doc_monthly_income'></input>
                     <spam class='error-label'>
                         <i class="fas fa-times-circle"></i>
                         <p>Email inválido</p>
