@@ -8,6 +8,7 @@ use App\Models\LoanRequest;
 use App\Models\SimulationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -80,7 +81,13 @@ class AdminController extends Controller
                     "main_data" => $person->toArray(),
                     "addicional_data" => $personAddicional->toArray()             
                 ], 
-                "Dados do empréstimo" => $loan->toArray()  
+                "Dados do empréstimo" => $loan->toArray(),
+                "Documentos" => [
+                    "Comprovante de ganhos mensais" => $person->doc_monthly_income,
+                    "Verso RG" => $person->doc_rg_verse,
+                    "Selfie" => $person->doc_selfie,
+                    "Comprovante de endereço" => $person->doc_address_comp,
+                ]  
             ];
             array_push($loans, $loanRequest);
         }

@@ -15,10 +15,10 @@ class LoanRequest extends Model
     ];
 
     public function person(){
-        return $this->hasOne(Person::class, 'id', 'person_id')->first();
+        return $this->hasOne(Person::class, 'id', 'person_id');
     }
 
     public function loan(){
-        return $this->hasOne(Loan::class, 'id', 'loan_id')->first();
+        return $this->hasOne(Loan::class, 'id', 'loan_id');
     }
 }
