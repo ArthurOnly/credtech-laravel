@@ -92,7 +92,7 @@ nav .container .right-content{
     margin-top: 0;
 }
 
-nav .container a{
+nav .container a:not(.btn){
     font-weight: normal;
     color: #fff;
 }

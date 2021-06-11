@@ -264,6 +264,14 @@ const form = $('form')
 form.on('submit', (event)=>{
     event.preventDefault()
 
+    const verifyAccept = document.querySelector(`#accept_data`)
+    const isAccept = verifyAccept.checked
+
+    if (!isAccept){
+        verifyAccept.parentNode.parentNode.classList.add('error')
+        return
+    }
+
     var hasErrors = false
     
     if (verifyBlanks('form')) hasErrors = true
@@ -584,7 +592,6 @@ function toggleAllDotsOf(){
 function toogleDotOn(dotRef){
   toggleAllDotsOf()
   allDots.forEach(dot => {
-    console.log(dotRef)
     if (dot.attributes.ref.value == dotRef){
       dot.click()
     }
@@ -642,7 +649,9 @@ function verifyFields(form){
                 hasError = !correctName(fieldValue)
                 toggleErrorNode($(this), hasError)
                 break
-            case 'name':
+            case 'accept_data':
+                console.log(fieldValue)
+            case 'email':
                 hasError = !correctEmail(fieldValue)
                 toggleErrorNode($(this), hasError)
                 break
@@ -742,6 +751,7 @@ function toggleErrorNode(node, hasError, message){
 }
 
 function correctName(name){
+    if (name=="") return false
     if (name == undefined || name.lenght<2){
         return false
     } else{
@@ -750,7 +760,8 @@ function correctName(name){
 }
 
 function correctEmail(email){
-    if (email == undefined || email.lenght<4 || !email.contains('@') || !email.contains('.')){
+    if (email=="") return false
+    if (email == undefined || email.lenght<4 || !email.includes('@') || !email.includes('.')){
         return false
     } else{
         return true
@@ -758,6 +769,7 @@ function correctEmail(email){
 }
 
 function correctLoanVale(value){
+    if (value=="") return false
     if (value != undefined) value = value.replaceAll('.','')
     if (value != undefined) value = value.replace(',','.')
     value = Number(value)
@@ -769,6 +781,7 @@ function correctLoanVale(value){
 }
 
 async function correctCEP(cep){
+    if (cep=="") return false
     let cepValue = cep.replace('-','')
     cepValue = cepValue ? cepValue : '00000000'
     const cepInfo = await (await fetch(`http://viacep.com.br/ws/${cepValue}/json/`)).json()
@@ -778,6 +791,7 @@ async function correctCEP(cep){
 }
 
 function correctCPF(strCPF) {
+    if (strCPF=="") return false
     var Soma;
     var Resto;
     Soma = 0;

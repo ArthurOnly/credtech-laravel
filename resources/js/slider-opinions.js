@@ -56,7 +56,6 @@ function toggleAllDotsOf(){
 function toogleDotOn(dotRef){
   toggleAllDotsOf()
   allDots.forEach(dot => {
-    console.log(dotRef)
     if (dot.attributes.ref.value == dotRef){
       dot.click()
     }

@@ -10,7 +10,7 @@
 @section('content')
     <section class='company-header nav-margin'>
         <div class='container section-container logo-container'>
-            <img src='{{asset(images/logoCredtech.png)}}' />
+            <img src='{{asset("images/logoCredtech.png")}}' />
         </div>
     </section>
     <section class='company-goals'>

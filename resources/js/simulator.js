@@ -132,6 +132,14 @@ const form = $('form')
 form.on('submit', (event)=>{
     event.preventDefault()
 
+    const verifyAccept = document.querySelector(`#accept_data`)
+    const isAccept = verifyAccept.checked
+
+    if (!isAccept){
+        verifyAccept.parentNode.parentNode.classList.add('error')
+        return
+    }
+
     var hasErrors = false
     
     if (verifyBlanks('form')) hasErrors = true

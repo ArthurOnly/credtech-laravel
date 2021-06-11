@@ -8,7 +8,7 @@
     --blue-2: #2E7AC8;
     --blue-3: #F1F8FF;
     --blue-4: #1D3355;
-    --yellow: #F0B800;
+    --yellow: #f5df3d;
     --red: #c21616;
 }
 
@@ -259,7 +259,7 @@ a.btn:focus{
 button.btn-fill,
 a.btn-fill{
     background-color: var(--yellow);
-    color: #fff;
+    color: #000;
 }
 
 button.btn-outline,

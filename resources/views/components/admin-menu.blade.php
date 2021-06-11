@@ -12,7 +12,7 @@
             <i class="fas fa-map-marker-alt"></i>
             Empréstimos
         </a>
-        <a class='menu-item {{$activeRoute === "admin.checks" ? "active" : ""}}' href={{ route('admin.cheques')}}>
+        <a class='menu-item {{$activeRoute === "admin.cheques" ? "active" : ""}}' href={{ route('admin.cheques')}}>
             <i class="fas fa-map-marker-alt"></i>
             Desconto de títulos
         </a>
